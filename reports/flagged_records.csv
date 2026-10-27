@@ -1,0 +1,892 @@
+sample_id,source_split,source_row_id,label,reason,raw_text
+train:22,train,22,0,very_short,Hoofah.
+train:252,train,252,0,very_short,Nope!
+train:354,train,354,0,very_short,ewwww
+train:438,train,438,0,very_short,Great
+train:607,train,607,1,very_short,Good food
+train:840,train,840,0,very_short,A
+train:861,train,861,1,very_short,Fabulous!
+train:1322,train,1322,1,very_short,Beer cave!!
+train:1673,train,1673,1,very_short,Fantastic martinis!!
+train:2245,train,2245,1,very_short,Awesome
+train:2260,train,2260,1,very_short,Super Sundae.
+train:3399,train,3399,1,very_short,Exquisite!!
+train:3706,train,3706,1,very_short,www.bigtsreviews.com
+train:3765,train,3765,0,very_short,.
+train:4211,train,4211,0,very_short,Booooo
+train:4973,train,4973,0,very_short,Horrible!!
+train:5017,train,5017,0,very_short,Very inconsistent.
+train:5353,train,5353,1,very_short,"great team,"
+train:7239,train,7239,1,very_short,Good buffet!
+train:7320,train,7320,1,very_short,session key
+train:7661,train,7661,0,very_short,closed
+train:7949,train,7949,1,very_short,Great service
+train:8567,train,8567,0,very_short,closed.
+train:9798,train,9798,0,very_short,Terrible.
+train:10147,train,10147,0,very_short,Closed.
+train:10578,train,10578,0,very_short,eeeeeeewwwwwwwwwwwwwwwwww
+train:10714,train,10714,1,very_short,delicious pizza!
+train:11238,train,11238,0,very_short,Terrible service.
+train:13722,train,13722,0,very_short,eh.
+train:13755,train,13755,1,very_short,Great zoo!
+train:13919,train,13919,1,very_short,Very nice!!!
+train:13969,train,13969,1,very_short,Amazing!
+train:15698,train,15698,1,very_short,Fun!!!
+train:16815,train,16815,0,very_short,closed!!!!!
+train:18745,train,18745,1,very_short,So good
+train:20028,train,20028,1,very_short,Pefect food.
+train:20745,train,20745,0,very_short,Closed!
+train:21087,train,21087,1,very_short,Hells yeah!
+train:21094,train,21094,1,very_short,Sweet sauce....NICE!
+train:21629,train,21629,0,very_short,never again
+train:22054,train,22054,0,very_short,Dangerously dirty!
+train:22489,train,22489,1,very_short,Great food.
+train:23101,train,23101,0,very_short,"bad food,"
+train:23893,train,23893,0,very_short,No good
+train:24558,train,24558,0,very_short,Buyer Beware!!!!!!!
+train:24659,train,24659,0,very_short,Trash..................
+train:25134,train,25134,1,very_short,Favorite Airport!
+train:25674,train,25674,1,very_short,Absolutely  Outstanding!!
+train:27703,train,27703,1,very_short,...
+train:28009,train,28009,0,very_short,Fast?
+train:28037,train,28037,0,very_short,Ok
+train:28787,train,28787,0,very_short,"Overpriced, undercooked"
+train:28791,train,28791,0,very_short,Permanently closed!
+train:29226,train,29226,1,very_short,Great place!
+train:29354,train,29354,0,very_short,It's closed.
+train:29453,train,29453,0,very_short,Dirty
+train:29521,train,29521,1,very_short,Eh.
+train:30882,train,30882,1,very_short,Yummy Pizza!!
+train:31173,train,31173,1,very_short,Large portions!
+train:31392,train,31392,1,very_short,Awesome personalities!
+train:32493,train,32493,0,very_short,Neither
+train:33818,train,33818,1,very_short,Vegetarian Curry!
+train:34507,train,34507,1,very_short,Amazing place!
+train:35091,train,35091,1,very_short,Awesome food
+train:35179,train,35179,1,very_short,Deliciousness-
+train:35350,train,35350,0,very_short,OK food
+train:35968,train,35968,1,very_short,play it.
+train:36861,train,36861,1,very_short,love them
+train:38540,train,38540,0,very_short,Meth.
+train:38820,train,38820,1,very_short,Yumm
+train:39268,train,39268,1,very_short,Ny style
+train:40190,train,40190,0,very_short,Expensive
+train:40255,train,40255,1,very_short,Yum!
+train:40723,train,40723,0,very_short,Stay away.
+train:40889,train,40889,0,very_short,Great time
+train:41292,train,41292,1,very_short,Bomb |:)
+train:42013,train,42013,0,very_short,soggy food
+train:42203,train,42203,0,very_short,Beware.
+train:42642,train,42642,1,very_short,Nice theater
+train:43017,train,43017,1,very_short,Cool
+train:43060,train,43060,0,very_short,Very rude!
+train:43306,train,43306,0,very_short,It's crappy.
+train:43495,train,43495,0,very_short,C
+train:43517,train,43517,0,very_short,Deleted
+train:44738,train,44738,0,very_short,Costcos better
+train:44977,train,44977,0,very_short,Meh.
+train:45057,train,45057,0,very_short,Terrible
+train:45070,train,45070,0,very_short,Horrible.
+train:45573,train,45573,1,very_short,K
+train:45990,train,45990,0,very_short,....
+train:46033,train,46033,1,very_short,Delicious sushi!
+train:46260,train,46260,0,very_short,Poor management
+train:46834,train,46834,0,very_short,Closed!!!
+train:46866,train,46866,0,very_short,Crappy selection!
+train:46964,train,46964,0,very_short,**closed**
+train:48174,train,48174,0,very_short,not good
+train:48880,train,48880,1,very_short,nice course
+train:49769,train,49769,1,very_short,good breakfast.
+train:49978,train,49978,0,very_short,Its Wal-Mart
+train:50528,train,50528,0,very_short,Nasty
+train:50814,train,50814,1,very_short,Nice
+train:51093,train,51093,0,very_short,:)
+train:51188,train,51188,0,very_short,Crappy service.
+train:52036,train,52036,1,very_short,Always awesome!
+train:54174,train,54174,0,very_short,?
+train:54789,train,54789,1,very_short,Favorite place
+train:57247,train,57247,0,very_short,beyond dive
+train:58241,train,58241,1,very_short,Wonderful!
+train:58834,train,58834,0,very_short,Over priced.
+train:59096,train,59096,0,very_short,Over rated
+train:59777,train,59777,0,very_short,Omg gross!
+train:60033,train,60033,0,very_short,Very bland.
+train:60648,train,60648,1,very_short,Hidden gem.
+train:60855,train,60855,1,very_short,Great Food
+train:61690,train,61690,1,very_short,Best!
+train:62270,train,62270,1,very_short,great bbq!
+train:63551,train,63551,0,very_short,ew
+train:63963,train,63963,1,very_short,Sweetbreads! Yum.
+train:64175,train,64175,1,very_short,Great Service!!!
+train:64381,train,64381,0,very_short,Closed!!!!!!!!  :-/
+train:65097,train,65097,0,very_short,Grosss
+train:66542,train,66542,0,very_short,Bros.
+train:67273,train,67273,1,very_short,Great people.
+train:68487,train,68487,0,very_short,:(
+train:68634,train,68634,1,very_short,Cheap drugs
+train:68944,train,68944,0,very_short,X
+train:69012,train,69012,0,very_short,Awful.
+train:69101,train,69101,1,very_short,Wonderful Food
+train:69355,train,69355,1,very_short,Hell yeah!
+train:69627,train,69627,1,very_short,Great sushi!!!
+train:69630,train,69630,1,very_short,The best!
+train:69746,train,69746,1,very_short,Dip chili
+train:71467,train,71467,0,very_short,Awful
+train:71498,train,71498,0,very_short,not bad
+train:71750,train,71750,0,very_short,Vvvvvvvvvveeeeeeeerrrrrryyyyyyyyyyyyy sssssssssssslllllllllllllllllooooooooooooooooowwwwwwwwwwwwwwwwwww.
+train:71804,train,71804,0,very_short,It's closed!
+train:72062,train,72062,1,very_short,Great sandwiches
+train:72305,train,72305,0,very_short,E
+train:72595,train,72595,0,very_short,Stay tuned....
+train:73276,train,73276,0,very_short,Slowest.Subway.Ever.
+train:73408,train,73408,0,very_short,Bad
+train:73868,train,73868,1,very_short,Fantastic vet!
+train:74284,train,74284,1,very_short,Best.\nBar.\nEver.
+train:74613,train,74613,0,very_short,overhyped...
+train:74690,train,74690,0,very_short,Stay away
+train:76157,train,76157,0,very_short,One star
+train:76886,train,76886,1,very_short,Great pho
+train:77775,train,77775,0,very_short,Just horrible
+train:79230,train,79230,1,very_short,great place!!!
+train:81255,train,81255,0,very_short,Cool store!
+train:81396,train,81396,0,very_short,CLOSED!!!  Drat!!!
+train:82041,train,82041,1,very_short,\u81ea\u5bb6\u88fd\u306e\u30b5\u30eb\u30b5\u304c\u3001\u4ed6\u3067\u306f\u898b\u3089\u308c\u306a\u3044\u7f8e\u5473\u3057\u3055\u3068\u30d5\u30ec\u30c3\u30b7\u30e5\u3055\u3002\n\u30bf\u30b3\u30b9\u3084\u30d6\u30ea\u30c8\u30fc\u306e\u5177\u3082\u30a6\u30a3\u30f3\u30c9\u30fc\u306e\u4e2d\u3067\u624b\u4f5c\u308a\u3057\u3066\u3044\u308b\u69d8\u5b50\u304c\u898b\u3089\u308c\u307e\u3059\u3002\n\u4f55\u6545\u304b\u5973\u5b50\u30c8\u30a4\u30ec\u306e\u8868\u793a\u304c\u9752\u3044\u8272\u3067\u5c11\u3057\u6238\u60d1\u3044\u307e\u3057\u305f\u304c\u554f\u984c\u3042\u308a\u307e\u305b\u3093\u3002
+train:82363,train,82363,0,very_short,Q
+train:82690,train,82690,0,very_short,Ghetto
+train:82782,train,82782,0,very_short,Pass....
+train:82916,train,82916,0,very_short,Crap food.
+train:83219,train,83219,0,very_short,Not
+train:83533,train,83533,1,very_short,amazing spot
+train:83696,train,83696,1,very_short,Bomb again!!
+train:83754,train,83754,0,very_short,TOOO Pricy!!!
+train:83860,train,83860,0,very_short,Creepy customers.
+train:84137,train,84137,0,very_short,They closed!
+train:84475,train,84475,0,very_short,Way slow
+train:84554,train,84554,1,very_short,Spectacular place
+train:85162,train,85162,0,very_short,Umm.....
+train:86818,train,86818,0,very_short,Gross
+train:86955,train,86955,0,very_short,closed!!
+train:88600,train,88600,1,very_short,Fantastic
+train:92900,train,92900,1,very_short,great spot
+train:93082,train,93082,0,very_short,Why bother?
+train:93256,train,93256,1,very_short,"Yes, please."
+train:93644,train,93644,0,very_short,Meh!
+train:93923,train,93923,1,very_short,Good Sammy.
+train:94979,train,94979,1,very_short,good!
+train:95427,train,95427,1,very_short,Garlic fries!!!
+train:97950,train,97950,1,very_short,Great calzone!
+train:98205,train,98205,1,very_short,awesome!
+train:98898,train,98898,0,very_short,Meh...
+train:99315,train,99315,0,very_short,they suck
+train:99843,train,99843,0,very_short,FAIL.
+train:100129,train,100129,0,very_short,Don't like
+train:100625,train,100625,1,very_short,Delicious breakfast!
+train:101866,train,101866,0,very_short,Terrible!!!Please avoid.
+train:101974,train,101974,0,very_short,Horrible service.
+train:102478,train,102478,0,very_short,the worst!!!!
+train:102594,train,102594,1,very_short,Excellent Menudo!
+train:102613,train,102613,1,very_short,Great breakfast!
+train:104222,train,104222,1,very_short,Solid saimin
+train:104754,train,104754,1,very_short,Dope shop
+train:104815,train,104815,1,very_short,Fun!
+train:105042,train,105042,0,very_short,Dhsushebebduebeusbduebeebdudbdjdbdjdd
+train:105462,train,105462,0,very_short,Shitty
+train:106031,train,106031,1,very_short,Great tour
+train:106075,train,106075,0,very_short,Party time!
+train:108172,train,108172,0,very_short,One word...WHACK!
+train:108912,train,108912,0,very_short,ewww......
+train:109650,train,109650,1,very_short,real good!
+train:110361,train,110361,0,very_short,Boop
+train:110694,train,110694,0,very_short,Horrible experience!
+train:112302,train,112302,0,very_short,yuck-ey!!\nnever again!!!
+train:112379,train,112379,0,very_short,Disgusting!
+train:112458,train,112458,0,very_short,Depressing.
+train:113889,train,113889,0,very_short,it's closed
+train:113984,train,113984,1,very_short,da bomb
+train:114067,train,114067,1,very_short,Beautiful casino!!
+train:114601,train,114601,0,very_short,Sucks
+train:115103,train,115103,1,very_short,"Great beds,"
+train:115454,train,115454,0,very_short,Just dreadful.
+train:117031,train,117031,0,very_short,Gloppy.
+train:117623,train,117623,0,very_short,Thoroughly unimpressed.
+train:117887,train,117887,0,very_short,Giod one
+train:119656,train,119656,0,very_short,Terrible Service
+train:119681,train,119681,0,very_short,x
+train:119741,train,119741,0,very_short,Bland food
+train:120056,train,120056,0,very_short,No Lox??!??
+train:120523,train,120523,1,very_short,Fajitas excellent
+train:120921,train,120921,0,very_short,It's cool
+train:121209,train,121209,0,very_short,Disgusting.
+train:122104,train,122104,0,very_short,Not impressed....
+train:124237,train,124237,1,very_short,dosas!!!!!!!!!
+train:124776,train,124776,1,very_short,great breakfast!
+train:126382,train,126382,1,very_short,Epic
+train:126388,train,126388,1,very_short,Always great!
+train:126685,train,126685,1,very_short,Awsome
+train:126732,train,126732,1,very_short,Live piano
+train:126794,train,126794,0,very_short,:/
+train:127311,train,127311,0,very_short,Closed...Booo
+train:127642,train,127642,0,very_short,puke
+train:129383,train,129383,0,very_short,Mediocre pizza.
+train:129750,train,129750,0,very_short,Just ok.
+train:130922,train,130922,1,very_short,Awesome times!!
+train:131137,train,131137,0,very_short,overpriced
+train:131392,train,131392,1,very_short,amazing coffee!
+train:132255,train,132255,1,very_short,Da. Bomb.
+train:132957,train,132957,1,very_short,Awesome!   Go.
+train:134228,train,134228,1,very_short,mmmmmm
+train:134236,train,134236,1,very_short,Great burgers!
+train:134337,train,134337,1,very_short,great show
+train:135089,train,135089,1,very_short,Yummy
+train:135135,train,135135,1,very_short,Awesome food.
+train:135341,train,135341,0,very_short,"Overpriced, Average"
+train:135598,train,135598,0,very_short,Horrible sandwiches.
+train:135712,train,135712,0,very_short,Holy-fucking-awful-fuck.
+train:135757,train,135757,1,very_short,Awesome food!
+train:136076,train,136076,1,very_short,Awesome Food
+train:136292,train,136292,1,very_short,Pretty good!
+train:136380,train,136380,1,very_short,Great Place!
+train:137368,train,137368,0,very_short,Elephants
+train:137582,train,137582,1,very_short,Great hotel!!!
+train:138042,train,138042,1,very_short,Beautiful.
+train:138118,train,138118,1,very_short,Beautiful hotel
+train:138323,train,138323,0,very_short,meh
+train:138435,train,138435,0,very_short,Blech.
+train:139292,train,139292,0,very_short,: /
+train:140056,train,140056,1,very_short,very nice
+train:140617,train,140617,1,very_short,b-e-a-u-t-i-f-u-l!!!
+train:142425,train,142425,0,very_short,1 Star.
+train:144361,train,144361,1,very_short,Very Good!
+train:144653,train,144653,1,very_short,my favorite
+train:147779,train,147779,0,very_short,Bad services!!!!!!!
+train:148243,train,148243,1,very_short,Get Brianna!!
+train:150738,train,150738,0,very_short,overcrowded. overrated.
+train:152261,train,152261,1,very_short,Favorite!
+train:152694,train,152694,0,very_short,Mediocre Buffet.
+train:153638,train,153638,0,very_short,Dirty!!
+train:153789,train,153789,1,very_short,Fun place!
+train:154341,train,154341,0,very_short,Very bad!
+train:155247,train,155247,0,very_short,Nice views.
+train:155295,train,155295,1,very_short,amazing view!!!
+train:155547,train,155547,1,very_short,\u30e9\u30b9\u30d9\u30ac\u30b9\u3044\u3061\u3068\u3044\u3046\u3060\u3051\u3042\u3063\u3066\u3001\u3068\u3066\u3082\u826f\u304b\u3063\u305f\u3067\u3059\u3002\u30b7\u30e7\u30fc\u304c\u59cb\u307e\u308b\u524d\u306e\u3061\u3087\u3063\u3068\u3057\u305f\u30d1\u30d5\u30a9\u30fc\u30de\u30f3\u30b9\u3084\u5ba2\u5e2d\u901a\u8def\u3084\u30b9\u30c6\u30fc\u30b8\u4e21\u30b5\u30a4\u30c9\u306e\u58c1\u3084\u5929\u4e95\u3082\u304f\u307e\u306a\u304f\u4f7f\u3044\u3001\u898b\u308b\u4eba\u3092\u98fd\u304d\u3055\u305b\u306a\u3044\u5de5\u592b\u304c\u51dd\u3089\u3057\u3066\u3042\u308a\u307e\u3059\u3002\u4f55\u3088\u308a\u3001\u6e56\u306b\u306a\u3063\u305f\u308a\u9678\u306b\u306a\u3063\u305f\u308a\u306e\u30b9\u30c6\u30fc\u30b8\u5206\u5272\u306b\u9a5a\u304d\u307e\u3059\u3002\u30d1\u30d5\u30a9\u30fc\u30de\u30fc\u3082\u7d20\u6674\u3089\u3057\u3044\u3051\u3069\u3001\u30b9\u30c6\u30fc\u30b8\u306e\u4ed5\u639b\u3051\u306b\u3082\u3073\u3063\u304f\u308a\u3067\u3001\u3068\u3066\u3082\u697d\u3057\u3081\u307e\u3059\uff01
+train:156553,train,156553,0,very_short,Aaaa
+train:158351,train,158351,0,very_short,closed 2/14/10
+train:159784,train,159784,0,very_short,really?
+train:160903,train,160903,1,very_short,Green\nTea\nSmoothie\n!!!!\n\nHell yes!
+train:161420,train,161420,1,very_short,lamb chops!!!!!!
+train:163290,train,163290,1,very_short,really gooooooood~
+train:164649,train,164649,1,very_short,Yumm!!!
+train:164890,train,164890,0,very_short,Pathetic.
+train:165912,train,165912,0,very_short,Generally bad.
+train:166964,train,166964,1,very_short,Great combo!!
+train:167255,train,167255,1,very_short,oks
+train:167512,train,167512,0,very_short,: (
+train:168527,train,168527,1,very_short,It's delicious!
+train:169303,train,169303,1,very_short,Great outlets!
+train:170759,train,170759,1,very_short,Always good!
+train:171276,train,171276,0,very_short,Haha Pheast!!!
+train:171544,train,171544,1,very_short,Magical. Memorable.
+train:171576,train,171576,0,very_short,Boring.
+train:171663,train,171663,0,very_short,Ugh.
+train:172897,train,172897,0,very_short,No flavor!
+train:173661,train,173661,1,very_short,closed!  wah!!!!
+train:175303,train,175303,0,very_short,Bland
+train:175655,train,175655,0,very_short,Closed????  Fail.
+train:175758,train,175758,0,very_short,Yup
+train:176475,train,176475,0,very_short,Meh
+train:176732,train,176732,0,very_short,closed!
+train:177711,train,177711,0,very_short,Terrible...
+train:177979,train,177979,1,very_short,Amazing pizza!
+train:178667,train,178667,1,very_short,excellent!!!
+train:179243,train,179243,1,very_short,amazing!!!
+train:179551,train,179551,1,very_short,Very good
+train:180131,train,180131,1,very_short,$$$$$$$
+train:180273,train,180273,0,very_short,.... meh.
+train:181351,train,181351,1,very_short,BOMB
+train:183486,train,183486,1,very_short,Amazing. Romantic!
+train:185689,train,185689,1,very_short,Pretty funny!
+train:185999,train,185999,1,very_short,Absolutely amazing!!!
+train:186272,train,186272,0,very_short,Dump
+train:187308,train,187308,0,very_short,Gross. Everything.
+train:188016,train,188016,1,very_short,Delicioso!!!!
+train:188335,train,188335,1,very_short,Oh my!!!!
+train:188799,train,188799,0,very_short,nothing special
+train:189288,train,189288,0,very_short,closed!!!!!!!
+train:189663,train,189663,0,very_short,Not good
+train:190167,train,190167,1,very_short,amazing!
+train:190200,train,190200,1,very_short,amazing!!!!
+train:190309,train,190309,0,very_short,Gross!
+train:190358,train,190358,1,very_short,Review deleted.
+train:190476,train,190476,1,very_short,Great sushi
+train:192679,train,192679,0,very_short,So so.
+train:192786,train,192786,0,very_short,Completely lame.
+train:193677,train,193677,1,very_short,My favorite!
+train:194764,train,194764,0,very_short,Example
+train:194778,train,194778,1,very_short,Delicious Macaroons!
+train:194919,train,194919,0,very_short,2:57
+train:194920,train,194920,0,very_short,nooooooooooo
+train:195636,train,195636,1,very_short,Ghetto fabulous!
+train:196430,train,196430,0,very_short,Absolutely horrible!
+train:196824,train,196824,1,very_short,Great Burgers.
+train:197026,train,197026,0,very_short,The
+train:197192,train,197192,1,very_short,\u8702\u871c\u674f\u4ec1\u62ff\u94c1\u5473\u9053\u5f88\u4e0d\u9519\uff0c\u4e0d\u5230\u4e94\u7f8e\u91d1\u4e2d\u676f\u3002\u901b\u8857\u7d2f\u4e86\u53ef\u4ee5\u6765\u4e00\u676f^o^  \u5473\u9053\u662f\u6709\u70b9\u82e6\uff0c\u5fae\u5fae\u674f\u4ec1\u7684\u82e6\u5473\u3002\u8fd8\u4e0d\u9519\u3002\u670d\u52a1\u4e5f\u4e0d\u9519\uff0c\u5f88\u70ed\u60c5\u3002
+train:198205,train,198205,1,very_short,Fun show!
+train:198215,train,198215,1,very_short,Beautiful glassware
+train:200824,train,200824,0,very_short,Yuck!
+train:202172,train,202172,1,very_short,Yum.
+train:203325,train,203325,1,very_short,not closed
+train:203362,train,203362,1,very_short,Mmmmmm... de-LISH!
+train:203535,train,203535,0,very_short,Overrated.      IMHO.
+train:204270,train,204270,1,very_short,Not expensive..
+train:204603,train,204603,0,very_short,ok
+train:206059,train,206059,0,very_short,No comment
+train:206758,train,206758,1,very_short,Friendly service
+train:207369,train,207369,0,very_short,garbage!!!
+train:207965,train,207965,1,very_short,LOVE it!
+train:208152,train,208152,0,very_short,No help.
+train:209022,train,209022,0,very_short,Shit Sandwich!!!
+train:209438,train,209438,1,very_short,Good waxers.
+train:209821,train,209821,0,very_short,eww
+train:210061,train,210061,1,very_short,Cool.
+train:210140,train,210140,1,very_short,Great Manager
+train:211219,train,211219,1,very_short,Great pupusas!
+train:211400,train,211400,0,very_short,Southwest so-slow.
+train:211641,train,211641,1,very_short,Good tacos.
+train:212437,train,212437,0,very_short,Cardboard pizza!
+train:212643,train,212643,1,very_short,Fingerling potatoes!
+train:213006,train,213006,1,very_short,the best!
+train:214016,train,214016,1,very_short,great food!
+train:214776,train,214776,1,very_short,https://www.facebook.com/TuyetRoyal
+train:216251,train,216251,0,very_short,Yuck.
+train:216671,train,216671,1,very_short,Quick
+train:216985,train,216985,0,very_short,Horrible job!
+train:217132,train,217132,1,very_short,Greta hoagies.
+train:218622,train,218622,1,very_short,Amaze-balls!
+train:219647,train,219647,0,very_short,cheezy nightmare
+train:220426,train,220426,0,very_short,Food
+train:220564,train,220564,0,very_short,Dirty!
+train:223844,train,223844,0,very_short,Poor service...
+train:225873,train,225873,1,very_short,Palabra!
+train:226017,train,226017,0,very_short,there ok
+train:226303,train,226303,1,very_short,Awesome burgers!!!!!!!!
+train:228581,train,228581,0,very_short,Don't!
+train:229036,train,229036,0,very_short,Go elsewhere.
+train:229685,train,229685,1,very_short,Delicious everytime.
+train:230410,train,230410,1,very_short,Real wasabi!
+train:230960,train,230960,0,very_short,terrible.
+train:232317,train,232317,1,very_short,Really good!
+train:232413,train,232413,1,very_short,Good boil
+train:232715,train,232715,0,very_short,Horrible food.
+train:232723,train,232723,0,very_short,bland.
+train:232963,train,232963,0,very_short,"Ehh, s'ok"
+train:233008,train,233008,1,very_short,Nice place.
+train:234024,train,234024,0,very_short,Kinda ghetto
+train:234598,train,234598,1,very_short,Great patio!
+train:235877,train,235877,0,very_short,Over price.
+train:236056,train,236056,0,very_short,closed 10/09
+train:236594,train,236594,0,very_short,Nothing special!
+train:236808,train,236808,0,very_short,Great music
+train:237591,train,237591,1,very_short,wow!!!
+train:237916,train,237916,1,very_short,Excellent food!!!
+train:239329,train,239329,1,very_short,great burgers!
+train:240342,train,240342,0,very_short,Bento box....blew.
+train:240355,train,240355,1,very_short,Lollipop baby!
+train:241164,train,241164,1,very_short,So Good!
+train:241287,train,241287,0,very_short,Overrated.
+train:241724,train,241724,0,very_short,Eh
+train:241790,train,241790,0,very_short,Just don't.
+train:242226,train,242226,0,very_short,Terrible!
+train:243323,train,243323,1,very_short,Great company
+train:243894,train,243894,0,very_short,$20 cover
+train:244880,train,244880,1,very_short,Good sandwiches
+train:245033,train,245033,0,very_short,Gross sandwich
+train:245792,train,245792,0,very_short,closed...
+train:246077,train,246077,1,very_short,hangover food.\n\ngood.
+train:246116,train,246116,0,very_short,Weak .
+train:247260,train,247260,1,very_short,LOVE IT
+train:249328,train,249328,1,very_short,\u30e9\u30b9\u30d9\u30ac\u30b9\u30b5\u30f3\u30ba\u7cfb\u5217\u306e\u30db\u30c6\u30eb\u3002\n\u30ab\u30b8\u30ce\u3001\u30b3\u30f3\u30d9\u30f3\u30b7\u30e7\u30f3\u3001\u30b7\u30e7\u30c3\u30d4\u30f3\u30b0\u30e2\u30fc\u30eb\u3001\u30a8\u30f3\u30bf\u30fc\u30c6\u30a4\u30e1\u30f3\u30c8\u3001\u30ec\u30b9\u30c8\u30e9\u30f3\u3068\u96a3\u63a5\u3059\u308bThe Venetian\u3068\u5408\u308f\u305b\u308b\u3068\u5de8\u5927\u306a\u30db\u30c6\u30eb\u30ea\u30be\u30fc\u30c8\u3002\n\n\u90e8\u5c4b\u306f\u4e00\u756a\u5b89\u3044\u90e8\u5c4b\u3067\u308260\u5e73\u7c73\u4ee5\u4e0a\u306e\u30b8\u30e5\u30cb\u30a2\u30b9\u30a4\u30fc\u30c8\u3067\u30b4\u30fc\u30b8\u30e3\u30b9\u306a\u5185\u88c5\u3067\u3068\u3066\u3082\u30ea\u30e9\u30c3\u30af\u30b9\u3057\u305f\u6642\u9593\u3092\u904e\u3054\u305b\u307e\u3059\u3002\n\n\u5bdd\u904e\u3054\u3057\u3066\u5915\u98df\u6642\u3092\u9003\u3057\u3066\u3057\u307e\u3044\u30d5\u30fc\u30c9\u30b3\u30fc\u30c8\u306e\u30b5\u30f3\u30c9\u30a4\u30c3\u30c1\u3092\u98df\u3079\u305f\u304c\u3059\u3054\u304f\u7f8e\u5473\u3057\u304b\u3063\u305f\u3002\n\n\u5f92\u6b69\u570f\u306b\u30b7\u30e7\u30c3\u30d4\u30f3\u30b0\u30e2\u30fc\u30eb\u306e\u30d5\u30a1\u30c3\u30b7\u30e7\u30f3\u30b7\u30e7\u30fc\u3068\u30d5\u30a9\u30fc\u30e9\u30e0\u30b7\u30e7\u30c3\u30d7\u30b9\u304c\u3042\u308a\u8cb7\u3044\u7269\u306b\u306f\u4e0d\u81ea\u7531\u3057\u306a\u3044\u3002\n\n\u30db\u30c6\u30eb\u5185\u306b\u30d6\u30eb\u30fc\u30de\u30f3\u30b7\u30a2\u30bf\u30fc\u3084\u30b7\u30eb\u30af\u30c9\u30bd\u30ec\u30a4\u30e6\u306e\u30b7\u30a2\u30bf\u30fc\u304c\u3042\u308a\u4e00\u65e5\u4e2d\u697d\u3057\u3081\u307e\u3059\u3002
+train:250755,train,250755,1,very_short,Droooool
+train:250829,train,250829,1,very_short,Awesome beers!
+train:251757,train,251757,1,very_short,yyyuuummmmmmyyy
+train:252734,train,252734,1,very_short,Jizz-tasic!!!
+train:253390,train,253390,0,very_short,One word.\n\n\n\nRisky.
+train:253830,train,253830,0,very_short,Chilli's quality.
+train:253991,train,253991,1,very_short,The Meatballs!
+train:254378,train,254378,1,very_short,Great mall
+train:255335,train,255335,0,very_short,too loud!!!
+train:256518,train,256518,1,very_short,decent
+train:256751,train,256751,1,very_short,***
+train:257088,train,257088,0,very_short,Satan's playground.
+train:257166,train,257166,0,very_short,It's closed!!!
+train:257274,train,257274,1,very_short,Loved it
+train:257752,train,257752,1,very_short,Always amazing
+train:258645,train,258645,1,very_short,mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm1
+train:258826,train,258826,0,very_short,Obnoxious
+train:260074,train,260074,1,very_short,Tasty.
+train:261235,train,261235,1,very_short,closed!!!
+train:261870,train,261870,0,very_short,Skip it
+train:262185,train,262185,0,very_short,firrrre hazaaaaaaaaaaaard
+train:262199,train,262199,1,very_short,Too cool!!
+train:263185,train,263185,0,very_short,irs ok
+train:263386,train,263386,1,very_short,Classic.
+train:263519,train,263519,1,very_short,Delicious!!
+train:263921,train,263921,1,very_short,Excellent food.
+train:264228,train,264228,1,very_short,combo 2
+train:265844,train,265844,1,very_short,Good Food
+train:267969,train,267969,1,very_short,So pretty.
+train:268149,train,268149,1,very_short,Mmmm
+train:269224,train,269224,1,very_short,Fantastic guacamole
+train:269329,train,269329,0,very_short,Bad Service
+train:269472,train,269472,0,very_short,Don't
+train:271001,train,271001,1,very_short,Great lunch
+train:271979,train,271979,1,very_short,Good time.
+train:272381,train,272381,0,very_short,Service sucks!!!!
+train:272511,train,272511,0,very_short,Terrible service
+train:273027,train,273027,0,very_short,\u4e8c\u4eba\u3067\u591c10\u6642\u3054\u308dRAKU\u3078\u306f\u3058\u3081\u3066\u884c\u304d\u307e\u3057\u305f\u3002\u5e97\u306e\u96f0\u56f2\u6c17\u306f\u3068\u3066\u3082\u826f\u304b\u3063\u305f\u3067\u3059\u304c\u30aa\u30fc\u30c0\u30fc\u3057\u305f\u7269\u304c\u51fa\u3066\u304f\u308b\u306e\u304c\u9045\u304f\u3066\u697d\u3057\u3081\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30d3\u30fc\u30eb\u3092\u98f2\u307f\u5e72\u3057\u3066\u3082\u6700\u521d\u306e\u4e00\u54c1\u304c\u51fa\u3066\u3053\u305a\u7d0425\u5206\u307b\u3069\u3057\u3066\u30ec\u30d0\u30fc\u523a\u3057\u304c\u51fa\u3066\u304d\u3066\u305d\u306e\u5f8c15\u5206\u3067\u9b8e\u306e\u5869\u713c\u304d(\u713c\u304d\u304c\u3042\u307e\u3044)\u304c\u51fa\u306610\u5206\u5f8c\u306b\u713c\u304d\u7269\u304c\u4e00\u76bf\u305a\u3064\u51fa\u3066\u30e9\u30e0\u713c\u304d\u306f70%\u304c\u30d5\u30a1\u30c3\u30c8\u3067(\u30e9\u30e0\u3067\u306f\u306a\u304f\u30de\u30c8\u30f3\u3060\u3068\u601d\u3046)\u30a6\u30a8\u30fc\u30c8\u30ec\u30b9\u306b\u30d5\u30a1\u30c3\u30c8\u304c\u304a\u304a\u3044\u3068\u3044\u3046\u3068\u3053\u306e\u30e9\u30e0\u306f\u305d\u3046\u3044\u3046\u7269\u3060\u3068\u8a00\u308f\u308c\u5869\u3068\u9ed2\u80e1\u6912\u304c\u6b32\u3057\u3044\u3068\u3044\u3046\u3068\u5e97\u306b\u306f\u306a\u3044\u3068\u8a00\u308f\u308c\u305f\u3002\u713c\u304d\u7269\u306f\u3001\u30d6\u30bf\u3001\u30c0\u30c3\u30af\u3001\u30e9\u30e0(\u30de\u30c8\u30f3) \u5168\u90e8\u540c\u3058\u30bf\u30ec\u3092\u4f7f\u3063\u3066\u3044\u308b\u3088\u3046\u3060.\n\u4e45\u3057\u3076\u308a\u306b\u304c\u3063\u304b\u308a\u3057\u305f\u98df\u4e8b\u3067\u3057\u305f\u3002
+train:273176,train,273176,0,very_short,Nothing Special!
+train:273510,train,273510,0,very_short,Not surprised.....
+train:273538,train,273538,1,very_short,mmmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwowwowowwowmmmmmmmmmmmmmmmwowSoIHaveBeenSeeing5StarReviewsForThisPlaceForSoLongIHadToTryItmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmMyFriendKevinHWasTryingToExplainSweetRepublic'sAwesomenessAndWhenHeGotToThePointOfTwitteringOneOfTheOwnersToMakeSureHeNabbedTheLastOfAFlavorIKnewIHadToFindOutWhatEveryoneIsObsessingAboutmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmHelenAndJanWereSoNicemmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmJanRecommendedTheCombinationOfMayanChocolateWithAvacadoJalapenoHolyCrapThatWasSomeKindOfOtherworldlyFlavormmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmWeCan'tWaitToGoBackmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmIAlsoHadTheEspressoItWasGreatAsWellmmmmmmmmmmmmmmmohgawdmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm\nmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmTheRoquefortWithMedjoolDatesWasUnbelievableAlsommmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmWhileWeWereEatingOurIceCreamHelenWasHandMakingWaffleConesThesePeopleReallyTakePrideInTheCraftingOfTheProductsTheySellmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmThisPlaceIsAFoodieDestinationNotToBeMissedInAnyMajorCitymmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmIfIDidn'tLiveInPhoenixIWouldArrangeLayoversHereJustToGoToSweetRepublicmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmIHaveToGoGetAPintOfTheAvacadoJalapenoNowByemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwowmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwow
+train:274416,train,274416,1,very_short,Dosas! !
+train:274745,train,274745,1,very_short,I\nJust\nLove\nThis\nPlace\nSoooooooo much!
+train:274811,train,274811,1,very_short,Really gooooood(:
+train:274931,train,274931,1,very_short,so good!
+train:276293,train,276293,0,very_short,Nm
+train:277706,train,277706,1,very_short,really friendly
+train:278474,train,278474,1,very_short,Dessert Tray
+train:278889,train,278889,1,very_short,Good Hamburgers!!
+train:278894,train,278894,0,very_short,Horrid
+train:280122,train,280122,0,very_short,Overpriced
+train:280715,train,280715,0,very_short,Mediocre.
+train:281081,train,281081,1,very_short,absolument divin.
+train:281217,train,281217,1,very_short,great brunch!
+train:281286,train,281286,1,very_short,Great atmosph\u00e8re
+train:281537,train,281537,0,very_short,Resto ferme
+train:281618,train,281618,1,very_short,yum.
+train:282335,train,282335,0,very_short,No fanfare.
+train:282747,train,282747,0,very_short,Dirty....
+train:282760,train,282760,1,very_short,love!
+train:282763,train,282763,1,very_short,Excellent Club-V\u00e9g\u00e9!
+train:282778,train,282778,1,very_short,Absolument fantastique!
+train:282990,train,282990,0,very_short,Now closed.
+train:283136,train,283136,1,very_short,Great steaks.
+train:283676,train,283676,0,very_short,Land mark
+train:283847,train,283847,0,very_short,Horrible
+train:284216,train,284216,0,very_short,Rude service.
+train:284377,train,284377,1,very_short,Good patisseries
+train:284478,train,284478,0,very_short,Ditto !
+train:284697,train,284697,1,very_short,Good god...
+train:284757,train,284757,1,very_short,amazing food!
+train:285200,train,285200,1,very_short,En double
+train:285315,train,285315,0,very_short,horrible
+train:285642,train,285642,0,very_short,Completely average
+train:286246,train,286246,1,very_short,fun\nalive\ncompetitive\nand\nsympathetic
+train:287615,train,287615,0,very_short,\u00c0
+train:287746,train,287746,1,very_short,J'adore!
+train:287911,train,287911,0,very_short,nothing great
+train:288125,train,288125,1,very_short,Excellent menu!
+train:288678,train,288678,0,very_short,Bad service.
+train:288683,train,288683,1,very_short,Nice location
+train:288741,train,288741,0,very_short,Good service.
+train:288744,train,288744,0,very_short,Closed now
+train:288829,train,288829,0,very_short,Currently closed
+train:289010,train,289010,0,very_short,mouai
+train:289111,train,289111,1,very_short,Simply awsome!!!
+train:289323,train,289323,0,very_short,Food poison!
+train:290251,train,290251,1,very_short,Good Place
+train:291117,train,291117,0,very_short,Ludo's out.
+train:291124,train,291124,1,very_short,----------------------
+train:291126,train,291126,1,very_short,------------
+train:291536,train,291536,0,very_short,0
+train:291950,train,291950,1,very_short,good stuff!
+train:292392,train,292392,0,very_short,Just gross.
+train:293476,train,293476,1,very_short,\u591c\u4e2d\u306e\u5230\u7740\u3060\u3063\u305f\u306e\u3067\u3001\u7a7a\u6e2f\u306e\u8fd1\u304f\u306b\u3002\n\n\u30e2\u30f3\u30c8\u30ea\u30aa\u30fc\u30eb\uff08\u30e2\u30f3\u30ec\u30a2\u30eb\uff09\u7a7a\u6e2f\u304b\u3089\u306f\u7121\u6599\u306e\u30b7\u30e3\u30c8\u30eb\u30d0\u30b9\u304c\u51fa\u3066\u3044\u308b\u306e\u3067\u305d\u308c\u3092\u5229\u7528\u3057\u3066\u30db\u30c6\u30eb\u307e\u3067\u884c\u304d\u307e\u3057\u305f\u300210\u5206\u3082\u304b\u304b\u3089\u306a\u304b\u3063\u305f\u304b\u306a\u3002\u306a\u306b\u305b12\u6642\u8fd1\u304b\u3063\u305f\u306e\u3067\u3001\u30d5\u30ed\u30f3\u30c8\u306b\u6700\u521d\u306f\u8ab0\u3082\u3044\u306a\u304f\u3066\u3061\u3087\u3063\u3068\u7126\u308a\u307e\u3057\u305f\u304c\u3001\u554f\u984c\u306a\u304f\u30c1\u30a7\u30c3\u30af\u30a4\u30f3\u3002\n\n\u5168\u4f53\u3068\u3057\u3066\u306f\u3001\u30b7\u30f3\u30d7\u30eb\u306a\u4f5c\u308a\u306a\u304c\u3089\u3001\u304b\u306a\u308a\u30e2\u30c0\u30f3\u306a\u30c7\u30b6\u30a4\u30f3\u3092\u53d6\u308a\u5165\u308c\u3066\u3044\u308b\u306e\u3067\u3001\u3061\u3087\u3063\u3068\u30d3\u30c3\u30af\u30ea\u3057\u307e\u3059\u3051\u308c\u3069\u3001\u305d\u308c\u307b\u3069\u6d3e\u624b\u3068\u3044\u3046\u3053\u3068\u3082\u306a\u304f\u3001\u610f\u5916\u3068\u843d\u3061\u7740\u3051\u307e\u3059\u3002\u90e8\u5c4b\u3082\u5341\u5206\u3059\u304e\u308b\u307b\u3069\u5e83\u3044\u306e\u3067\u3059\u304c\u3001\u30d9\u30c3\u30c9\u304c\u3059\u3054\u304f\u3088\u304b\u3063\u305f\u3002\u3072\u3087\u3063\u3068\u3059\u308b\u3068\u4eca\u307e\u3067\u3067\u4e00\u756a\u3058\u3083\u306a\u3044\u304b\u3068\u601d\u3046\u304f\u3089\u3044\u306e\u5fc3\u5730\u3088\u3055\u3067\u3057\u305f\u3002\n\n\u3082\u3046\u3001\u6b21\u306e\u6ede\u5728\u5148\u304c\u6c7a\u307e\u3063\u3066\u3044\u305f\u306e\u3067\u3001\u30c0\u30a6\u30f3\u30bf\u30a6\u30f3\u306e\u65b9\u306b\u79fb\u52d5\u3057\u307e\u3057\u305f\u304c\u3001\u51fa\u6765\u308c\u3070\u3082\u3046\u4e00\u6cca\u3057\u3066\u3082\u3044\u3044\u304f\u3089\u3044\u3067\u3057\u305f\u3002\n\n\u3053\u308c\u304b\u3089\u5148\u591c\u4e2d\u306b\u30e2\u30f3\u30ec\u30a2\u30eb\u306b\u7740\u304f\u3001\u3082\u3057\u304f\u306f\u3001\u65e9\u671d\u306b\u51fa\u767a\u3068\u3044\u3046\u3053\u3068\u304c\u3042\u308b\u304b\u3069\u3046\u304b\u5206\u304b\u308a\u307e\u305b\u3093\u3051\u3069\u3001\u305d\u3046\u3044\u3046\u5834\u5408\u304c\u3042\u308c\u3070\u3001\u307e\u305f\u662f\u975e\u5229\u7528\u3057\u305f\u3044\u3068\u601d\u3044\u307e\u3057\u305f\u3002
+train:293848,train,293848,1,very_short,Awesomely good
+train:293868,train,293868,1,very_short,no alcohol...nooooooooooooooooooo!
+train:295588,train,295588,0,very_short,Dislike
+train:296263,train,296263,1,very_short,Great Boba.
+train:297029,train,297029,1,very_short,So good.
+train:297929,train,297929,0,very_short,Just ok....convenient.
+train:298382,train,298382,0,very_short,D-
+train:298692,train,298692,1,very_short,Seafood Tower!
+train:299680,train,299680,1,very_short,It's good
+train:300900,train,300900,0,very_short,bleuch.
+train:301649,train,301649,1,very_short,Simply awesome!
+train:301941,train,301941,0,very_short,Hate
+train:302400,train,302400,1,very_short,Solid spot!
+train:302444,train,302444,1,very_short,Delicious.
+train:302972,train,302972,0,very_short,Overpriced chevy's.
+train:303273,train,303273,0,very_short,not good.
+train:303443,train,303443,0,very_short,Unfriendly staff
+train:304097,train,304097,0,very_short,\u54c8\u5229\u6ce2\u7279\u7684\u8a95\u751f\u5730\uff0c\u4f46\u662f\u98df\u7269\u771f\u7684\u4e0d\u6562\u606d\u7dad\uff0c\u53ef\u4ee5\u7a31\u5f97\u4e0a\u662f\u975e\u5e38\u96e3\u5403\u3002\u9ede\u7684\u534a\u500b\u62ab\u85a9\u50cf\u662f\u9694\u591c\u7684\uff0c\u6c99\u62c9\u4e5f\u5c11\u7684\u53ef\u6190\u3002\u670d\u52d9\u901f\u5ea6\u975e\u5e38\u6162\uff0c\u56e0\u70ba\u9ede\u9910\u4e4b\u524d\u5ba2\u4eba\u4e0d\u5141\u8a31\u5165\u5ea7\uff0c\u6240\u4ee5\u968a\u4f0d\u5e38\u5e38\u6392\u5230\u9580\u5916\uff0c\u6211\u5011\u7b49\u4e86\u5927\u698220\u591a\u5206\u9418\u624d\u9ede\u5230\u3002\u5e97\u88cf\u6709\u8ce3\u5927\u8c61\u53cajk\u6d1b\u7433\u7684\u660e\u4fe1\u7247\uff0c\u5f9e\u88e1\u9762\u53ef\u4ee5\u770b\u5230\u611b\u4e01\u5821\u57ce\u5821\uff0c\u9760\u7a97\u7684\u5ea7\u4f4d\u98a8\u666f\u5f88\u597d\u3002\u4e0d\u63a8\u85a6\u5728\u88e1\u9762\u5403\u98ef\u3002
+train:304217,train,304217,1,very_short,Manhattan.
+train:305024,train,305024,0,very_short,Closed bankrupt
+train:305612,train,305612,0,very_short,Ridiculous.
+train:306380,train,306380,1,very_short,Great atmosphere.
+train:308252,train,308252,1,very_short,chicken wings
+train:309302,train,309302,1,very_short,Never bad...consistent
+train:309312,train,309312,0,very_short,Grouchy staff.
+train:309762,train,309762,1,very_short,Kewl bar
+train:309857,train,309857,1,very_short,bitchin !!!!!!!!!!
+train:310372,train,310372,1,very_short,Noice
+train:310874,train,310874,0,very_short,Over priced!
+train:310883,train,310883,0,very_short,$$$
+train:311880,train,311880,1,very_short,Awesome pizza!!!!!!!
+train:312757,train,312757,0,very_short,Continental sucks!
+train:314333,train,314333,0,very_short,Kinda dull
+train:314713,train,314713,0,very_short,medicore
+train:318767,train,318767,0,very_short,_
+train:319606,train,319606,0,very_short,Eg
+train:320179,train,320179,1,very_short,Free WIFI....
+train:320683,train,320683,1,very_short,Impresionante espect\u00e1culo
+train:322108,train,322108,0,very_short,Consistently average.
+train:322673,train,322673,1,very_short,Authentic! authentic!
+train:322943,train,322943,1,very_short,Great burger!!!!
+train:324434,train,324434,0,very_short,poor service
+train:325346,train,325346,0,very_short,Overpriced crap.
+train:326446,train,326446,0,very_short,GROSS!!!!!!
+train:328731,train,328731,1,very_short,Best...coffee...ever!
+train:329906,train,329906,0,very_short,no comment!
+train:330041,train,330041,0,very_short,Closed. Damn!
+train:330885,train,330885,1,very_short,Cheesy-melty-roasted-cauliflower-with-fresh-bread-crumbs-on-top.\nTo-die-for.
+train:332980,train,332980,1,very_short,legit
+train:333123,train,333123,0,very_short,worst ever
+train:334654,train,334654,0,very_short,closed 07-13-13
+train:334977,train,334977,1,very_short,Hip place!
+train:335209,train,335209,1,very_short,Awesome salads!!
+train:335760,train,335760,1,very_short,Good location.
+train:336168,train,336168,0,very_short,Terrible service...
+train:336336,train,336336,0,very_short,Sux
+train:336632,train,336632,1,very_short,Fantastic dumplings!
+train:336950,train,336950,0,very_short,BLEH!!!!!!!!
+train:337634,train,337634,0,very_short,Yuck!!
+train:340441,train,340441,0,very_short,rice galore!
+train:340596,train,340596,0,very_short,Too smokey
+train:340801,train,340801,0,very_short,Mediocre...
+train:342235,train,342235,0,very_short,dirty
+train:342712,train,342712,1,very_short,New favorite--Teatini!
+train:344064,train,344064,0,very_short,Rude service!!!!!!!
+train:344512,train,344512,1,very_short,Super stoked
+train:344599,train,344599,1,very_short,good  burgers
+train:345342,train,345342,1,very_short,Closed? WTF.
+train:345565,train,345565,1,very_short,Pizookie!
+train:345929,train,345929,0,very_short,Bof ...
+train:345994,train,345994,0,very_short,Overpriced!
+train:347044,train,347044,0,very_short,sorry
+train:347124,train,347124,1,very_short,fabulous!!!
+train:347974,train,347974,1,very_short,Great show..
+train:348211,train,348211,1,very_short,Like it!
+train:348884,train,348884,1,very_short,Good service!
+train:349848,train,349848,0,very_short,Tourist Trap.
+train:349862,train,349862,0,very_short,horrible service...
+train:351760,train,351760,0,very_short,Unsafe environment.
+train:352061,train,352061,1,very_short,Was fine
+train:352592,train,352592,0,very_short,F-
+train:353189,train,353189,1,very_short,Yummy. Yummiest.
+train:354855,train,354855,1,very_short,great bartender
+train:355046,train,355046,0,very_short,Gross.  Period.
+train:357637,train,357637,0,very_short,Wack
+train:357702,train,357702,0,very_short,bad service
+train:357810,train,357810,1,very_short,great drinks!
+train:358851,train,358851,1,very_short,Besy
+train:359312,train,359312,1,very_short,Cookies.
+train:360807,train,360807,0,very_short,Do better.
+train:361079,train,361079,0,very_short,Worst ever..
+train:362010,train,362010,1,very_short,Excellent Coctails!
+train:362073,train,362073,0,very_short,closed -
+train:362240,train,362240,1,very_short,Yummy!!!
+train:363729,train,363729,1,very_short,Great gyros
+train:363909,train,363909,1,very_short,Great tacos!!!
+train:364031,train,364031,0,very_short,Disappointed.:(
+train:364134,train,364134,0,very_short,Not impressed!
+train:364605,train,364605,0,very_short,It's walmart
+train:365199,train,365199,1,very_short,Great school
+train:366264,train,366264,0,very_short,good store
+train:366268,train,366268,0,very_short,Not great
+train:366775,train,366775,0,very_short,sigh
+train:366914,train,366914,0,very_short,Closed down.
+train:368785,train,368785,0,very_short,ok food-clean
+train:368916,train,368916,0,very_short,NT
+train:369044,train,369044,0,very_short,Fine
+train:369885,train,369885,1,very_short,Great pizza!!!
+train:371092,train,371092,1,very_short,awesome hotel!
+train:371924,train,371924,1,very_short,Great pedi-Manila!
+train:372185,train,372185,1,very_short,Love tina!
+train:373203,train,373203,0,very_short,Ehh...
+train:373448,train,373448,0,very_short,They suck
+train:373517,train,373517,0,very_short,Location closed.
+train:373805,train,373805,1,very_short,Good wings.
+train:374520,train,374520,1,very_short,very professional
+train:375402,train,375402,0,very_short,Bad attitude!
+train:377935,train,377935,1,very_short,Fabulous!!
+train:378699,train,378699,1,very_short,Great auditorium!!!
+train:379670,train,379670,0,very_short,awful!!!!
+train:379695,train,379695,0,very_short,Buyers beware.
+train:382711,train,382711,1,very_short,Back again!!!!!
+train:383133,train,383133,1,very_short,Mmmmmmm..........fresh doughnuts
+train:383739,train,383739,0,very_short,Consistently inedible
+train:384935,train,384935,0,very_short,Very disappointing.
+train:386109,train,386109,1,very_short,Delicious ramen
+train:386148,train,386148,1,very_short,Good price.
+train:386239,train,386239,1,very_short,Packed place
+train:387729,train,387729,1,very_short,all yummy.
+train:388274,train,388274,0,very_short,No thanks.
+train:388280,train,388280,0,very_short,Wow...
+train:388613,train,388613,1,very_short,Wow....
+train:389206,train,389206,1,very_short,Amazing massage
+train:389870,train,389870,1,very_short,Great Time!
+train:391026,train,391026,1,very_short,Awesome food!!!
+train:391123,train,391123,0,very_short,Review pending.
+train:391228,train,391228,0,very_short,Red chandeliers!
+train:392131,train,392131,1,very_short,http://parismusings.blogspot.com
+train:392343,train,392343,1,very_short,Terrific!
+train:393563,train,393563,1,very_short,great  place
+train:393780,train,393780,1,very_short,Great price
+train:394462,train,394462,0,very_short,THE
+train:394942,train,394942,0,very_short,Overwhelmingly meh.
+train:395333,train,395333,0,very_short,robertos sucks
+train:395427,train,395427,1,very_short,Mmmmm...
+train:396037,train,396037,1,very_short,Typical Starbucks
+train:396375,train,396375,1,very_short,LOVE yogurtini!!!
+train:396669,train,396669,1,very_short,Awesome!!!!!!
+train:397200,train,397200,1,very_short,Wow. Amazing.
+train:398830,train,398830,1,very_short,Super Fr\u00fchst\u00fcck
+train:398972,train,398972,1,very_short,Amazing beans!
+train:399069,train,399069,1,very_short,cool stuff
+train:399155,train,399155,0,very_short,BLEH!
+train:399256,train,399256,1,very_short,MMMMmmmm.
+train:399437,train,399437,0,very_short,closed!!!!!!
+train:399727,train,399727,0,very_short,Update... closed
+train:400054,train,400054,1,very_short,Awesome tacos
+train:400142,train,400142,0,very_short,FAIL
+train:400231,train,400231,0,very_short,seriously over-rated.
+train:402391,train,402391,0,very_short,Fucking sucks
+train:403633,train,403633,0,very_short,Bad kebab
+train:403780,train,403780,1,very_short,Hell yes!!!
+train:403819,train,403819,1,very_short,RUB IT!!!!!!!!!!
+train:404865,train,404865,1,very_short,Missy rules.
+train:405015,train,405015,0,very_short,Wouldn't recommend
+train:405670,train,405670,1,very_short,Nice spot
+train:405909,train,405909,0,very_short,Horrible tacos!
+train:407432,train,407432,0,very_short,Bla
+train:408128,train,408128,1,very_short,Very clean!
+train:411065,train,411065,1,very_short,Great cupcakes!
+train:412150,train,412150,0,very_short,Overpriced. Disappointing.
+train:412790,train,412790,0,very_short,No.
+train:412857,train,412857,0,very_short,No good!!
+train:414062,train,414062,1,very_short,Amazing place!!!
+train:415700,train,415700,0,very_short,rude serviced
+train:415989,train,415989,0,very_short,Very slow
+train:416337,train,416337,1,very_short,BINGO!!!
+train:418385,train,418385,1,very_short,Great help!
+train:418922,train,418922,0,very_short,Error
+train:421093,train,421093,0,very_short,1
+train:421646,train,421646,0,very_short,Lo
+train:421712,train,421712,0,very_short,G
+train:421995,train,421995,0,very_short,AWFUL.
+train:422533,train,422533,1,very_short,Bomb.com!
+train:424957,train,424957,1,very_short,Nice..
+train:425974,train,425974,1,very_short,Quick. Efficient.
+train:426447,train,426447,0,very_short,Error prone.
+train:427217,train,427217,1,very_short,truly amazing
+train:428164,train,428164,1,very_short,yes.
+train:428890,train,428890,1,very_short,It's great
+train:429520,train,429520,1,very_short,"Fresh, tasty"
+train:429523,train,429523,1,very_short,eat.here.now!
+train:431887,train,431887,1,very_short,Hilarious!!!
+train:435416,train,435416,1,very_short,"super good,,,"
+train:437147,train,437147,1,very_short,Consistently good.
+train:437436,train,437436,1,very_short,Excellent!!!!
+train:438106,train,438106,0,very_short,bad
+train:438518,train,438518,1,very_short,closed :'(
+train:438899,train,438899,1,very_short,Good!!!
+train:439913,train,439913,0,very_short,Decent enough.
+train:440192,train,440192,0,very_short,They closed
+train:441258,train,441258,1,very_short,Great BBQ!
+train:441356,train,441356,0,very_short,WTF
+train:442760,train,442760,1,very_short,Amazing burgers!
+train:443701,train,443701,0,very_short,"\""""Meh\""""\n\n\n+1"
+train:443798,train,443798,1,very_short,Freaking legit!!!
+train:444892,train,444892,1,very_short,Great job
+train:447111,train,447111,1,very_short,5stars
+train:447112,train,447112,1,very_short,great food...
+train:447979,train,447979,1,very_short,The freshest
+train:449870,train,449870,1,very_short,My fav.
+train:450493,train,450493,0,very_short,No
+train:450555,train,450555,1,very_short,DIG IT.
+train:450973,train,450973,1,very_short,Great bartenders
+train:451739,train,451739,0,very_short,YELP!
+train:451807,train,451807,1,very_short,love!!!
+train:453361,train,453361,0,very_short,Disgusting
+train:453531,train,453531,0,very_short,just ok....
+train:454030,train,454030,1,very_short,Cool concept!
+train:454343,train,454343,1,very_short,Great brunch!
+train:455938,train,455938,1,very_short,come hungry!!
+train:456933,train,456933,0,very_short,Tail spin..........
+train:457374,train,457374,0,very_short,\u5e97\u9762\u5f88\u5927\u4e26\u53ef\u4ee5\u63d0\u4f9b\u514d\u8cbb\u7684\u7da0\u8336\uff0c\u9ede\u9910\u548c\u4e0a\u83dc\u901f\u5ea6\u90fd\u5f88\u5feb\u3002\u96d6\u7136\u98ef\u5e97\u4ee5\u65e5\u672c\u83dc\u547d\u540d\uff0c\u4f46\u662f\u5eda\u5e2b\u90fd\u4e0d\u662f\u65e5\u672c\u4eba\u3002\u62c9\u9eb5\u4efd\u91cf\u5f88\u5c0f\uff0c\u6e05\u6e6f\u6e05\u6c34\uff0c\u9664\u4e86\u5927\u8525\u7684\u5473\u9053\u4e4b\u5916\u54c1\u5690\u4e0d\u51fa\u4efb\u4f55\u5176\u4ed6\u5473\u9053\uff0c\u5c0f\u83dc\u829d\u9ebb\u6392\u9aa8\u4e5f\u5b8c\u5168\u6c92\u6709\u5165\u5473\uff0c\u597d\u50cf\u716e\u6392\u9aa8\u6cbe\u70e4\u8089\u91ac\uff0c\u4ee4\u4eba\u5927\u5931\u6240\u671b\u3002\u9019\u5bb6\u98ef\u5e97\u53ef\u4ee5\u8aaa\u662f\u6211\u5403\u904e\u7684\u6240\u6709\u81ea\u7a31\u65e5\u672c\u98ef\u5e97\u6700\u4e0d\u50cf\u7684\u4e86\uff0c\u64da\u8aaa\u5728\u82f1\u570b\u662f\u5168\u570b\u9023\u9396\uff0c\u5f88\u591a\u57ce\u5e02\u90fd\u898b\u904e\u3002\u96d6\u7136\u50f9\u683c\u9069\u4e2d\uff0c\u4f4d\u7f6e\u4fbf\u5229\uff0c\u4f46\u5c0d\u65bc\u6311\u5254\u7684\u98df\u7269\u611b\u597d\u8005\u4f86\u8aaa\u4e26\u4e0d\u503c\u5f97\u3002
+train:457956,train,457956,1,very_short,Great food!!!!!!
+train:458581,train,458581,0,very_short,Mrrf.
+train:459482,train,459482,0,very_short,"\"""""
+train:460611,train,460611,0,very_short,RUDe!!!!!
+train:462276,train,462276,0,very_short,Avoid.
+train:462455,train,462455,1,very_short,Texas Ranch
+train:462640,train,462640,0,very_short,Not good.
+train:462933,train,462933,0,very_short,Blah.
+train:464666,train,464666,0,very_short,Ghetto...
+train:466027,train,466027,1,very_short,Well done!
+train:466075,train,466075,1,very_short,Awesome subway!!!!!
+train:466276,train,466276,0,very_short,Ehhhhhhhhhh.....
+train:466968,train,466968,1,very_short,Perfect!
+train:467881,train,467881,1,very_short,Great burger!
+train:468102,train,468102,1,very_short,It's Starbucks!!!
+train:468752,train,468752,0,very_short,blah!
+train:469609,train,469609,0,very_short,Too bad
+train:470486,train,470486,0,very_short,Be afraid!
+train:470887,train,470887,1,very_short,\u30d1\u30f3\u306e\u7a2e\u985e\u304c\u3044\u3063\u3071\u3044\uff01\n\u30d0\u30bf\u30fc\u3082\u304a\u3044\u3057\u3044\u3067\u3059\u3001\u3055\u3059\u304c\u51dd\u3063\u3066\u308b\u3002\n\u30d5\u30a3\u30c3\u30b7\u30e5\u30a2\u30f3\u30c9\u30c1\u30c3\u30d7\u30b9\u3068\u304b\u30b7\u30e5\u30ea\u30f3\u30d7\u30ab\u30af\u30c6\u30eb\u306b\u30a2\u30ec\u30f3\u30b8\u304b\u3051\u307e\u304f\u308a\u3067\u3057\u305f\u3002\n\u30b7\u30fc\u30b6\u30fc\u30b5\u30e9\u30c0\n\u3053\u3053\u307e\u3067\u3059\u3079\u3066\u306e\u57fa\u672c\u306e\u5546\u54c1\u304c\u6d17\u7df4\u3055\u308c\u3066\u308b\u3068\n\u306a\u3093\u304b\u3053\u308c\u3067\u3044\u3044\u306e\u304b\u306a\u30fb\u30fb\u3068\u304a\u3082\u3044\u306f\u3058\u3081\u307e\u3057\u305f\u304c\u3001\u3077\u3061\u30b9\u30b3\u30c3\u30c1\u30a8\u30c3\u30b0\u304c\u306e\u3063\u3066\u3044\u308b\u3068\u3053\u308d\u306b\n\u30a4\u30ae\u30ea\u30b9\u3089\u3057\u3055\u3092\u611f\u3058\u307e\u3057\u305f\uff20\u30e9\u30b9\u30d9\u30ac\u30b9\n\u5473\u306f\u3082\u3061\u308d\u3093\u6700\u9ad8\u306b\u304a\u3044\u3057\u304b\u3063\u305f\u3067\u3059\u3002\n\u3064\u3051\u3042\u308f\u305b\u306b\u30a2\u30b9\u30d1\u30e9\u30ac\u30b9\u3002\n\u306a\u305c\u304b\u30d6\u30ed\u30b0\u304b\u3044\u3066\u308b\u3068\u304d\u306b\u30d6\u30ed\u30c3\u30b3\u30ea\u30fc\u3063\u3066\u304b\u3044\u3066\u305f\uff57\n\u8272\u3067\u5224\u65ad\u3057\u305f\u304b\u3002\u3002\u308f\u305f\u3057\u306e\u8133\u3002\u3002\u3002\n\u30d3\u30fc\u30d5\u30a6\u30a7\u30ea\u30f3\u30c8\u30f3\u3000Beef Wellington\n\u3053\u308c\u304c\u305f\u3079\u305f\u304f\u3066\u305f\u3079\u305f\u304f\u3066\u3002\u305f\u3076\u3093YOUTUBE\u306b\u306e\u3063\u3066\u308b\u30b4\u30fc\u30c9\u30f3\u30e9\u30e0\u30b8\u30fc\u306e\u30ec\u30b7\u30d4\u306b\u7d50\u69cb\u8fd1\u3044\u306f\u305a\u3002\u3044\u308f\u3086\u308b\u725b\u8089\u306e\u30d1\u30a4\u5305\u307f\u3067\u3059\u3002\u91cf\u3082\u30cf\u30a4\u30af\u30e9\u30b9\u306a\u30ec\u30b9\u30c8\u30e9\u30f3\u3089\u3057\u304f\u3001\u3061\u3087\u3046\u3069\u3044\u3044\u3057\u3001\n\u30b5\u30fc\u30d3\u30b9\u3082\u3044\u3044\uff01\n\u88cf\u5207\u3089\u306a\u3044\u30b9\u30c6\u30fc\u30ad\u30cf\u30a6\u30b9\u3067\u3057\u305f\u3002
+train:473769,train,473769,0,very_short,.........
+train:473872,train,473872,1,very_short,Gooood
+train:474987,train,474987,1,very_short,L
+train:475508,train,475508,1,very_short,Most excellent
+train:475743,train,475743,1,very_short,great apartment
+train:476986,train,476986,0,very_short,Over priced
+train:477130,train,477130,0,very_short,Vomit
+train:477451,train,477451,0,very_short,Y
+train:477747,train,477747,1,very_short,Were Open!
+train:478232,train,478232,1,very_short,Excelent!!
+train:478387,train,478387,1,very_short,very good
+train:478911,train,478911,1,very_short,Amazing Pizza!
+train:479041,train,479041,0,very_short,:-(
+train:479598,train,479598,0,very_short,Update
+train:481168,train,481168,1,very_short,Great Service!!
+train:481352,train,481352,1,very_short,The bomb
+train:481369,train,481369,0,very_short,no.
+train:483070,train,483070,1,very_short,great kabobs!
+train:484715,train,484715,1,very_short,Great Lunch!
+train:484720,train,484720,1,very_short,Great sauces..
+train:485087,train,485087,0,very_short,".Fake \""""Chipotle\"""""
+train:486613,train,486613,1,very_short,Stop by!
+train:486651,train,486651,0,very_short,So rude!!!
+train:488098,train,488098,1,very_short,Unique food
+train:488246,train,488246,1,very_short,Hhhhh
+train:489227,train,489227,0,very_short,meh :/
+train:490028,train,490028,0,very_short,Closed. 2/21/13
+train:491859,train,491859,0,very_short,YUCK!!!
+train:493410,train,493410,1,very_short,Hello
+train:493437,train,493437,0,very_short,...................................
+train:493629,train,493629,0,very_short,very disappointing
+train:494455,train,494455,1,very_short,excellent food!
+train:495408,train,495408,0,very_short,sloooooow
+train:495564,train,495564,1,very_short,Great raymen!
+train:495652,train,495652,1,very_short,Was excellent!!!!
+train:497203,train,497203,0,very_short,horrible!
+train:497257,train,497257,1,very_short,Fantastic place.
+train:497315,train,497315,1,very_short,Amazing ceviche!!
+train:497462,train,497462,1,very_short,Absolutely amazing!!
+train:497718,train,497718,1,very_short,super fun!
+train:499331,train,499331,1,very_short,nice place!!!
+train:499526,train,499526,0,very_short,Lol closed
+train:500263,train,500263,1,very_short,Fantastic!!!!
+train:501196,train,501196,1,very_short,Good donuts.
+train:501833,train,501833,1,very_short,Loved
+train:502194,train,502194,1,very_short,amazing food
+train:503878,train,503878,0,very_short,Thieves!
+train:505958,train,505958,0,very_short,regular
+train:506672,train,506672,0,very_short,http://www.courthousenews.com/2013/07/03/59061.htm
+train:507592,train,507592,0,very_short,meh..
+train:510306,train,510306,0,very_short,dump!!!!!
+train:510789,train,510789,0,very_short,.....
+train:511265,train,511265,1,very_short,Nice place..
+train:512505,train,512505,1,very_short,Delicious cakes.
+train:512970,train,512970,0,very_short,http://www.azfamily.com/news/consumer/Phoenix-family-claim-outrage-over-carpet-cleaning-bait-and-switch-267392471.html\n\nhttp://www.bbb.org/central-northern-western-arizona/business-reviews/carpet-and-rug-cleaners/procare-carpet-airduct-cleaning-of-arizona-inc-in-tempe-az-1000020145/
+train:513728,train,513728,0,very_short,CLOSED!\nhttp://www.eatinglv.com/2013/07/poshburger-closes/
+train:514667,train,514667,1,very_short,The best!!
+train:514722,train,514722,1,very_short,http://www.youtube.com/watch?v=OfMy1uMjkdw
+train:514857,train,514857,1,very_short,Bomb!
+train:518535,train,518535,0,very_short,Stay home.
+train:522992,train,522992,0,very_short,still waiting....
+train:523705,train,523705,0,very_short,dnsjdhcdn
+train:524405,train,524405,1,very_short,great burgers
+train:524434,train,524434,0,very_short,No comment...
+train:524519,train,524519,1,very_short,Good pizza!!
+train:525651,train,525651,0,very_short,Boo
+train:525801,train,525801,1,very_short,Great lemonade!
+train:527005,train,527005,0,very_short,http://www.journaldemontreal.com/2014/07/28/franchement-decevant
+train:530367,train,530367,0,very_short,Retracted
+train:532975,train,532975,1,very_short,Amazing coffee!
+train:533032,train,533032,0,very_short,Ugh no....
+train:534760,train,534760,0,very_short,T
+train:537459,train,537459,0,very_short,Not nice
+train:537502,train,537502,0,very_short,Hated it
+train:542267,train,542267,1,very_short,pretty bomb
+train:542403,train,542403,0,very_short,No comments
+train:543049,train,543049,0,very_short,Fixed
+train:543594,train,543594,0,very_short,"Avoid, please."
+train:543903,train,543903,1,very_short,Fantastic Food!!
+train:552536,train,552536,0,very_short,Like don't!
+train:554515,train,554515,0,very_short,Customer service
+train:555664,train,555664,0,very_short,Nope
+train:557037,train,557037,0,very_short,Gg
+train:557552,train,557552,1,very_short,Great lashes!
+train:558378,train,558378,1,very_short,Good juice
+train:558386,train,558386,1,very_short,(*-*)
+train:559041,train,559041,0,very_short,Very disappointed
+test:705,test,705,1,very_short,Decent!
+test:2197,test,2197,0,very_short,Not happy
+test:2309,test,2309,0,very_short,Closed
+test:2612,test,2612,0,very_short,terrible
+test:2716,test,2716,0,very_short,Very dated...
+test:3327,test,3327,1,very_short,Awesome gyros!
+test:4409,test,4409,1,very_short,Delycios
+test:5175,test,5175,0,very_short,no......just no!
+test:5598,test,5598,1,very_short,Awesome burgers.
+test:5942,test,5942,1,very_short,great service.
+test:6301,test,6301,1,very_short,Mojitos.
+test:7258,test,7258,1,very_short,shark tank
+test:7878,test,7878,1,very_short,Classy!
+test:8208,test,8208,0,very_short,Terrible service!
+test:8214,test,8214,1,very_short,Excellent.
+test:9269,test,9269,1,very_short,The rabbit!
+test:9986,test,9986,1,very_short,delicious!!
+test:10439,test,10439,0,very_short,Never again
+test:10810,test,10810,0,very_short,WhatEVER.
+test:10972,test,10972,0,very_short,permanently closed!!!
+test:12219,test,12219,1,very_short,Great show!!!
+test:12470,test,12470,1,very_short,Kauai pie
+test:13099,test,13099,1,very_short,Wonderful
+test:14716,test,14716,1,very_short,Fan-friggin-tastic!
+test:15556,test,15556,0,very_short,Gross everything
+test:17669,test,17669,1,very_short,It's good.
+test:19250,test,19250,1,very_short,It's fabulous
+test:19755,test,19755,0,very_short,Trop graisseux...
+test:19947,test,19947,1,very_short,Great serviceee!
+test:20041,test,20041,0,very_short,Not nice!
+test:20681,test,20681,0,very_short,Large variety
+test:21721,test,21721,1,very_short,Great massages!
+test:22812,test,22812,0,very_short,Barf.
+test:23223,test,23223,1,very_short,Best Brunch!!
+test:23632,test,23632,1,very_short,Good job
+test:23795,test,23795,0,very_short,ehh...no.
+test:24021,test,24021,1,very_short,the nuts!
+test:25079,test,25079,1,very_short,Super clean!!!
+test:25932,test,25932,1,very_short,Awesome stuff!
+test:26110,test,26110,0,very_short,Eh...
+test:26238,test,26238,0,very_short,Gross.
+test:27317,test,27317,0,very_short,Slow service.
+test:28129,test,28129,0,very_short,blahhhh
+test:28636,test,28636,1,very_short,"WOW, Nice!"
+test:28822,test,28822,0,very_short,lame
+test:29354,test,29354,0,very_short,Not...good.
+test:29628,test,29628,0,very_short,Disgusting.\nDangerous.\nDon't go.
+test:29718,test,29718,0,very_short,Horrible food
+test:30145,test,30145,0,very_short,Typical chain.
+test:30572,test,30572,1,very_short,Great breakfast.
+test:32697,test,32697,1,very_short,Awsome!\nThank you!
+test:32724,test,32724,1,very_short,the best!!!!
+test:34612,test,34612,0,very_short,dont bother
+test:36538,test,36538,0,very_short,Questionable
+train:3706,train,3706,1,conflicting_label,www.bigtsreviews.com
+train:214776,train,214776,1,conflicting_label,https://www.facebook.com/TuyetRoyal
+train:392131,train,392131,1,conflicting_label,http://parismusings.blogspot.com
+train:506672,train,506672,0,conflicting_label,http://www.courthousenews.com/2013/07/03/59061.htm
+train:512970,train,512970,0,conflicting_label,http://www.azfamily.com/news/consumer/Phoenix-family-claim-outrage-over-carpet-cleaning-bait-and-switch-267392471.html\n\nhttp://www.bbb.org/central-northern-western-arizona/business-reviews/carpet-and-rug-cleaners/procare-carpet-airduct-cleaning-of-arizona-inc-in-tempe-az-1000020145/
+train:514722,train,514722,1,conflicting_label,http://www.youtube.com/watch?v=OfMy1uMjkdw
+train:527005,train,527005,0,conflicting_label,http://www.journaldemontreal.com/2014/07/28/franchement-decevant

@@ -1,0 +1,18 @@
+{
+  "source": "fancyzhx/yelp_polarity",
+  "cleaning_version": "v1.0",
+  "seed": 42,
+  "source_sha256": {
+    "test-00000-of-00001.parquet": "43f89639c05b9a91634c8c972979e074942f59df15f6369ccb81a7f402af1a25",
+    "train-00000-of-00001.parquet": "87bbf1eee0dc21f1a2790f31d8e9fecb66d09b5ea54e8f246779597170c7c89b"
+  },
+  "output_sha256": {
+    "test.csv": "a79e6d74f4d97b6bd450d572cadb600c53be62d80df224c81da119aa34446486",
+    "train.csv": "17dfc0119eaa4fafec00788994243fae4325ab00fb2de5606fbcfcd8ff2d0a85",
+    "val.csv": "016d0b025ded65530b59fd65cb8198a88519c0cda2965247407d97eda77c8dec"
+  },
+  "pandas": "2.3.3",
+  "pyarrow": "23.0.1",
+  "scikit_learn": "1.7.2",
+  "source_revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557"
+}
