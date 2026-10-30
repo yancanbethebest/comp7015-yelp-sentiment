@@ -5,6 +5,7 @@ import csv
 import json
 import random
 import re
+import time
 from collections import Counter
 from pathlib import Path
 
@@ -140,6 +141,7 @@ def main():
     criterion = nn.CrossEntropyLoss()
     history = []
     best = -1.0
+    started = time.perf_counter()
     for epoch in range(1, args.epochs + 1):
         model.train()
         for _, tokens, lengths, labels in loaders["train"]:
@@ -150,13 +152,16 @@ def main():
             optimizer.step()
         train_metrics = evaluate(model, loaders["train"], device)
         val_metrics = evaluate(model, loaders["val"], device)
-        history.append({"epoch": epoch, "train": train_metrics, "val": val_metrics})
+        history.append({"epoch": epoch, "train": train_metrics, "val": val_metrics,
+                        "elapsed_seconds": time.perf_counter() - started})
+        (args.output / "history.json").write_text(json.dumps(history, indent=2), encoding="utf-8")
         print(f"epoch={epoch} train_acc={train_metrics['accuracy']:.4f} val_acc={val_metrics['accuracy']:.4f} val_f1={val_metrics['macro_f1']:.4f}", flush=True)
         if val_metrics["macro_f1"] > best:
             best = val_metrics["macro_f1"]
             best_epoch = epoch
             torch.save({"model": model.state_dict(), "vocab": vocab, "max_len": args.max_len,
-                        "epoch": epoch}, args.output / "best_model.pt")
+                        "epoch": epoch, "embedding_dim": args.embedding_dim,
+                        "hidden_dim": args.hidden_dim, "dropout": args.dropout}, args.output / "best_model.pt")
     checkpoint = torch.load(args.output / "best_model.pt", map_location=device, weights_only=False)
     model.load_state_dict(checkpoint["model"])
     test_metrics = None
@@ -171,7 +176,7 @@ def main():
               "architecture": "word-level bidirectional LSTM",
               "tokenizer": "lowercase regex word-or-punctuation; vocabulary fit on train only",
               "vocab_size": len(vocab) + 2, "max_len": args.max_len, "batch_size": args.batch_size,
-              "embedding_source": str(args.embedding_file) if args.embedding_file else "random_trainable",
+              "embedding_source": args.embedding_file.name if args.embedding_file else "random_trainable",
               "embedding_dim": args.embedding_dim, "embedding_coverage": matched / len(vocab) if vocab else 0,
               "embedding_frozen": args.freeze_embedding, "hidden_dim": args.hidden_dim,
               "dropout": args.dropout, "learning_rate": args.lr,

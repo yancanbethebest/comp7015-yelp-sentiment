@@ -16,6 +16,25 @@
 
 ## 每个模型的代码与结果
 
+### 两组独立的 100 轮 LSTM 实验
+
+两种 LSTM 从头分别训练，使用相同数据划分、seed 42、100 维词向量、128 个隐藏单元、dropout 0.3、学习率 0.001、batch size 128 和最大长度 256。GloVe 词向量参与微调；完整运行 100 轮，按验证 Macro-F1 保存最佳 checkpoint，不评估测试集。
+
+| 实验 | 独立训练入口 | 结果目录 |
+|---|---|---|
+| 随机词向量 BiLSTM | [`scripts/train_lstm_random.py`](scripts/train_lstm_random.py) | `experiments/lstm_100/random/` |
+| GloVe 词向量 BiLSTM | [`scripts/train_lstm_glove.py`](scripts/train_lstm_glove.py) | `experiments/lstm_100/glove/` |
+
+```bash
+python scripts/train_lstm_random.py
+python scripts/train_lstm_glove.py --embedding-file glove.6B.100d.txt
+python scripts/plot_lstm_results.py
+```
+
+绘图需要 `matplotlib`。每个结果目录分别保存训练/验证 loss、accuracy、Macro-F1 曲线，以及最佳轮次的验证混淆矩阵；根结果目录的 `comparison.png` 比较两种模型的验证曲线。训练日志和模型权重在训练环境产生，完成后将指标与图片发布到 GitHub，checkpoint 放到 GitHub Release。
+
+### 已完成的 10 轮实验
+
 以下三组实验均使用 16,000 条训练、4,000 条验证数据，随机种子 42，训练 **10 个 epoch**，按验证集 Macro-F1 选择最佳轮次。**官方测试集尚未用于这三组实验。**
 
 | 模型 | 代码 | 10 轮最佳验证 Accuracy / Macro-F1 | 最佳轮次 | 完整结果与 checkpoint |
