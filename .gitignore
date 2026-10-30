@@ -2,3 +2,6 @@ raw/
 __pycache__/
 *.part
 *.zip
+bert_trial/
+glove_trial/
+glove.6B.100d.txt

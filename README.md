@@ -44,3 +44,32 @@ python scripts/preprocessing.py
 ```bash
 python scripts/train_lstm.py --epochs 5
 ```
+
+## Colab 下一步试跑：GloVe 与 BERT
+
+先在 Colab 更新仓库并安装训练依赖：
+
+```python
+%cd /content/comp7015-yelp-sentiment
+!git pull
+!pip -q install -r requirements-training.txt
+```
+
+GloVe 100 维词向量下载后，使用与随机 embedding 相同的 100 维设置进行受控对比。下面的命令只使用验证集选模，**默认不评估官方测试集**：
+
+```python
+!wget -q https://nlp.stanford.edu/data/glove.6B.zip -O glove.6B.zip
+!unzip -q -o glove.6B.zip glove.6B.100d.txt
+!python scripts/train_lstm.py --epochs 1 --embedding-dim 100 --output random_trial
+!python scripts/train_lstm.py --epochs 1 --embedding-dim 100 --embedding-file glove.6B.100d.txt --output glove_trial
+```
+
+GloVe 下载包约 862 MB，需预留空间；词向量覆盖率会写入 `glove_trial/metrics.json`。如需最终测试，在确定最佳配置后单独加入 `--evaluate-test` 重跑一次。
+
+BERT 试跑使用已预训练的 `google-bert/bert-base-uncased` 微调。默认只取前 512 条训练、128 条验证、1 个 epoch，以检查流程：
+
+```python
+!python scripts/train_bert.py --output bert_trial
+```
+
+正式训练时指定 `--train-limit 16000 --val-limit 4000 --epochs 3 --max-len 256`。两个脚本均保存验证指标和最佳模型；正式选模期间不应传入 `--evaluate-test`。
