@@ -7,7 +7,13 @@ Date: 2026-10-30 (Asia/Shanghai). This is a validation-stage experiment; the off
 - Data: fixed cleaned Yelp Polarity train (16,000) and validation (4,000), balanced by label; seed 42.
 - Hardware: NVIDIA GeForce RTX 4090 on AutoDL.
 - Model selection: highest validation Macro-F1 among 10 epochs.
-- Checkpoints and full JSON metrics remain on the server under `/root/autodl-tmp/yelp_trial/`. No training outputs were downloaded to the local computer.
+- The best checkpoints and full JSON metrics are published as assets in the [GitHub Release](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/checkpoints-2026-10-30). They were streamed to GitHub without local model copies.
+
+| Release asset | SHA-256 |
+|---|---|
+| `random_lstm_10ep.tar.gz` | `8e176500c44ff7b7d60d8e5ae6e659e722e129b44d9b5d8febd31718c8660a76` |
+| `glove_lstm_10ep.tar.gz` | `90d0d5fbef9504d3a02abd4dbcd44ce51f3a734b31449d8f21806ec6dfa1d8f5` |
+| `bert_10ep.tar.gz` | `88cdcf0d337880f2fef383cc22f5f4e5ac50aabb3ad3df32ad73173fb53bc71d` |
 
 | Model | Embedding / model | Best epoch | Validation Accuracy | Validation Macro-F1 |
 |---|---|---:|---:|---:|

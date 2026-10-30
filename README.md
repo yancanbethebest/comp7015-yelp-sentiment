@@ -20,11 +20,11 @@
 
 | 模型 | 代码 | 10 轮最佳验证 Accuracy / Macro-F1 | 最佳轮次 | 完整结果与 checkpoint |
 |---|---|---:|---:|---|
-| 随机 embedding BiLSTM | [`scripts/train_lstm.py`](scripts/train_lstm.py) | 87.98% / **87.97%** | 10 | 服务器 `/root/autodl-tmp/yelp_trial/random_10/` |
-| GloVe embedding BiLSTM | [`scripts/train_lstm.py`](scripts/train_lstm.py) | 89.60% / **89.60%** | 6 | 服务器 `/root/autodl-tmp/yelp_trial/glove_10/` |
-| 预训练 BERT 微调 | [`scripts/train_bert.py`](scripts/train_bert.py) | 95.20% / **95.20%** | 2 | 服务器 `/root/autodl-tmp/yelp_trial/bert_10/` |
+| 随机 embedding BiLSTM | [`scripts/train_lstm.py`](scripts/train_lstm.py) | 87.98% / **87.97%** | 10 | [下载 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/download/checkpoints-2026-10-30/random_lstm_10ep.tar.gz) |
+| GloVe embedding BiLSTM | [`scripts/train_lstm.py`](scripts/train_lstm.py) | 89.60% / **89.60%** | 6 | [下载 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/download/checkpoints-2026-10-30/glove_lstm_10ep.tar.gz) |
+| 预训练 BERT 微调 | [`scripts/train_bert.py`](scripts/train_bert.py) | 95.20% / **95.20%** | 2 | [下载 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/download/checkpoints-2026-10-30/bert_10ep.tar.gz) |
 
-GitHub 上的[验证报告](reports/validation_10_epochs.md)列出全部 10 轮的 Accuracy、Macro-F1 和训练设置。服务器各结果目录有 `metrics.json` 与最佳模型；训练日志分别是服务器上的 `random_10.log`、`glove_10.log` 和 `bert_10.log`。**这三组 10 轮 checkpoint 没有上传到 GitHub，也没有下载到本地**。BERT 使用已预训练的 `google-bert/bert-base-uncased`，本实验做的是情感分类微调，并非从零预训练 BERT。
+GitHub 上的[验证报告](reports/validation_10_epochs.md)列出全部 10 轮的 Accuracy、Macro-F1 和训练设置。三个 checkpoint 及各自的 `metrics.json` 收录于 [GitHub Release](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/checkpoints-2026-10-30)；下载后可用 `tar -xzf 文件名` 解压。BERT 使用已预训练的 `google-bert/bert-base-uncased`，本实验做的是情感分类微调，并非从零预训练 BERT。
 
 `lstm_results/` 是此前另一组 5 轮试跑，其测试结果不能当作上表三组的最终测试比较。正式模型比较还需要超参数实验，选定配置后再统一评估官方测试集。
 
