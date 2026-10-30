@@ -70,3 +70,7 @@ python scripts/train_bert.py --train-limit 16000 --val-limit 4000 --epochs 10 --
 ```
 
 GloVe 版需先取得 Stanford GloVe 6B 的 `glove.6B.100d.txt`。LSTM 词表从训练集构建，序列转为整数并动态 padding；两种 LSTM 使用相同结构、100 维 embedding 和训练设置。上述命令默认**不评估测试集**；仅在最终确定模型后才传入 `--evaluate-test`。
+
+## 组员下一步工作
+
+请先阅读 [NEXT_STEPS.md：最佳模型加载、实验分工与后续工作](NEXT_STEPS.md)。包含两种最佳模型的下载与预测命令、超参数实验建议、BERT 对比、最终评估规范及报告交付清单。
