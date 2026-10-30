@@ -32,72 +32,37 @@ A comparative study of deep learning approaches for binary sentiment classificat
 
 ## 2. Dataset & Data Preprocessing
 
-### 2.1 Dataset
+### 2.1 Official source and full cleaned dataset
 
-**Source:** [Yelp Review Polarity — Hugging Face](https://huggingface.co/datasets/fancyzhx/yelp_polarity)
+Data source: [Yelp Review Polarity](https://huggingface.co/datasets/fancyzhx/yelp_polarity). The official dataset contains **560,000 training reviews and 38,000 test reviews**, for 598,000 rows in total. Member 1 cleaned the complete official dataset. After removing 14 same-label duplicates, 7 conflicting-label rows and 2 train/test overlaps, **597,977 eligible reviews** remain: 559,977 from official train and all 38,000 from official test.
 
-Yelp Review Polarity 是一个用于文本情感二分类的公开数据集。
+Using seed `42`, we split all eligible official training rows into stratified train/validation sets (90%/10%). The official test split remains separate.
 
-官方数据集包含：
+| Current file | Source | Total | Negative (0) | Positive (1) |
+|---|---|---:|---:|---:|
+| [`processed_data/train.csv`](processed_data/train.csv) | Official train | 503,979 | 251,986 | 251,993 |
+| [`processed_data/val.csv`](processed_data/val.csv) | Official train | 55,998 | 27,999 | 27,999 |
+| [`processed_data/test.csv`](processed_data/test.csv) | Official test | 38,000 | 19,000 | 19,000 |
+| **Total** | | **597,977** | **298,985** | **298,992** |
 
-| Official Split | Samples |
-|---|---:|
-| Training | 560,000 |
-| Test | 38,000 |
+The full CSV files are stored with Git LFS. After cloning, run `git lfs pull`. Cleaning statistics and SHA-256 checksums are in [`reports/`](reports/) and [`reports/manifest.json`](reports/manifest.json).
 
-考虑课程实验的计算资源限制，本项目采用固定随机种子与分层抽样方法，构建统一的实验数据子集。
+### 2.2 Data used for the published preliminary models
 
-### 2.2 Processed Dataset
+**The checkpoints and validation scores in Sections 3–4 were produced earlier using a fixed 25,000-row sample, not the full cleaned dataset above.** That historical sample is preserved at [`experiments/sample_25k/`](experiments/sample_25k/): 16,000 train, 4,000 validation and 5,000 test. Its train/validation rows came from official train, and its test rows came from official test. Each split was balanced by label. The current full-data CSV files were published after those model trials; no full-data retraining has been performed yet.
 
-| Split | Samples | Negative | Positive |
-|---|---:|---:|---:|
-| Training | 16,000 | 8,000 | 8,000 |
-| Validation | 4,000 | 2,000 | 2,000 |
-| Test | 5,000 | 2,500 | 2,500 |
-| **Total** | **25,000** | **12,500** | **12,500** |
+| Experiment stage | Train | Validation | Test | Use |
+|---|---:|---:|---:|---|
+| Published preliminary checkpoints | 16,000 | 4,000 | 5,000 | Reproduce existing trial results |
+| Current full cleaned split | 503,979 | 55,998 | 38,000 | Formal training by the assigned model members |
 
-**Data Splitting Strategy**
+Results from the two stages must be reported separately. The formal training responsibilities are listed in [`NEXT_STEPS.md`](NEXT_STEPS.md).
 
-- Random Seed: `42`
-- Sampling Method: Stratified Sampling
-- Training / Validation: Sampled from the official training split
-- Test: Sampled from the official test split
-- Class Distribution: Balanced (50% positive / 50% negative)
-- All models share the same data partitions.
+### 2.3 Cleaning and model-specific preprocessing
 
-以上数据规模为本项目使用的实验子集，并非完整官方数据集。
+The shared pipeline checks missing text and invalid labels, normalizes whitespace, decodes HTML entities, replaces explicit URLs, removes exact duplicates, isolates conflicting labels and excludes official train/test overlaps. It keeps negation, punctuation, numbers and case. Very short reviews are flagged rather than deleted. See [cleaning rules](Yelp_Polarity_Cleaning_Rules.md), [`scripts/preprocessing.py`](scripts/preprocessing.py) and [cleaning summary](reports/cleaning_summary.csv).
 
-### 2.3 Data Cleaning Pipeline
-
-数据清洗流程包括：
-
-1. **Data Inspection:** 检查原始数据结构、标签分布和文本完整性。
-2. **Text Cleaning:** 按照统一规则进行评论文本清洗与规范化。
-3. **Duplicate Checking:** 检查重复评论及潜在的跨数据集重复问题。
-4. **Stratified Sampling:** 按照标签比例进行分层抽样。
-5. **Dataset Splitting:** 构建固定的训练、验证和测试集。
-6. **Data Validation:** 检查标签、数据规模和数据划分的正确性。
-7. **Audit & Reproducibility:** 保存清洗记录与数据校验信息。
-
-详细规则与实现参见：
-
-- [Data Cleaning Rules](Yelp_Polarity_Cleaning_Rules.md)
-- [`processed_data/`](processed_data/)
-- [`reports/`](reports/)
-
-### 2.4 Model-Specific Preprocessing
-
-不同模型采用与其架构相匹配的文本表示方式。
-
-| Model | Text Representation | Vocabulary / Tokenizer |
-|---|---|---|
-| Random BiLSTM | Randomly initialized embeddings | Training-set vocabulary |
-| GloVe BiLSTM | Pre-trained GloVe embeddings | Training-set vocabulary |
-| BERT | Contextual representations | Pre-trained BERT tokenizer |
-
-为避免数据泄漏，LSTM 词表仅在训练集上构建。验证集与测试集不用于拟合词表。
-
-BERT 使用对应预训练模型的 Tokenizer 进行文本编码。
+For the LSTM models, the training script lowercases and tokenizes text, builds the vocabulary **only from its training split**, maps tokens to integers and applies dynamic padding. The random and GloVe LSTMs share this pipeline; GloVe initializes the embedding layer. BERT uses its pretrained tokenizer and fine-tunes the sequence classifier. Formal models must fit their vocabulary or other data-derived settings on the full training split only.
 
 ---
 
