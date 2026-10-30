@@ -75,7 +75,7 @@ def main():
     args = parser.parse_args()
     root = args.output.resolve()
     raw_dir = root / "raw"
-    data_dir = root / "data"
+    data_dir = root / "processed_data"
     report_dir = root / "reports"
     for directory in (raw_dir, data_dir, report_dir):
         directory.mkdir(parents=True, exist_ok=True)

@@ -66,7 +66,7 @@ def evaluate(model, loader, device):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data", type=Path, default=Path("data"))
+    parser.add_argument("--data", type=Path, default=Path("processed_data"))
     parser.add_argument("--output", type=Path, default=Path("bert_trial"))
     parser.add_argument("--model", default="google-bert/bert-base-uncased")
     parser.add_argument("--epochs", type=int, default=1)

@@ -6,7 +6,7 @@ A comparative study of machine learning and deep learning approaches for binary 
 
 | 文件夹 | 内容 | 组员如何使用 |
 |---|---|---|
-| [`data/`](data/) | 统一清洗后的 `train.csv`、`val.csv`、`test.csv`。 | 直接使用这些文件训练和评估，保持组内划分一致。 |
+| [`processed_data/`](processed_data/) | 统一清洗后的 `train.csv`、`val.csv`、`test.csv`。 | 直接使用这些文件训练和评估，保持组内划分一致。 |
 | [`scripts/`](scripts/) | `preprocessing.py` 清洗脚本、`train_lstm.py` 训练脚本。 | 复现数据或 LSTM 基线时运行。 |
 | [`reports/`](reports/) | 清洗统计、异常记录、来源及校验和、原文审计文件、LSTM 实验报告。 | 核查数据质量、来源与实验设置。 |
 | [`lstm_results/`](lstm_results/) | 最佳模型、完整指标、测试集预测、训练日志。 | 查看结果或加载模型进行推理。 |
@@ -14,13 +14,13 @@ A comparative study of machine learning and deep learning approaches for binary 
 
 根目录的 [`Yelp_Polarity_Cleaning_Rules.md`](Yelp_Polarity_Cleaning_Rules.md) 是共享清洗规范；[`requirements.txt`](requirements.txt) 是数据清洗依赖。LSTM 训练另需 PyTorch。
 
-此目录的 `data/train.csv`、`data/val.csv` 和 `data/test.csv` 是按 [清洗规则](Yelp_Polarity_Cleaning_Rules.md) v1.0 在 Windows 本地生成的统一数据版本。原始数据来自 [Hugging Face `fancyzhx/yelp_polarity`](https://huggingface.co/datasets/fancyzhx/yelp_polarity)，官方 train/test 各为 560,000/38,000 条。标签 `0` 为负面、`1` 为正面。
+此目录的 `processed_data/train.csv`、`processed_data/val.csv` 和 `processed_data/test.csv` 是按 [清洗规则](Yelp_Polarity_Cleaning_Rules.md) v1.0 在 Windows 本地生成的统一数据版本。原始数据来自 [Hugging Face `fancyzhx/yelp_polarity`](https://huggingface.co/datasets/fancyzhx/yelp_polarity)，官方 train/test 各为 560,000/38,000 条。标签 `0` 为负面、`1` 为正面。
 
 | 文件 | 条数 | 负面 | 正面 | 来源 |
 |---|---:|---:|---:|---|
-| `data/train.csv` | 16,000 | 8,000 | 8,000 | 官方 train |
-| `data/val.csv` | 4,000 | 2,000 | 2,000 | 官方 train |
-| `data/test.csv` | 5,000 | 2,500 | 2,500 | 官方 test |
+| `processed_data/train.csv` | 16,000 | 8,000 | 8,000 | 官方 train |
+| `processed_data/val.csv` | 4,000 | 2,000 | 2,000 | 官方 train |
+| `processed_data/test.csv` | 5,000 | 2,500 | 2,500 | 官方 test |
 
 每个 CSV 有 `sample_id,text,label` 三列。`sample_id` 采用 `train:原始行号` 或 `test:原始行号`，可与 `reports/*_audit.csv` 对照原文。`reports/cleaning_summary.csv` 记录清洗数量和长度分位数；`reports/flagged_records.csv` 供人工复核；`reports/manifest.json` 记录来源及输出的 SHA-256、随机种子和依赖版本。原始 Parquet 文件保存在 `raw/`，不纳入 Git，可按脚本重新下载。
 

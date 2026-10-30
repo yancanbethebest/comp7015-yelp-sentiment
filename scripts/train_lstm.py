@@ -93,7 +93,7 @@ def evaluate(model, loader, device, predictions=None):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data", type=Path, default=Path("data"))
+    parser.add_argument("--data", type=Path, default=Path("processed_data"))
     parser.add_argument("--output", type=Path, default=Path("lstm_results"))
     parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--batch-size", type=int, default=128)

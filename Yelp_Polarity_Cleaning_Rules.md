@@ -85,7 +85,7 @@ I didn't like this restaurant!!! The food was cold & service was terrible.
 
 ```text
 Yelp_Sentiment_Project/
-├── data/
+├── processed_data/
 │   ├── train.csv
 │   ├── val.csv
 │   └── test.csv
