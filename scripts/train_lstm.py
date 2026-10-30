@@ -97,6 +97,7 @@ def main():
     parser.add_argument("--data", type=Path, default=Path("processed_data"))
     parser.add_argument("--output", type=Path, default=Path("lstm_results"))
     parser.add_argument("--epochs", type=int, default=5)
+    parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--batch-size", type=int, default=128)
     parser.add_argument("--max-len", type=int, default=256)
     parser.add_argument("--vocab-size", type=int, default=30000)
@@ -109,9 +110,9 @@ def main():
     parser.add_argument("--evaluate-test", action="store_true", help="Run official test only after final model selection")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
-    random.seed(42)
-    torch.manual_seed(42)
-    torch.cuda.manual_seed_all(42)
+    random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.cuda.manual_seed_all(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     train_rows = read_split(args.data / "train.csv")
     val_rows = read_split(args.data / "val.csv")
@@ -172,7 +173,7 @@ def main():
             writer = csv.writer(stream)
             writer.writerow(["sample_id", "label", "prediction"])
             writer.writerows(predictions)
-    report = {"seed": 42, "device": str(device), "torch_version": torch.__version__,
+    report = {"seed": args.seed, "device": str(device), "torch_version": torch.__version__,
               "architecture": "word-level bidirectional LSTM",
               "tokenizer": "lowercase regex word-or-punctuation; vocabulary fit on train only",
               "vocab_size": len(vocab) + 2, "max_len": args.max_len, "batch_size": args.batch_size,
