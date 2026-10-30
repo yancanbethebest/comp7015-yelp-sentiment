@@ -1,5 +1,6 @@
-# 指南
-已完成数据处理和三个模型的基础预训练
+# 组员下一步工作指南
+
+**最新统一入口：** `models/lstm_random/`、`models/lstm_glove/`、`models/bert/`。每个目录包含 `best_model.pt`、`model.py`、`train.py`、`config.yaml`；权重由 Git LFS 管理，首次克隆后运行 `git lfs install` 和 `git lfs pull`。下文 Release 下载方式仍可使用。旧 `lstm_results/` 已移除。
 
 ## 目前可以直接使用的成果
 
@@ -46,11 +47,11 @@ python scripts/predict_lstm.py --checkpoint glove/best_model.pt --text "Terrible
 先在验证集上筛选配置；每次实验使用独立目录，不覆盖现有结果。两种 embedding 都使用相同候选参数和预算。对最终选出的配置，再用训练种子 42、43、44 重复，报告均值与标准差；**保持数据划分不变**。20 轮是筛选预算，并不证明模型已经收敛。
 
 ```bash
-python scripts/train_lstm_random.py --epochs 20 --dropout 0.5 --seed 42 --output experiments/tuning/random_dropout05_seed42
-python scripts/train_lstm_glove.py --epochs 20 --dropout 0.5 --seed 42 --embedding-file glove.6B.100d.txt --output experiments/tuning/glove_dropout05_seed42
+python models/lstm_random/train.py --epochs 20 --dropout 0.5 --seed 42 --output experiments/tuning/random_dropout05_seed42
+python models/lstm_glove/train.py --epochs 20 --dropout 0.5 --seed 42 --embedding-file glove.6B.100d.txt --output experiments/tuning/glove_dropout05_seed42
 ```
 
-这里的两种入口共享 `train_lstm.py` 的训练实现，便于公平对比。GloVe 训练需要原始 100 维词向量文件；默认参与微调。不要在筛选阶段加 `--evaluate-test`。该选项会在训练后评估测试集，不是用于直接加载已发布模型的命令。
+两种模型目录分别包含完整架构和训练代码，使用相同的 BiLSTM 结构与训练逻辑。GloVe 训练需要原始 100 维词向量文件；默认参与微调。不要在筛选阶段加 `--evaluate-test`。该选项会在训练后评估测试集，不是用于直接加载已发布模型的命令。
 
 ## BERT 与最终评估应注意什么
 

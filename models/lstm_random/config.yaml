@@ -1,0 +1,25 @@
+training:
+  "data": "processed_data"
+  "output": "runs/lstm_random"
+  "epochs": 100
+  "seed": 42
+  "batch_size": 128
+  "max_len": 256
+  "vocab_size": 30000
+  "embedding_dim": 100
+  "hidden_dim": 128
+  "dropout": 0.3
+  "lr": 0.001
+  "freeze_embedding": false
+  "evaluate_test": false
+published_run:
+  "epochs_completed": 71
+  "best_epoch": 69
+  "stopping": "manual stop approved by user"
+  "selection_metric": "validation macro_f1"
+optimizer:
+  "name": "AdamW"
+  "weight_decay": 0.01
+labels:
+  "0": "negative"
+  "1": "positive"

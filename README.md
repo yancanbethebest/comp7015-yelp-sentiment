@@ -1,80 +1,67 @@
 # COMP7015 Yelp Sentiment
 
-本仓库提供 Yelp Review Polarity 的统一清洗数据，以及随机词向量 BiLSTM、GloVe 词向量 BiLSTM 和预训练 BERT 微调的实验代码与验证结果。标签：`0` 为负面，`1` 为正面。
+Yelp Review Polarity 二分类小组项目。标签：`0` 负面，`1` 正面。
 
-## 从哪里找文件
+## 每个模型一个文件夹
+
+```text
+models/
+├── lstm_random/       # 随机词向量 BiLSTM
+├── lstm_glove/        # GloVe 词向量 BiLSTM（词向量参与微调）
+└── bert/              # 预训练 BERT 情感分类微调
+```
+
+**每个模型目录均包含** `best_model.pt`（最佳权重）、`model.py`（架构与加载函数）、`train.py`（训练代码）、`config.yaml`（训练配置），另附 `metrics.json` 和使用说明。BERT 目录还包含 tokenizer 文件。
+
+| 模型目录 | 实际训练轮数 | 最佳轮次 | 最佳验证 Accuracy / Macro-F1 |
+|---|---:|---:|---:|
+| [随机词向量 LSTM](models/lstm_random/) | 71 | 69 | 89.25% / 89.25% |
+| [GloVe LSTM](models/lstm_glove/) | 35 | 10 | 90.12% / 90.12% |
+| [BERT](models/bert/) | 10 | 2 | 95.20% / 95.20% |
+
+LSTM 原定上限各 100 轮，按用户要求手动提前停止；`config.yaml` 分别记录训练上限和历史实际轮次。全部权重均按验证 Macro-F1 选择，不是最后一轮权重。BERT 的 `.pt` 文件由原始 Hugging Face checkpoint 转换，张量完全一致，未重新训练。
+
+## 下载最佳模型
+
+权重采用 **Git LFS** 存储，真实文件位于各模型目录的 `best_model.pt`。首次克隆后执行：
+
+```bash
+git lfs install
+git lfs pull
+python -m pip install -r requirements-training.txt
+```
+
+如果下载 ZIP 得到的 `.pt` 只有几行文字，那是 LFS 指针，请使用上述命令获取权重。组员下载后即可在自己的训练环境使用。
+
+之前的 [LSTM 最佳模型 Release](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/lstm-extended-2026-10-31) 和 [10 轮实验 Release](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/checkpoints-2026-10-30) 保留作为历史下载记录。
+
+## 训练与加载
+
+请在仓库根目录运行；每个脚本默认读取自己目录下的 `config.yaml`，命令行参数可以覆盖配置。
+
+```bash
+python models/lstm_random/train.py
+python models/lstm_glove/train.py --embedding-file glove.6B.100d.txt
+python models/bert/train.py
+```
+
+新的训练结果分别写入 `runs/lstm_random/`、`runs/lstm_glove/`、`runs/bert/`，不会覆盖发布权重。GloVe 原始词向量文件只在重新训练时需要。各目录的 `model.py` 提供 `load_checkpoint()`，用法见对应 README。checkpoint 不含优化器状态，不用于精确恢复中断训练。
+
+## 其他文件在哪里
 
 | 路径 | 内容 |
 |---|---|
-| [`processed_data/`](processed_data/) | 清洗后的 `train.csv`（16,000）、`val.csv`（4,000）、`test.csv`（5,000）。所有模型使用相同划分。 |
-| [`scripts/`](scripts/) | `preprocessing.py` 生成数据；`train_lstm.py` 训练两种 BiLSTM；`train_bert.py` 微调 BERT。 |
-| [`reports/`](reports/) | 清洗统计、数据校验和、审计文件，以及[10 轮模型对比](reports/validation_10_epochs.md)。 |
-| [`lstm_results/`](lstm_results/) | **早期 5 轮随机 embedding LSTM 试跑**的模型、指标、预测和日志；不属于下表的 10 轮对比。 |
-| `raw/` | 官方原始 Parquet 数据，仅重新清洗时下载，不上传 GitHub。 |
+| [processed_data/](processed_data/) | 固定清洗数据：训练 16,000、验证 4,000、测试 5,000；正负类各半 |
+| [experiments/lstm_100/](experiments/lstm_100/) | LSTM 延长训练的曲线、验证混淆矩阵、指标和日志；目录名表示原计划，实际为 71 / 35 轮 |
+| [reports/](reports/) | 清洗审计、校验和、历史实验报告以及 [10 轮对比](reports/validation_10_epochs.md) |
+| [scripts/](scripts/) | 数据清洗、绘图、预测工具及旧训练入口；新的统一训练入口在 `models/` |
+| [Yelp_Polarity_Cleaning_Rules.md](Yelp_Polarity_Cleaning_Rules.md) | 数据清洗规范 |
+| [NEXT_STEPS.md](NEXT_STEPS.md) | 模型加载、组员分工、超参数研究、BERT 对比和最终评估指南 |
 
-根目录还有[清洗规则](Yelp_Polarity_Cleaning_Rules.md)、[清洗依赖](requirements.txt)和[训练依赖](requirements-training.txt)。
+旧 `lstm_results/` 已删除；其中早期 5 轮试跑结果不是当前交付模型。历史报告保留作过程记录。原始数据与新运行目录不上传，服务器地址、密码和访问令牌不进入仓库。
 
-## 每个模型的代码与结果
+## 实验边界与下一步
 
-### 两组独立的 LSTM 延长训练实验（原定上限 100 轮）
+所有模型使用相同的清洗划分和种子 42。训练/验证取自官方训练集，测试来自官方测试集；LSTM 词表只用训练集拟合，BERT 使用预训练 tokenizer。这些是抽样数据实验，不能写成使用全部官方训练集。
 
-两种 LSTM 从头分别训练；按用户要求在效果满意后提前停止，随机组完成 71 轮、GloVe 组完成 35 轮。使用相同数据划分、seed 42、100 维词向量、128 个隐藏单元、dropout 0.3、学习率 0.001、batch size 128 和最大长度 256。GloVe 词向量参与微调；原计划最多运行 100 轮，按验证 Macro-F1 保存最佳 checkpoint，不评估测试集。
-
-| 实验 | 独立训练入口 | 结果目录 |
-|---|---|---|
-| 随机词向量 BiLSTM | [`scripts/train_lstm_random.py`](scripts/train_lstm_random.py) | `experiments/lstm_100/random/` |
-| GloVe 词向量 BiLSTM | [`scripts/train_lstm_glove.py`](scripts/train_lstm_glove.py) | `experiments/lstm_100/glove/` |
-
-```bash
-python scripts/train_lstm_random.py
-python scripts/train_lstm_glove.py --embedding-file glove.6B.100d.txt
-python scripts/plot_lstm_results.py
-```
-
-绘图需要 `matplotlib`。每个结果目录分别保存训练/验证 loss、accuracy、Macro-F1 曲线，以及最佳轮次的验证混淆矩阵；根结果目录的 `comparison.png` 比较两种模型的验证曲线。训练日志和模型权重在训练环境产生，指标与图片已发布到 GitHub，checkpoint 放到 GitHub Release。
-
-### 已完成的 10 轮实验
-
-以下三组实验均使用 16,000 条训练、4,000 条验证数据，随机种子 42，训练 **10 个 epoch**，按验证集 Macro-F1 选择最佳轮次。**官方测试集尚未用于这三组实验。**
-
-| 模型 | 代码 | 10 轮最佳验证 Accuracy / Macro-F1 | 最佳轮次 | 完整结果与 checkpoint |
-|---|---|---:|---:|---|
-| 随机 embedding BiLSTM | [`scripts/train_lstm.py`](scripts/train_lstm.py) | 87.98% / **87.97%** | 10 | [下载 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/download/checkpoints-2026-10-30/random_lstm_10ep.tar.gz) |
-| GloVe embedding BiLSTM | [`scripts/train_lstm.py`](scripts/train_lstm.py) | 89.60% / **89.60%** | 6 | [下载 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/download/checkpoints-2026-10-30/glove_lstm_10ep.tar.gz) |
-| 预训练 BERT 微调 | [`scripts/train_bert.py`](scripts/train_bert.py) | 95.20% / **95.20%** | 2 | [下载 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/download/checkpoints-2026-10-30/bert_10ep.tar.gz) |
-
-GitHub 上的[验证报告](reports/validation_10_epochs.md)列出全部 10 轮的 Accuracy、Macro-F1 和训练设置。三个 checkpoint 及各自的 `metrics.json` 收录于 [GitHub Release](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/checkpoints-2026-10-30)；下载后可用 `tar -xzf 文件名` 解压。BERT 使用已预训练的 `google-bert/bert-base-uncased`，本实验做的是情感分类微调，并非从零预训练 BERT。
-
-`lstm_results/` 是此前另一组 5 轮试跑，其测试结果不能当作上表三组的最终测试比较。正式模型比较还需要超参数实验，选定配置后再统一评估官方测试集。
-
-## 数据说明
-
-三份 CSV 均为 UTF-8，列为 `sample_id,text,label`。训练和验证来自官方 train，测试来自官方 test；正负类各半。样本 ID 可与 `reports/*_audit.csv` 对照原文及原始行号。清洗规则保留大小写、否定词、标点、数字和 emoji；模型自己的词表只用训练集拟合。数据来源及 SHA-256 见 [`reports/manifest.json`](reports/manifest.json)。
-
-## 复现命令
-
-重新清洗数据（需要约 1 GB 空间及 `curl`）：
-
-```bash
-python -m pip install -r requirements.txt
-python scripts/preprocessing.py
-```
-
-在有 GPU 的环境中安装 PyTorch、Transformers 后运行训练：
-
-```bash
-python -m pip install -r requirements-training.txt
-python scripts/train_lstm.py --epochs 10 --embedding-dim 100 --output random_10
-python scripts/train_lstm.py --epochs 10 --embedding-dim 100 --embedding-file glove.6B.100d.txt --output glove_10
-python scripts/train_bert.py --train-limit 16000 --val-limit 4000 --epochs 10 --max-len 256 --batch-size 16 --output bert_10
-```
-
-GloVe 版需先取得 Stanford GloVe 6B 的 `glove.6B.100d.txt`。LSTM 词表从训练集构建，序列转为整数并动态 padding；两种 LSTM 使用相同结构、100 维 embedding 和训练设置。上述命令默认**不评估测试集**；仅在最终确定模型后才传入 `--evaluate-test`。
-
-## 组员下一步工作
-
-请先阅读 [NEXT_STEPS.md：最佳模型加载、实验分工与后续工作](NEXT_STEPS.md)。包含两种最佳模型的下载与预测命令、超参数实验建议、BERT 对比、最终评估规范及报告交付清单。
-
-## 延长训练结果与图片
-
-随机词向量组完成 **71 轮**，最佳验证 F1 **89.25%**（第 69 轮）；GloVe 组完成 **35 轮**，最佳验证 F1 **90.12%**（第 10 轮）。按用户要求提前停止，未跑满原定 100 轮。[查看完整报告、训练曲线和验证混淆矩阵](experiments/lstm_100/README.md)；[下载两种最佳 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/lstm-extended-2026-10-31)。
+表中均为**验证指标**，本次发布的三组模型没有做统一最终测试。历史试跑曾查看测试结果，不能称测试集从未被接触。仍需完成超参数对照、多种子验证和统一最终评估；具体分工及交付物见 [组员下一步工作指南](NEXT_STEPS.md)。

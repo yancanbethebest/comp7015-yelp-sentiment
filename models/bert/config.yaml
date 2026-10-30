@@ -1,0 +1,28 @@
+training:
+  "data": "processed_data"
+  "output": "runs/bert"
+  "model": "google-bert/bert-base-uncased"
+  "epochs": 10
+  "seed": 42
+  "train_limit": 16000
+  "val_limit": 4000
+  "max_len": 256
+  "batch_size": 16
+  "lr": 2e-05
+  "evaluate_test": false
+published_run:
+  "epochs_completed": 10
+  "best_epoch": 2
+  "selection_metric": "validation macro_f1"
+architecture:
+  "encoder": "BertForSequenceClassification"
+  "hidden_size": 768
+  "layers": 12
+  "attention_heads": 12
+  "num_labels": 2
+optimizer:
+  "name": "AdamW"
+  "weight_decay": 0.01
+labels:
+  "0": "negative"
+  "1": "positive"
