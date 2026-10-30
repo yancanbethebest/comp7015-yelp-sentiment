@@ -5,3 +5,5 @@ __pycache__/
 bert_trial/
 glove_trial/
 glove.6B.100d.txt
+experiments/**/best_model.pt
+experiments/**/*.tar.gz
