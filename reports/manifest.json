@@ -1,18 +1,19 @@
 {
   "source": "fancyzhx/yelp_polarity",
-  "cleaning_version": "v1.0",
+  "cleaning_version": "v1.1-full",
   "seed": 42,
   "source_sha256": {
     "test-00000-of-00001.parquet": "43f89639c05b9a91634c8c972979e074942f59df15f6369ccb81a7f402af1a25",
     "train-00000-of-00001.parquet": "87bbf1eee0dc21f1a2790f31d8e9fecb66d09b5ea54e8f246779597170c7c89b"
   },
   "output_sha256": {
-    "test.csv": "a79e6d74f4d97b6bd450d572cadb600c53be62d80df224c81da119aa34446486",
-    "train.csv": "17dfc0119eaa4fafec00788994243fae4325ab00fb2de5606fbcfcd8ff2d0a85",
-    "val.csv": "016d0b025ded65530b59fd65cb8198a88519c0cda2965247407d97eda77c8dec"
+    "test.csv": "d966f8bc9aa2c37b785ba7757df125eb8b21b8e986176f062e79c8bef62ad372",
+    "train.csv": "632ded109817ba4d4571a1b3f56b9b3dd5973981c3539cc6e312d90fd3e8cdce",
+    "val.csv": "babbe945a973fc84a736cffa14e49f661f15d23048b777e73244b60d65c2a9c0"
   },
   "pandas": "2.3.3",
   "pyarrow": "23.0.1",
   "scikit_learn": "1.7.2",
-  "source_revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557"
+  "source_revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557",
+  "split": "stratified 90/10 from all eligible official train; all eligible official test"
 }

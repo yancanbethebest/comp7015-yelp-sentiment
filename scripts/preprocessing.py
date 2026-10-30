@@ -7,8 +7,7 @@ import html
 import json
 import re
 import subprocess
-import unicodedata
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 import pandas as pd
@@ -19,7 +18,7 @@ from sklearn.model_selection import train_test_split
 
 DATASET = "https://huggingface.co/datasets/fancyzhx/yelp_polarity/resolve/main/plain_text"
 SEED = 42
-VERSION = "v1.0"
+VERSION = "v1.1-full"
 TAG = re.compile(r"</?[A-Za-z][A-Za-z0-9]*(?:\s+[^<>]*?)?\s*/?>")
 URL = re.compile(r"(?<![\w@])(?:https?://|www\.)[^\s<>]+", re.I)
 SPACE = re.compile(r"\s+")
@@ -136,30 +135,13 @@ def main():
     counts["eligible_train"] = len(records["train"])
     counts["eligible_test"] = len(records["test"])
 
-    def balanced_sample(frame, per_class):
-        parts = []
-        for label in (0, 1):
-            pool = frame[frame.label == label]
-            n = min(len(pool), per_class)
-            parts.append(pool.sample(n=n, random_state=SEED))
-        return pd.concat(parts).sample(frac=1, random_state=SEED).reset_index(drop=True)
-
-    train_pool = balanced_sample(records["train"], 10000)
-    if len(train_pool) == 20000:
-        train, val = train_test_split(train_pool, test_size=0.2, stratify=train_pool.label, random_state=SEED)
-    else:
-        train_parts, val_parts = [], []
-        for label in (0, 1):
-            cls = train_pool[train_pool.label == label]
-            val_parts.append(cls.iloc[: min(2000, len(cls) // 5)])
-            train_parts.append(cls.iloc[min(2000, len(cls) // 5):])
-        train, val = pd.concat(train_parts), pd.concat(val_parts)
-    outputs = {"train": train, "val": val, "test": balanced_sample(records["test"], 2500)}
+    train, val = train_test_split(records["train"], test_size=0.1,
+                                  stratify=records["train"].label, random_state=SEED)
+    outputs = {"train": train, "val": val, "test": records["test"]}
 
     for split, frame in outputs.items():
         frame = frame[["sample_id", "text", "label", "raw_text", "source_split", "source_row_id"]]
         frame[["sample_id", "text", "label"]].to_csv(data_dir / f"{split}.csv", index=False, encoding="utf-8")
-        frame.assign(cleaning_version=VERSION).to_csv(report_dir / f"{split}_audit.csv", index=False, encoding="utf-8")
         counts[f"output_{split}"] = len(frame)
         for label in (0, 1):
             counts[f"output_{split}_label_{label}"] = int((frame.label == label).sum())
@@ -181,7 +163,8 @@ def main():
                 "source_sha256": {p.name: sha256(p) for p in raw_dir.glob("*.parquet")},
                 "output_sha256": {p.name: sha256(p) for p in data_dir.glob("*.csv")},
                 "pandas": pd.__version__, "pyarrow": pyarrow.__version__,
-                "scikit_learn": sklearn.__version__, "source_revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557"}
+                "scikit_learn": sklearn.__version__, "source_revision": "bbf1c97a1f0cf005e5aded43839fd814654a1557",
+                "split": "stratified 90/10 from all eligible official train; all eligible official test"}
     (report_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print(json.dumps({k: counts[k] for k in ("raw_train", "raw_test", "output_train", "output_val", "output_test", "conflicting_rows", "train_test_overlap_removed")}, indent=2))
 
