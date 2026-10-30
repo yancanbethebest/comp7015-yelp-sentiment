@@ -16,9 +16,9 @@
 
 ## 每个模型的代码与结果
 
-### 两组独立的 100 轮 LSTM 实验
+### 两组独立的 LSTM 延长训练实验（原定上限 100 轮）
 
-两种 LSTM 从头分别训练，使用相同数据划分、seed 42、100 维词向量、128 个隐藏单元、dropout 0.3、学习率 0.001、batch size 128 和最大长度 256。GloVe 词向量参与微调；完整运行 100 轮，按验证 Macro-F1 保存最佳 checkpoint，不评估测试集。
+两种 LSTM 从头分别训练；按用户要求在效果满意后提前停止，随机组完成 71 轮、GloVe 组完成 35 轮。使用相同数据划分、seed 42、100 维词向量、128 个隐藏单元、dropout 0.3、学习率 0.001、batch size 128 和最大长度 256。GloVe 词向量参与微调；原计划最多运行 100 轮，按验证 Macro-F1 保存最佳 checkpoint，不评估测试集。
 
 | 实验 | 独立训练入口 | 结果目录 |
 |---|---|---|
@@ -31,7 +31,7 @@ python scripts/train_lstm_glove.py --embedding-file glove.6B.100d.txt
 python scripts/plot_lstm_results.py
 ```
 
-绘图需要 `matplotlib`。每个结果目录分别保存训练/验证 loss、accuracy、Macro-F1 曲线，以及最佳轮次的验证混淆矩阵；根结果目录的 `comparison.png` 比较两种模型的验证曲线。训练日志和模型权重在训练环境产生，完成后将指标与图片发布到 GitHub，checkpoint 放到 GitHub Release。
+绘图需要 `matplotlib`。每个结果目录分别保存训练/验证 loss、accuracy、Macro-F1 曲线，以及最佳轮次的验证混淆矩阵；根结果目录的 `comparison.png` 比较两种模型的验证曲线。训练日志和模型权重在训练环境产生，指标与图片已发布到 GitHub，checkpoint 放到 GitHub Release。
 
 ### 已完成的 10 轮实验
 
@@ -74,3 +74,7 @@ GloVe 版需先取得 Stanford GloVe 6B 的 `glove.6B.100d.txt`。LSTM 词表从
 ## 组员下一步工作
 
 请先阅读 [NEXT_STEPS.md：最佳模型加载、实验分工与后续工作](NEXT_STEPS.md)。包含两种最佳模型的下载与预测命令、超参数实验建议、BERT 对比、最终评估规范及报告交付清单。
+
+## 延长训练结果与图片
+
+随机词向量组完成 **71 轮**，最佳验证 F1 **89.25%**（第 69 轮）；GloVe 组完成 **35 轮**，最佳验证 F1 **90.12%**（第 10 轮）。按用户要求提前停止，未跑满原定 100 轮。[查看完整报告、训练曲线和验证混淆矩阵](experiments/lstm_100/README.md)；[下载两种最佳 checkpoint](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/lstm-extended-2026-10-31)。
