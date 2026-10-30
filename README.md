@@ -38,35 +38,7 @@ A comparative study of deep learning approaches for binary sentiment classificat
 
 GRU、网络深度调整等可作为后续扩展，当前已交付的模型为 Random BiLSTM、GloVe BiLSTM 和 BERT。
 
-### 1.3 Experimental Workflow
-
-```text
-Official Yelp Review Polarity Dataset
-               598,000 reviews
-                      |
-                      v
-          Full Cleaning & Validation
-               597,977 reviews
-                      |
-          +-----------+------------+
-          |                        |
-          v                        v
- Historical 25K Subset     Full Cleaned Dataset
-          |                        |
-          v                        v
- Preliminary Training      Formal Model Training
-      [Completed]             [To Be Done]
-                                   |
-                                   v
-                         Hyperparameter Selection
-                                   |
-                                   v
-                          Final Test Evaluation
-                                   |
-                                   v
-                              Report & PPT
-```
-
+
 ---
 
 ## 2. Dataset & Data Preprocessing
