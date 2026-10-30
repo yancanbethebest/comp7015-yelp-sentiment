@@ -2,159 +2,248 @@
 
 A comparative study of deep learning approaches for binary sentiment classification using the **Yelp Review Polarity Dataset**.
 
-本项目为 COMP7015 自然语言处理小组项目，旨在比较不同文本表示方法与深度学习模型在 Yelp 用户评论情感分类任务中的表现。
+本项目为 COMP7015 小组课程项目，研究随机词向量、预训练词向量和 BERT 在 Yelp 评论情感二分类任务中的表现。
 
-项目使用统一的数据清洗、分层抽样和模型评估流程，构建 Random Embedding BiLSTM、GloVe BiLSTM 和 BERT 三种基线模型，并支持后续超参数优化、模型对比与错误分析。
+本阶段主要完成了**全量数据清洗、固定数据划分，以及抽样数据上的模型初步训练**。正式模型训练、超参数优化和最终评估由后续负责成员继续完成。
+
+| 阶段 | 内容 | 当前状态 |
+|---|---|---|
+| Data Preparation | 全量数据清洗、质量检查、固定划分与数据交付 | 已完成 |
+| Preliminary Training | 在抽样数据上验证三种模型的训练、保存和加载流程 | 已完成 |
+| Formal Training & Optimization | 在全量清洗数据上训练、调参并比较模型 | 待对应成员完成 |
+| Final Evaluation & Reporting | 统一测试评估、错误分析、报告与 PPT | 待完成 |
+
+当前发布的模型权重属于 **Preliminary Checkpoints**，其验证结果来自历史抽样实验。
 
 ---
 
 ## 1. Project Overview
 
-### Task: Binary Sentiment Classification
+### 1.1 Task Definition
 
-给定一条 Yelp 用户评论，预测其情感类别：
+输入一条 Yelp 用户评论，预测其情感类别：
 
 | Label | Sentiment | Description |
 |---|---|---|
 | `0` | Negative | 负面评论 |
 | `1` | Positive | 正面评论 |
 
-### Research Objectives
+### 1.2 Research Objectives
 
-本项目主要研究以下问题：
+1. **Embedding Comparison:** 比较随机初始化词向量与 GloVe 预训练词向量对 BiLSTM 的影响。
+2. **Architecture Comparison:** 比较循环神经网络与预训练 BERT 的分类表现。
+3. **Hyperparameter Optimization:** 研究学习率、Batch Size、Dropout 和隐藏单元数量等参数的影响。
+4. **Computational Analysis:** 比较分类效果、训练时间、显存需求与实现复杂度。
+5. **Error Analysis:** 分析模型在否定表达、长评论和混合情感等样本上的错误。
 
-1. **Embedding Comparison:** 比较随机初始化词向量与预训练 GloVe 词向量在 BiLSTM 模型中的表现。
-2. **Architecture Comparison:** 分析循环神经网络与预训练 Transformer 模型之间的性能差异。
-3. **Hyperparameter Optimization:** 研究学习率、Batch Size、Dropout 等超参数对模型表现的影响。
-4. **Model Evaluation:** 从分类性能、训练效率、模型稳定性和错误类型等方面进行综合分析。
+GRU、网络深度调整等可作为后续扩展，当前已交付的模型为 Random BiLSTM、GloVe BiLSTM 和 BERT。
+
+### 1.3 Experimental Workflow
+
+```text
+Official Yelp Review Polarity Dataset
+               598,000 reviews
+                      |
+                      v
+          Full Cleaning & Validation
+               597,977 reviews
+                      |
+          +-----------+------------+
+          |                        |
+          v                        v
+ Historical 25K Subset     Full Cleaned Dataset
+          |                        |
+          v                        v
+ Preliminary Training      Formal Model Training
+      [Completed]             [To Be Done]
+                                   |
+                                   v
+                         Hyperparameter Selection
+                                   |
+                                   v
+                          Final Test Evaluation
+                                   |
+                                   v
+                              Report & PPT
+```
 
 ---
 
 ## 2. Dataset & Data Preprocessing
 
-### 2.1 Official source and full cleaned dataset
+### 2.1 Official Dataset
 
-Data source: [Yelp Review Polarity](https://huggingface.co/datasets/fancyzhx/yelp_polarity). The official dataset contains **560,000 training reviews and 38,000 test reviews**, for 598,000 rows in total. Member 1 cleaned the complete official dataset. After removing 14 same-label duplicates, 7 conflicting-label rows and 2 train/test overlaps, **597,977 eligible reviews** remain: 559,977 from official train and all 38,000 from official test.
+**Source:** [Yelp Review Polarity — Hugging Face](https://huggingface.co/datasets/fancyzhx/yelp_polarity)
 
-Using seed `42`, we split all eligible official training rows into stratified train/validation sets (90%/10%). The official test split remains separate.
+| Official Split | Samples |
+|---|---:|
+| Training | 560,000 |
+| Test | 38,000 |
+| **Total** | **598,000** |
 
-| Current file | Source | Total | Negative (0) | Positive (1) |
-|---|---|---:|---:|---:|
-| [`processed_data/train.csv`](processed_data/train.csv) | Official train | 503,979 | 251,986 | 251,993 |
-| [`processed_data/val.csv`](processed_data/val.csv) | Official train | 55,998 | 27,999 | 27,999 |
-| [`processed_data/test.csv`](processed_data/test.csv) | Official test | 38,000 | 19,000 | 19,000 |
-| **Total** | | **597,977** | **298,985** | **298,992** |
+官方数据集没有单独的验证集。训练集和验证集均从官方训练数据中划分，官方测试数据独立保留。
 
-The full CSV files are stored with Git LFS. After cloning, run `git lfs pull`. Cleaning statistics and SHA-256 checksums are in [`reports/`](reports/) and [`reports/manifest.json`](reports/manifest.json).
+### 2.2 Full Cleaned Dataset
 
-### 2.2 Data used for the published preliminary models
+已对全部官方数据执行统一清洗，共保留 **597,977 条合格评论**：
 
-**The checkpoints and validation scores in Sections 3–4 were produced earlier using a fixed 25,000-row sample, not the full cleaned dataset above.** That historical sample is preserved at [`experiments/sample_25k/`](experiments/sample_25k/): 16,000 train, 4,000 validation and 5,000 test. Its train/validation rows came from official train, and its test rows came from official test. Each split was balanced by label. The current full-data CSV files were published after those model trials; no full-data retraining has been performed yet.
+| Cleaning Operation | Removed Rows |
+|---|---:|
+| 同标签完全重复记录 | 14 |
+| 相同文本但标签冲突的记录 | 7 |
+| 官方训练集与测试集之间的重叠记录 | 2 |
+| **Total Removed** | **23** |
 
-| Experiment stage | Train | Validation | Test | Use |
-|---|---:|---:|---:|---|
-| Published preliminary checkpoints | 16,000 | 4,000 | 5,000 | Reproduce existing trial results |
-| Current full cleaned split | 503,979 | 55,998 | 38,000 | Formal training by the assigned model members |
+清洗后，官方训练池包含 **559,977 条**，官方测试池包含 **38,000 条**。
 
-Results from the two stages must be reported separately. The formal training responsibilities are listed in [`NEXT_STEPS.md`](NEXT_STEPS.md).
+使用随机种子 `42`，按标签将全部合格官方训练记录分层划分为 90% 训练集与 10% 验证集：
 
-### 2.3 Cleaning and model-specific preprocessing
+| Current File | Samples | Negative | Positive |
+|---|---:|---:|---:|
+| [`processed_data/train.csv`](processed_data/train.csv) | 503,979 | 251,986 | 251,993 |
+| [`processed_data/val.csv`](processed_data/val.csv) | 55,998 | 27,999 | 27,999 |
+| [`processed_data/test.csv`](processed_data/test.csv) | 38,000 | 19,000 | 19,000 |
+| **Total** | **597,977** | **298,985** | **298,992** |
 
-The shared pipeline checks missing text and invalid labels, normalizes whitespace, decodes HTML entities, replaces explicit URLs, removes exact duplicates, isolates conflicting labels and excludes official train/test overlaps. It keeps negation, punctuation, numbers and case. Very short reviews are flagged rather than deleted. See [cleaning rules](Yelp_Polarity_Cleaning_Rules.md), [`scripts/preprocessing.py`](scripts/preprocessing.py) and [cleaning summary](reports/cleaning_summary.csv).
+`processed_data/` 是当前正式交付的**全量清洗数据目录**。类别比例接近 50% / 50%；清洗后的训练集没有通过复制或额外删除样本强制凑成完全平衡。
 
-For the LSTM models, the training script lowercases and tokenizes text, builds the vocabulary **only from its training split**, maps tokens to integers and applies dynamic padding. The random and GloVe LSTMs share this pipeline; GloVe initializes the embedding layer. BERT uses its pretrained tokenizer and fine-tunes the sequence classifier. Formal models must fit their vocabulary or other data-derived settings on the full training split only.
+CSV 字段为：
+
+```text
+sample_id,text,label
+```
+
+`sample_id` 包含官方来源分区和原始行号，便于追溯。
+
+### 2.3 Historical Subset Used for Preliminary Training
+
+此前为验证模型和训练流程，从清洗后的数据池中构建了 **25,000 条类别平衡的抽样数据**：
+
+| Split | Samples | Negative | Positive |
+|---|---:|---:|---:|
+| Training | 16,000 | 8,000 | 8,000 |
+| Validation | 4,000 | 2,000 | 2,000 |
+| Test | 5,000 | 2,500 | 2,500 |
+| **Total** | **25,000** | **12,500** | **12,500** |
+
+该历史划分保存在 [`experiments/sample_25k/`](experiments/sample_25k/)。
+
+**当前三组 checkpoint 均在 16,000 条训练样本上完成初步训练，使用 4,000 条验证样本选择最佳权重。它们尚未在全量清洗数据上重新训练。**
+
+| Experiment Stage | Training | Validation | Test |
+|---|---:|---:|---:|
+| Published preliminary experiments | 16,000 | 4,000 | 5,000 |
+| Full cleaned dataset for formal experiments | 503,979 | 55,998 | 38,000 |
+
+两阶段的指标应分别报告，不能将已有抽样实验成绩写成全量训练结果。
+
+### 2.4 Data Cleaning Pipeline
+
+共享清洗流程包括：
+
+1. 检查缺失文本、空文本和非法标签。
+2. 规范空白字符，解码 HTML 实体并规范明确的 URL。
+3. 检查清洗后的完全重复文本。
+4. 隔离相同文本对应不同标签的冲突记录。
+5. 排除官方训练集与测试集之间的文本重叠。
+6. 标记极短文本并统计文本长度，不因长度自动删除。
+7. 固定随机种子，完成分层划分、统计与校验和记录。
+
+清洗保留否定词、标点、数字、大小写和 emoji。共享清洗阶段不统一删除停用词，也不提前执行模型专属的分词、词表构建或 padding。
+
+相关文件：
+
+- [Cleaning Rules](Yelp_Polarity_Cleaning_Rules.md)
+- [Preprocessing Code](scripts/preprocessing.py)
+- [Cleaning Summary](reports/cleaning_summary.csv)
+- [Flagged Records](reports/flagged_records.csv)
+- [Data Manifest & SHA-256](reports/manifest.json)
+
+### 2.5 Model-Specific Preprocessing
+
+| Model | Text Processing | Representation |
+|---|---|---|
+| Random BiLSTM | 小写化、分词、训练集词表、整数编码、动态 padding | 随机初始化且可训练的词向量 |
+| GloVe BiLSTM | 与 Random BiLSTM 相同 | GloVe 初始化，并参与微调 |
+| BERT | 预训练 tokenizer、截断与动态 padding | 上下文相关表示 |
+
+LSTM 词表只由对应实验的训练集构建，验证集和测试集不参与拟合。
+
+正式训练应基于全量训练集重新建立适用的词表与缓存，并保持各模型使用相同的样本划分。
 
 ---
 
-## 3. Model Architectures
-
-本项目实现三种主要模型，用于比较不同文本表示方法和网络架构的性能。
+## 3. Preliminary Models
 
 ### 3.1 Random Embedding BiLSTM
 
 **Directory:** [`models/lstm_random/`](models/lstm_random/)
 
 - Architecture: Bidirectional LSTM
-- Embedding: Random Initialization
-- Training Strategy: Training from Scratch
-- Objective: Establish a recurrent neural network baseline without external pre-trained embeddings.
+- Embedding: Random initialization, trainable
+- Training Strategy: Supervised training from scratch
+- Preliminary Training Samples: 16,000
 
-该模型通过监督训练同时学习词向量表示与情感分类能力，作为后续模型比较的基础。
+用于建立不依赖外部预训练词向量的循环网络基线。
 
 ### 3.2 GloVe Embedding BiLSTM
 
 **Directory:** [`models/lstm_glove/`](models/lstm_glove/)
 
 - Architecture: Bidirectional LSTM
-- Embedding: Pre-trained GloVe
-- Embedding Strategy: Trainable Embeddings
-- Objective: Evaluate the contribution of pre-trained word embeddings.
+- Embedding: GloVe 6B, 100 dimensions
+- Embedding Strategy: Fine-tuned during training
+- Preliminary Training Samples: 16,000
 
-该模型使用预训练 GloVe 词向量初始化 Embedding Layer，并在情感分类训练过程中对词向量进行微调。
+使用预训练 GloVe 词向量初始化 embedding layer，比较预训练词向量对分类效果的影响。
 
-### 3.3 Pre-trained BERT
+### 3.3 BERT Sequence Classifier
 
 **Directory:** [`models/bert/`](models/bert/)
 
-- Architecture: BERT-based Sequence Classification
-- Initialization: Pre-trained BERT Checkpoint
+- Model: `google-bert/bert-base-uncased`
+- Architecture: BERT with a binary classification head
 - Training Strategy: Fine-tuning
-- Objective: Evaluate contextual language representations for sentiment classification.
+- Preliminary Training Samples: 16,000
 
-BERT 利用预训练语言模型的上下文表示能力，通过下游情感分类任务进行监督微调。
+使用已有预训练 BERT 进行情感分类微调。
+
+这里的 **Preliminary Training** 指项目中的初步试跑阶段：Random BiLSTM 从头训练，GloVe BiLSTM 使用预训练词向量，BERT 使用预训练语言模型进行任务微调。
 
 ---
 
-## 4. Baseline Experimental Results
+## 4. Preliminary Experimental Results
 
 ### 4.1 Validation Performance
 
-以下为三组基线模型在验证集上的最佳实验结果。
+以下结果使用相同的历史划分：训练 16,000 条、验证 4,000 条，随机种子为 `42`。
 
-| Model | Actual Epochs | Best Epoch | Accuracy | Macro-F1 |
+| Model | Actual Epochs | Best Epoch | Validation Accuracy | Validation Macro-F1 |
 |---|---:|---:|---:|---:|
 | Random BiLSTM | 71 | 69 | 89.25% | 89.25% |
 | GloVe BiLSTM | 35 | 10 | 90.12% | 90.12% |
 | BERT | 10 | 2 | **95.20%** | **95.20%** |
 
-**Checkpoint Selection Metric:** Validation Macro-F1
+**Checkpoint Selection:** Best Validation Macro-F1
 
-所有发布的最佳权重均按照验证集 Macro-F1 选择，而不是直接使用最后一轮的权重。
+两组 LSTM 原计划最多训练 100 轮，运行过程中手动提前停止。实际完成轮数和最佳轮次分别记录在配置及指标文件中。
 
-### 4.2 Preliminary Findings
+BERT 的 `best_model.pt` 由原始 Hugging Face checkpoint 转换得到，转换前后权重张量一致。
 
-**GloVe vs. Random Embedding**
+### 4.2 Preliminary Observations
 
-GloVe BiLSTM 的验证集 Accuracy 比 Random BiLSTM 高 0.87 个百分点。
+- GloVe BiLSTM 的验证 Accuracy 比 Random BiLSTM 高 **0.87 个百分点**。
+- BERT 的验证 Accuracy 比 GloVe BiLSTM 高 **5.08 个百分点**。
+- 两种 LSTM 的训练准确率接近 100%，而验证表现明显较低，训练曲线显示过拟合。
+- 更多训练轮数没有持续带来验证性能提升，GloVe 的最佳结果出现在第 10 轮。
 
-这表明在当前实验条件下，预训练词向量对情感分类任务具有一定帮助。
+[查看 LSTM 训练曲线、混淆矩阵及完整记录](experiments/lstm_100/)
 
-**BERT vs. GloVe BiLSTM**
+### 4.3 Interpretation & Limitations
 
-BERT 的验证集 Accuracy 比 GloVe BiLSTM 高 5.08 个百分点。
+这些是**单个种子、特定配置下的初步验证结果**，用于检查训练流程并提供后续实验参考。
 
-在当前三组基线实验中，BERT 获得最高的验证集 Accuracy 与 Macro-F1。
-
-**Training Behavior**
-
-- Random BiLSTM: 最佳结果出现在第 69 轮。
-- GloVe BiLSTM: 最佳结果出现在第 10 轮。
-- BERT: 最佳结果出现在第 2 轮。
-
-这些结果说明不同架构的最佳训练轮次存在差异，但不能仅根据最佳轮次判断模型是否过拟合。
-
-### 4.3 Training Notes
-
-- 两组 LSTM 的原计划训练上限均为 100 epochs。
-- Random BiLSTM 实际完成 71 epochs。
-- GloVe BiLSTM 实际完成 35 epochs。
-- 两组 LSTM 均根据实际运行安排手动提前停止。
-- BERT 完成 10 epochs，最佳 checkpoint 来自第 2 轮。
-- BERT 的 `.pt` 文件由原始 Hugging Face checkpoint 转换得到，转换过程未重新训练，模型张量保持一致。
-
-详细训练记录、配置及指标保存在对应模型目录和实验报告中。
-
-**Important:** 本章节结果均为验证集指标，并非最终测试集结果。当前三组基线模型尚未完成统一最终测试。
+目前尚未完成全量数据上的正式训练、系统超参数研究、多种子稳定性分析和统一最终测试。不同训练预算下的初步结果，也不足以单独判断模型的计算效率。
 
 ---
 
@@ -162,61 +251,44 @@ BERT 的验证集 Accuracy 比 GloVe BiLSTM 高 5.08 个百分点。
 
 ```text
 COMP7015-Yelp-Sentiment/
-│
+├── processed_data/              # Full cleaned dataset: 597,977 reviews
+│   ├── train.csv
+│   ├── val.csv
+│   └── test.csv
 ├── models/
-│   ├── lstm_random/             # Random Embedding BiLSTM
-│   ├── lstm_glove/              # GloVe BiLSTM
-│   └── bert/                    # Fine-tuned BERT
-│
-├── processed_data/              # Cleaned and split datasets
-│
+│   ├── lstm_random/
+│   ├── lstm_glove/
+│   └── bert/
 ├── experiments/
-│   └── lstm_100/                # Extended LSTM experiments
-│
-├── reports/                     # Audit logs and experiment reports
-│
-├── scripts/                     # Preprocessing, prediction and plotting
-│
-├── requirements-training.txt    # Training dependencies
+│   ├── sample_25k/              # Historical split used by published models
+│   └── lstm_100/                # Preliminary LSTM curves and metrics
+├── reports/                     # Cleaning statistics, checksums and reports
+├── scripts/                     # Cleaning, plotting and prediction tools
+├── requirements.txt
+├── requirements-training.txt
 ├── Yelp_Polarity_Cleaning_Rules.md
 ├── NEXT_STEPS.md
 └── README.md
 ```
 
-### Standard Model Directory
-
-每个模型目录包含以下文件：
-
-```text
-model_name/
-├── best_model.pt
-├── model.py
-├── train.py
-├── config.yaml
-├── metrics.json
-└── README.md
-```
+每个模型目录包含：
 
 | File | Description |
 |---|---|
-| `best_model.pt` | Best model checkpoint selected by validation Macro-F1 |
-| `model.py` | Model architecture and checkpoint loading utilities |
-| `train.py` | Model training implementation |
-| `config.yaml` | Model configuration and training hyperparameters |
-| `metrics.json` | Evaluation results and experiment metrics |
-| `README.md` | Model-specific usage instructions |
+| `best_model.pt` | 初步实验中验证 Macro-F1 最佳的 checkpoint |
+| `model.py` | 模型架构及加载函数 |
+| `train.py` | 训练实现 |
+| `config.yaml` | 训练参数与已发布实验说明 |
+| `metrics.json` | 初步训练及验证指标 |
+| `README.md` | 模型使用说明 |
 
-BERT 模型目录还包含对应的 Tokenizer 文件。
+BERT 目录另包含 tokenizer 文件。
 
 ---
 
 ## 6. Installation & Environment Setup
 
-### 6.1 Clone Repository
-
-模型权重采用 **Git LFS** 管理。
-
-建议使用 Git 克隆仓库，而不是直接下载 GitHub ZIP 压缩包。
+模型权重和全量清洗 CSV 使用 **Git LFS** 管理。
 
 ```bash
 git clone https://github.com/yancanbethebest/comp7015-yelp-sentiment.git
@@ -224,248 +296,195 @@ cd comp7015-yelp-sentiment
 
 git lfs install
 git lfs pull
-```
 
-### 6.2 Install Dependencies
-
-```bash
 python -m pip install -r requirements-training.txt
 ```
 
-建议在独立 Python 虚拟环境中运行项目。
+若下载的 `.pt` 或 `.csv` 文件只有几行文字，说明取得的是 LFS 指针，需要运行 `git lfs pull` 获取真实文件。
 
-### 6.3 Git LFS Notes
-
-如果下载后的 `best_model.pt` 只有几行文本，说明该文件可能是 Git LFS 指针，而不是真正的模型权重。
-
-运行：
+重新运行数据清洗时，还需安装：
 
 ```bash
-git lfs pull
+python -m pip install -r requirements.txt
+python scripts/preprocessing.py
 ```
 
-即可获取仓库中受 Git LFS 管理的实际权重文件。
+建议在独立 Python 环境中运行。GPU 用于后续正式模型训练。
 
 ---
 
 ## 7. Training & Reproducibility
 
-### 7.1 Run Baseline Models
+以下命令供相应模型负责人使用。
 
-所有训练命令均从仓库根目录执行。
+### 7.1 Historical Subset Training
 
-**Random BiLSTM**
-
-```bash
-python models/lstm_random/train.py
-```
-
-**GloVe BiLSTM**
+若要使用历史抽样重新运行初步实验，应显式指定数据路径：
 
 ```bash
-python models/lstm_glove/train.py --embedding-file glove.6B.100d.txt
+python models/lstm_random/train.py \
+  --data experiments/sample_25k
+
+python models/lstm_glove/train.py \
+  --data experiments/sample_25k \
+  --embedding-file glove.6B.100d.txt
+
+python models/bert/train.py \
+  --data experiments/sample_25k \
+  --train-limit 16000 \
+  --val-limit 4000
 ```
 
-**BERT**
+每个脚本默认读取自身目录的 `config.yaml`，命令行参数可覆盖配置。
+
+LSTM 配置保留原计划 100 轮上限。历史实验为手动停止，因此重新运行不会自动在第 71 或第 35 轮停止。
+
+### 7.2 Full-Dataset Training
+
+正式训练使用当前全量清洗划分：
 
 ```bash
-python models/bert/train.py
+python models/lstm_random/train.py \
+  --data processed_data \
+  --output runs/full_training/lstm_random
+
+python models/lstm_glove/train.py \
+  --data processed_data \
+  --embedding-file glove.6B.100d.txt \
+  --output runs/full_training/lstm_glove
+
+python models/bert/train.py \
+  --data processed_data \
+  --train-limit 503979 \
+  --val-limit 55998 \
+  --output runs/full_training/bert
 ```
 
-每个训练脚本默认读取其模型目录下的 `config.yaml`。
+**BERT 必须同时确认 `--train-limit` 和 `--val-limit`。** 现有配置保留了初步实验的样本数量限制，仅更换数据目录不会自动使用全部训练和验证样本。
 
-支持的命令行参数可以覆盖配置文件中的对应参数，具体参数以训练脚本和模型 README 为准。
+正式负责人应在运行前确定训练预算和超参数。这些命令是入口示例，不代表已经执行或完成正式训练。
 
-GloVe 原始词向量文件仅在重新训练相关模型时需要。
+GloVe 原始词向量文件只在重新训练时需要，加载已发布 checkpoint 不需要该文件。
 
-### 7.2 Training Output
+### 7.3 Checkpoint Loading and Continued Training
 
-新的训练结果默认输出至：
+各模型的 `model.py` 提供 `load_checkpoint()`，用法见对应模型目录的 README。
 
-```text
-runs/
-├── lstm_random/
-├── lstm_glove/
-└── bert/
-```
+当前 checkpoint 不含优化器状态，训练入口也未提供自动恢复历史训练的功能。
 
-重新运行训练脚本不会覆盖 `models/` 目录中已发布的最佳模型权重。
+若希望基于初步 LSTM 权重继续训练，必须保持词表及 token ID 映射兼容。重新建立全量词表后，不能直接假设旧 embedding 权重仍可按原索引使用；应重新初始化或显式完成词向量映射。
 
-### 7.3 Reproducibility
+### 7.4 Reproducibility Records
 
-本项目采用以下措施提高可复现性：
+每组正式实验应保存：
 
-- Fixed Random Seed: `42`
-- Fixed Training / Validation / Test Splits
-- Consistent Binary Label Definition
-- Shared Evaluation Metrics
-- Validation Macro-F1-based Checkpoint Selection
-- Saved Training Configurations and Experiment Logs
+- 数据版本、样本数及校验和；
+- 随机种子、模型结构和初始化来源；
+- 学习率、Batch Size、Dropout 等训练配置；
+- 每轮指标、最佳轮次与 checkpoint；
+- 软件版本、GPU 型号、训练耗时及显存使用。
 
-固定随机种子有助于减少随机波动，但不同硬件、软件版本和非确定性计算操作仍可能造成实验结果差异。
+固定随机种子有助于复现，但不同硬件与软件环境仍可能产生数值差异。
 
 ---
 
-## 8. Model Checkpoints & Hyperparameter Tuning
+## 8. Hyperparameter Optimization
 
-### 8.1 Model Loading
+正式模型负责人需要在固定的全量划分上开展参数对照。
 
-每个模型目录中的 `model.py` 提供 `load_checkpoint()` 函数。
+| Model | Suggested Parameters |
+|---|---|
+| Random BiLSTM | Learning Rate、Batch Size、Dropout、Hidden Size |
+| GloVe BiLSTM | Embedding Frozen/Fine-tuned、Learning Rate、Batch Size、Dropout |
+| BERT | Learning Rate、Batch Size、Sequence Length、Fine-tuning Strategy |
 
-具体调用方式与依赖请参考各模型目录中的 README。
+参数选择仅依据验证集。建议对最终候选配置使用多个训练种子重复实验，报告均值与标准差。
 
-已发布的 `best_model.pt` 主要用于加载最佳模型参数。
+改变隐藏维度、层数等结构参数时，需相应修改模型实现。`config.yaml` 中增加一个字段，并不意味着训练代码已经支持该参数。
 
-**注意：** 当前 checkpoint 不包含优化器状态，因此不能用于精确恢复先前中断的训练过程。
-
-### 8.2 Hyperparameter Optimization
-
-后续实验可以基于已有模型架构、训练脚本和配置文件开展超参数优化。
-
-| Hyperparameter | Candidate Values | Purpose |
-|---|---|---|
-| Learning Rate | 1e-3 / 1e-4 / 1e-5 | Optimization behavior |
-| Batch Size | 16 / 32 / 64 | Training stability and efficiency |
-| Dropout | 0.2 / 0.3 / 0.5 | Regularization |
-| Hidden Size | 64 / 128 / 256 | Model representation capacity |
-| Number of Layers | 1 / 2 / 3 | Network depth |
-| Max Sequence Length | Model-dependent | Input context coverage |
-
-以上参数仅作为候选示例，不代表所有模型都适合使用相同的搜索范围。
-
-超参数实验应根据对应架构分别设计。
-
-### 8.3 Important Notes on Fine-tuning
-
-**Training Hyperparameters**
-
-学习率、Batch Size 等训练参数可以在兼容模型结构的情况下进行调整，并可选择重新训练或继续训练。
-
-**Architectural Hyperparameters**
-
-Hidden Size、网络层数等结构参数可能改变权重张量的形状，通常需要重新构建模型并重新训练相关参数。
-
-**Checkpoint Limitation**
-
-`.pt` 文件提供已有模型参数，但完整的超参数优化仍依赖：
-
-- Model Architecture
-- Training Code
-- Configuration Files
-- Training Dataset
-- Evaluation Pipeline
-
-建议所有实验均独立保存配置、验证指标、训练记录及模型权重。
-
-### 8.4 Historical Checkpoints
-
-历史 Release 保留作为实验过程记录：
+历史权重保留在：
 
 - [Extended LSTM Checkpoints](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/lstm-extended-2026-10-31)
 - [10-Epoch Experimental Checkpoints](https://github.com/yancanbethebest/comp7015-yelp-sentiment/releases/tag/checkpoints-2026-10-30)
 
-当前正式模型以各模型目录中的 `best_model.pt` 为准。
-
 ---
 
-## 9. Evaluation Protocol
+## 9. Formal Evaluation Protocol
 
-本项目采用以下评估指标：
+### 9.1 Metrics
 
-| Metric | Description |
+正式评估应报告：
+
+| Metric | Reporting Requirement |
 |---|---|
-| Accuracy | Overall classification accuracy |
-| Precision | Proportion of predicted positives that are correct |
-| Recall | Proportion of actual positives correctly identified |
-| Macro-F1 | Unweighted mean of per-class F1 scores |
-| Confusion Matrix | Distribution of correct and incorrect predictions |
+| Accuracy | 整体分类准确率 |
+| Precision | 每类及 Macro Precision |
+| Recall | 每类及 Macro Recall |
+| F1-score | 每类 F1 和 Macro-F1 |
+| Confusion Matrix | 正负类别预测分布 |
 
-### 9.1 Validation Set
+### 9.2 Validation and Test Usage
 
-验证集用于：
+验证集用于选择超参数、训练轮次和最终 checkpoint。
 
-- 模型训练过程监控
-- 超参数选择
-- 最佳 checkpoint 选择
-- 模型配置比较
+在模型配置锁定后，使用统一的 **38,000 条测试数据**进行最终评估，保存逐样本预测，支持混淆矩阵和错误分析。
 
-### 9.2 Test Set
+历史试跑曾查看过部分官方测试子集结果，因此不能声称测试集在整个项目中从未被访问。后续应避免根据测试结果继续调参，并在正式报告中说明这一限制。
 
-测试集用于模型配置最终确定后的泛化性能评估。
+### 9.3 Final Comparison
 
-原则上不应使用测试集进行反复调参或模型选择。
+最终比较应包含分类指标、训练配置、数据规模、训练时间、显存需求和错误类型。
 
-### 9.3 Evaluation Limitations
-
-当前发布的三组模型仅报告统一的验证集指标，尚未完成最终统一测试。
-
-由于历史试跑中曾查看部分测试结果，因此不能将现有测试集描述为完全未被访问。
-
-后续最终报告应明确披露这一情况，并避免进一步依据测试表现修改模型配置。
+历史抽样实验与正式全量实验分别展示。计算成本比较应尽量统一硬件条件，并说明各模型的训练预算。
 
 ---
 
-## 10. Additional Resources
+## 10. Team Responsibilities & Next Steps
+
+| Member | Responsibility | Deliverables |
+|---|---|---|
+| 成员 1 | 项目统筹、全量数据清洗与划分、初步训练流程验证 | 数据预处理代码、数据交付、报告 Data 部分 |
+| 成员 2 | 随机 Embedding 的 LSTM/GRU 正式基础模型 | 模型代码、正式训练结果、报告 Model 部分 |
+| 成员 3 | GloVe/Word2Vec 与基础模型对比、超参数优化 | 实验代码、调参结果、报告 Experiments 部分 |
+| 成员 4 | BERT/DistilBERT 正式微调及性能与计算成本比较 | BERT 代码、对比结果、报告 Advanced Model 部分 |
+| 成员 5 | 统一评估、混淆矩阵、报告与 PPT 整合 | 评估代码、最终报告、展示 PPT |
+
+**当前数据清洗和初步试跑已完成，正式训练由成员 2–4 继续开展。**
+
+详细任务与交付要求见 [NEXT_STEPS.md](NEXT_STEPS.md)。
+
+---
+
+## 11. Additional Resources
 
 | Path | Description |
 |---|---|
-| [`processed_data/`](processed_data/) | Fixed cleaned datasets |
-| [`experiments/lstm_100/`](experiments/lstm_100/) | Extended LSTM training logs, plots and validation results |
-| [`reports/`](reports/) | Data cleaning audit, checksums and experimental reports |
-| [`scripts/`](scripts/) | Data preparation, visualization and prediction utilities |
-| [Cleaning Rules](Yelp_Polarity_Cleaning_Rules.md) | Detailed data cleaning specification |
-| [Next Steps](NEXT_STEPS.md) | Model optimization, evaluation and collaboration guidelines |
+| [`processed_data/`](processed_data/) | 全量清洗数据及固定划分 |
+| [`experiments/sample_25k/`](experiments/sample_25k/) | 已发布初步模型使用的历史抽样 |
+| [`experiments/lstm_100/`](experiments/lstm_100/) | LSTM 初步训练曲线、混淆矩阵与日志 |
+| [`reports/`](reports/) | 清洗统计、校验和及历史实验报告 |
+| [`scripts/`](scripts/) | 清洗、绘图和预测工具 |
+| [Cleaning Rules](Yelp_Polarity_Cleaning_Rules.md) | 数据清洗规范 |
+| [Next Steps](NEXT_STEPS.md) | 正式训练与协作指南 |
 
-`experiments/lstm_100/` 中的 `100` 表示原计划训练轮数，而非实际完成轮数。
-
-早期五轮训练结果仅作为历史试跑记录，不属于当前正式交付的基线模型。
-
----
-
-## 11. Future Work
-
-后续研究将围绕模型优化、系统比较与最终评估展开。
-
-### Hyperparameter Optimization
-
-系统研究不同模型的学习率、Batch Size、Dropout、网络结构及输入长度等参数。
-
-### Architecture Comparison
-
-进一步比较 BiLSTM、GRU 与 BERT 架构的分类性能、训练效率和计算开销。
-
-### Embedding Analysis
-
-对比随机初始化词向量与预训练 GloVe 词向量，并分析冻结和微调策略对分类结果的影响。
-
-### Robustness & Error Analysis
-
-开展多随机种子实验，并分析错误分类样本中的语言特征及可能的模型局限性。
-
-### Final Model Evaluation
-
-在最终模型配置确定后，统一计算测试集指标，完成模型对比与实验总结。
-
-具体任务安排、协作方式及实验交付要求见 [NEXT_STEPS.md](NEXT_STEPS.md)。
+`experiments/lstm_100/` 中的 `100` 表示原计划训练上限，实际完成轮数为 71 和 35。
 
 ---
 
 ## 12. Project Notes
 
-- 本项目使用抽样子集开展实验，不代表完整 Yelp Review Polarity 数据集上的模型表现。
-- 三组基线模型使用相同的数据划分和随机种子 `42`。
-- 模型权重使用 Git LFS 管理。
-- 原始数据与新的运行输出目录不上传到仓库。
-- 不在仓库中保存服务器地址、密码、访问令牌等敏感信息。
-- 历史训练记录与实验报告保留用于实验过程追踪。
-- 所有最终性能结论应基于统一的评估流程。
+- 正式数据交付共 **597,977 条**，位于 `processed_data/`。
+- 当前三组模型使用历史 **25,000 条抽样划分**完成初步训练。
+- 当前指标均为初步验证结果，尚无统一的正式全量训练结果。
+- 模型权重和全量清洗 CSV 通过 Git LFS 下载。
+- 正式训练使用统一数据划分，词表和参数选择仅依据训练集与验证集。
+- 后续模型结果应明确记录数据版本、配置和初始化来源。
+- 原始数据与新的运行输出目录不上传仓库。
+- 不提交服务器密码、访问令牌或其他敏感信息。
 
 ---
 
-**Course:** COMP7015
-
-**Project:** Yelp Review Polarity Sentiment Classification
-
-**Dataset:** [Hugging Face — Yelp Review Polarity](https://huggingface.co/datasets/fancyzhx/yelp_polarity)
-
+**Course:** COMP7015  
+**Project:** Yelp Review Polarity Sentiment Classification  
+**Dataset:** [Yelp Review Polarity — Hugging Face](https://huggingface.co/datasets/fancyzhx/yelp_polarity)  
 **Task:** Natural Language Processing / Binary Sentiment Classification
