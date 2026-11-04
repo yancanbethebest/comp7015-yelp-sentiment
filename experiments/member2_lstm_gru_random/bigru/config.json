@@ -1,0 +1,78 @@
+{
+  "run_name": "member2_bigru_random_full_seed42",
+  "seed": 42,
+  "config": {
+    "run_name": "member2_bigru_random_full_seed42",
+    "seed": 42,
+    "data_dir": "processed_data",
+    "runs_dir": "runs",
+    "max_len": 256,
+    "vocab_max_size": 30000,
+    "vocab_min_freq": 1,
+    "model": {
+      "rnn_type": "gru",
+      "embedding_dim": 100,
+      "hidden_dim": 128,
+      "num_layers": 1,
+      "bidirectional": true,
+      "dropout": 0.3,
+      "embedding_dropout": 0.1,
+      "pooling": "last"
+    },
+    "training": {
+      "epochs": 5,
+      "batch_size": 128,
+      "lr": 0.001,
+      "weight_decay": 0.01,
+      "grad_clip": 1.0,
+      "early_stopping": {
+        "enabled": true,
+        "patience": 4,
+        "min_delta": 0.0005
+      },
+      "scheduler": {
+        "enabled": false,
+        "factor": 0.5,
+        "patience": 2
+      }
+    },
+    "dataloader": {
+      "num_workers": null,
+      "pin_memory": true
+    },
+    "amp": true,
+    "eval_test_after_selection": false,
+    "limit_train": null,
+    "limit_val": null
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.5.4",
+    "pandas": "3.0.1",
+    "cuda": "12.4",
+    "cudnn": 90100,
+    "gpu": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "device": "cuda"
+  },
+  "data": {
+    "train": 503979,
+    "val": 55998,
+    "test": 38000,
+    "train_used": 503979,
+    "val_used": 55998
+  },
+  "vocab": {
+    "size": 30000,
+    "max_size": 30000,
+    "min_freq": 1,
+    "seen_types": 209170,
+    "kept_types": 29998,
+    "train_tokens": 83672736
+  },
+  "val_oov_rate": 0.006917,
+  "test_oov_rate": 0.006896,
+  "parameters": 3177154,
+  "git_commit": "5bfea415526a21a85e25d75e863caa076ec0b4fc"
+}

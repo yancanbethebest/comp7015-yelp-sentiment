@@ -8,3 +8,18 @@ glove.6B.100d.txt
 experiments/**/best_model.pt
 experiments/**/*.tar.gz
 runs/
+
+# ---- 成员二补充 / added by member 2 (2026-11-04) ----
+# 训练产物一律进 runs/（上面已忽略），下面是本地开发环境的零碎文件。
+# 注意：.gitignore 只支持整行注释，行尾不要写 # 注释，否则整行会被当成匹配模式。
+.ipynb_checkpoints/
+.venv/
+venv/
+*.pyc
+.DS_Store
+
+# uv / pip 的缓存与临时目录（若在**仓库内**建环境会生成这些目录；体积大且可重建）
+.uv-cache/
+.pip-cache/
+.pylibs/
+.tmp/
