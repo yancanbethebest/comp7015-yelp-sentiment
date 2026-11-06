@@ -1,0 +1,87 @@
+{
+  "run_name": "member3_frozen_20ep_seed42",
+  "seed": 42,
+  "config": {
+    "run_name": "member3_frozen_20ep_seed42",
+    "seed": 42,
+    "data_dir": "processed_data",
+    "runs_dir": "runs",
+    "max_len": 128,
+    "vocab_max_size": 30000,
+    "vocab_min_freq": 1,
+    "embedding": {
+      "source": "random",
+      "file": null,
+      "freeze": false
+    },
+    "model": {
+      "rnn_type": "lstm",
+      "embedding_dim": 100,
+      "hidden_dim": 128,
+      "num_layers": 1,
+      "bidirectional": true,
+      "dropout": 0.3,
+      "embedding_dropout": 0.1,
+      "pooling": "last"
+    },
+    "training": {
+      "epochs": 20,
+      "batch_size": 64,
+      "lr": 0.001,
+      "weight_decay": 0.01,
+      "grad_clip": 1.0,
+      "early_stopping": {
+        "enabled": true,
+        "patience": 5,
+        "min_delta": 0.0005
+      },
+      "scheduler": {
+        "enabled": false,
+        "factor": 0.5,
+        "patience": 2
+      }
+    },
+    "dataloader": {
+      "num_workers": null,
+      "pin_memory": true
+    },
+    "amp": false,
+    "eval_test_after_selection": false,
+    "limit_train": 20000,
+    "limit_val": 4000
+  },
+  "environment": {
+    "python": "3.12.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "cuda": null,
+    "cudnn": null,
+    "gpu": "cpu",
+    "device": "cpu"
+  },
+  "data": {
+    "train": 503979,
+    "val": 55998,
+    "test": 38000,
+    "train_used": 20000,
+    "val_used": 4000
+  },
+  "vocab": {
+    "size": 30000,
+    "max_size": 30000,
+    "min_freq": 1,
+    "seen_types": 44711,
+    "kept_types": 29998,
+    "train_tokens": 3301912
+  },
+  "embedding": {
+    "source": "glove",
+    "file": "D:\\1\\code\\python\\7015\\embeddings\\glove-wiki-gigaword-100.txt",
+    "freeze": true,
+    "coverage": 0.8357
+  },
+  "parameters": 236034,
+  "git_commit": "74fc8c97873727f0962f896723041c105fb3b73a"
+}
