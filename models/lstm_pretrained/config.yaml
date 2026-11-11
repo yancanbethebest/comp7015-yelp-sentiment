@@ -1,12 +1,12 @@
 # 成员三 · 预训练词向量（GloVe / Word2Vec）默认配置
-run_name: member3_glove_bilstm_finetuned_20k_seed42
+run_name: member3_glove_bilstm_finetuned_full_seed42
 seed: 42
 
 data_dir: processed_data
 runs_dir: runs
 
-# 本地是 CPU，max_len 用 128：速度远快于 256，代价是截断更多长评论（报告里说明）
-max_len: 128
+# 全量/GPU 用 256（与成员二一致）；20k CPU 实验用命令行 --max-len 128
+max_len: 256
 vocab_max_size: 30000
 vocab_min_freq: 1
 
@@ -27,7 +27,7 @@ model:
   pooling: last
 
 training:
-  epochs: 10
+  epochs: 50
   batch_size: 64
   lr: 0.001
   weight_decay: 0.01
