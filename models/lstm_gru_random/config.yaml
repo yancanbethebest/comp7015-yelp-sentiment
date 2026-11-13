@@ -1,0 +1,71 @@
+# =============================================================================
+# 成员二 · 随机初始化 Embedding 的 LSTM/GRU 基础模型 —— 默认配置
+# Member 2 · default configuration for the random-embedding recurrent baseline
+#
+# 用法 / usage:
+#   python -m models.lstm_gru_random.train                 # 直接使用本文件
+#   python -m models.lstm_gru_random.train --lr 5e-4       # 命令行覆盖单个参数
+#   python -m models.lstm_gru_random.train --config my.yaml
+#
+# 优先级 / precedence: 命令行 > 本文件 > 代码内默认值
+# 路径相对 **仓库根目录** / paths are resolved against the repository root.
+# =============================================================================
+
+# ---------- 运行标识 / run identity -----------------------------------------
+run_name: member2_bilstm_random_full_seed42
+seed: 42
+
+# ---------- 路径 / paths -----------------------------------------------------
+data_dir: processed_data        # 成员一交付的全量清洗划分（只读）
+runs_dir: runs                  # 训练输出目录（已在 .gitignore 中）
+
+# ---------- 文本表示 / text representation ----------------------------------
+# 与成员一 scripts/train_lstm.py 完全一致：小写化 + \w+|[^\w\s] 切分，
+# 只截断前 max_len 个 token，未登录词映射到 1。
+max_len: 256                    # 实测：截断 18.98% 文档、保留 81.45% token
+vocab_max_size: 30000           # 实测：覆盖训练集 99.32% token，val/test OOV 0.69%
+vocab_min_freq: 1
+
+# ---------- 模型 / model -----------------------------------------------------
+# 键名必须与 RecurrentClassifier.__init__ 的参数名一致（checkpoint 直接用 **model 还原）
+model:
+  rnn_type: lstm                # lstm | gru —— 成员二需要对比的两种循环单元
+  embedding_dim: 100            # 与 GloVe 6B-100d 对齐，保证成员三的对比只变"初始化来源"
+  hidden_dim: 128               # 每个方向 128，双向拼接后 256
+  num_layers: 1
+  bidirectional: true
+  dropout: 0.3                  # 作用在循环层输出 → 分类头之间
+  embedding_dropout: 0.1        # 作用在 embedding 输出上
+  pooling: last                 # last = 双向末状态拼接；max = 掩码最大池化
+
+# ---------- 训练 / optimisation ---------------------------------------------
+training:
+  epochs: 20                    # 预算；早停通常会提前结束，实际轮数写入 history.json
+  batch_size: 128
+  lr: 0.001
+  weight_decay: 0.01            # AdamW 默认值，显式写出并记录
+  grad_clip: 1.0                # 循环网络靠梯度裁剪兜底
+  early_stopping:
+    enabled: true
+    patience: 4                 # 连续 N 轮验证 Macro-F1 无提升则停止
+    min_delta: 0.0005
+  scheduler:
+    enabled: false              # 需要时再打开 ReduceLROnPlateau
+    factor: 0.5
+    patience: 2
+
+# ---------- 数据加载 / data loading -----------------------------------------
+dataloader:
+  num_workers: null             # null → 平台自适应（Windows 用 0，Linux/Colab 用 4）
+  pin_memory: true
+
+# ---------- 精度 / precision ------------------------------------------------
+amp: true                       # 仅 CUDA 生效，不支持的算子自动回退 FP32
+
+# ---------- 测试集闸门 / test-set gate --------------------------------------
+# 题目要求官方测试集留到最终评估；锁定配置后才允许改成 true 或加 --evaluate-test。
+eval_test_after_selection: false
+
+# ---------- 调试用样本上限 / debug limits（正式实验保持 null）----------------
+limit_train: null
+limit_val: null

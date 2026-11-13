@@ -1,0 +1,326 @@
+{
+  "run_name": "member2_bigru_random_full_seed42",
+  "model": {
+    "rnn_type": "gru",
+    "embedding_dim": 100,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": true,
+    "dropout": 0.3,
+    "embedding_dropout": 0.1,
+    "pooling": "last"
+  },
+  "training": {
+    "epochs": 5,
+    "batch_size": 128,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "early_stopping": {
+      "enabled": true,
+      "patience": 4,
+      "min_delta": 0.0005
+    },
+    "scheduler": {
+      "enabled": false,
+      "factor": 0.5,
+      "patience": 2
+    }
+  },
+  "max_len": 256,
+  "vocab_size": 30000,
+  "parameters": 3177154,
+  "best_epoch": 2,
+  "epochs_completed": 5,
+  "stop_reason": "max_epochs",
+  "seconds_per_epoch": 422.39,
+  "total_seconds": 2111.95,
+  "peak_gpu_memory_mb": 227.4,
+  "val_best": {
+    "accuracy": 0.9565341619343548,
+    "macro_precision": 0.9566418648834293,
+    "macro_recall": 0.9565341619343548,
+    "macro_f1": 0.9565315988343868,
+    "weighted_f1": 0.9565315988343867,
+    "per_class": {
+      "0": {
+        "precision": 0.9496289000668332,
+        "recall": 0.9642130076074146,
+        "f1": 0.9568653859785922,
+        "support": 27999
+      },
+      "1": {
+        "precision": 0.9636548297000254,
+        "recall": 0.948855316261295,
+        "f1": 0.9561978116901813,
+        "support": 27999
+      }
+    },
+    "confusion_matrix": [
+      [
+        26997,
+        1002
+      ],
+      [
+        1432,
+        26567
+      ]
+    ],
+    "samples": 55998,
+    "loss": 0.11434067906922599
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 0.16434386755290703,
+        "accuracy": 0.9341897182223863,
+        "macro_precision": 0.9341927467371475,
+        "macro_recall": 0.934189736591954,
+        "macro_f1": 0.9341896053578542
+      },
+      "val": {
+        "accuracy": 0.9528911746848102,
+        "macro_precision": 0.952894511554147,
+        "macro_recall": 0.9528911746848102,
+        "macro_f1": 0.9528910879116874,
+        "weighted_f1": 0.9528910879116874,
+        "per_class": {
+          "0": {
+            "precision": 0.9541238405615442,
+            "recall": 0.9515339833565485,
+            "f1": 0.9528271521047172,
+            "support": 27999
+          },
+          "1": {
+            "precision": 0.9516651825467498,
+            "recall": 0.954248366013072,
+            "f1": 0.9529550237186575,
+            "support": 27999
+          }
+        },
+        "confusion_matrix": [
+          [
+            26642,
+            1357
+          ],
+          [
+            1281,
+            26718
+          ]
+        ],
+        "samples": 55998,
+        "loss": 0.12073554865983446
+      },
+      "lr": 0.001,
+      "epoch_seconds": 414.63,
+      "elapsed_seconds": 414.63,
+      "eta_minutes": 27.64
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 0.10255068514898591,
+        "accuracy": 0.9616194325557216,
+        "macro_precision": 0.9616207112274067,
+        "macro_recall": 0.9616194441509156,
+        "macro_f1": 0.9616194066564536
+      },
+      "val": {
+        "accuracy": 0.9565341619343548,
+        "macro_precision": 0.9566418648834293,
+        "macro_recall": 0.9565341619343548,
+        "macro_f1": 0.9565315988343868,
+        "weighted_f1": 0.9565315988343867,
+        "per_class": {
+          "0": {
+            "precision": 0.9496289000668332,
+            "recall": 0.9642130076074146,
+            "f1": 0.9568653859785922,
+            "support": 27999
+          },
+          "1": {
+            "precision": 0.9636548297000254,
+            "recall": 0.948855316261295,
+            "f1": 0.9561978116901813,
+            "support": 27999
+          }
+        },
+        "confusion_matrix": [
+          [
+            26997,
+            1002
+          ],
+          [
+            1432,
+            26567
+          ]
+        ],
+        "samples": 55998,
+        "loss": 0.11434067906922599
+      },
+      "lr": 0.001,
+      "epoch_seconds": 418.73,
+      "elapsed_seconds": 833.44,
+      "eta_minutes": 20.84
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 0.07783422857694039,
+        "accuracy": 0.9716436597556645,
+        "macro_precision": 0.9716443705582831,
+        "macro_recall": 0.9716436683212345,
+        "macro_f1": 0.9716436494382084
+      },
+      "val": {
+        "accuracy": 0.9560877174184792,
+        "macro_precision": 0.9561016952577313,
+        "macro_recall": 0.9560877174184792,
+        "macro_f1": 0.9560873809784176,
+        "weighted_f1": 0.9560873809784177,
+        "per_class": {
+          "0": {
+            "precision": 0.9535767564111671,
+            "recall": 0.9588556734169077,
+            "f1": 0.956208929175645,
+            "support": 27999
+          },
+          "1": {
+            "precision": 0.9586266341042954,
+            "recall": 0.9533197614200507,
+            "f1": 0.9559658327811902,
+            "support": 27999
+          }
+        },
+        "confusion_matrix": [
+          [
+            26847,
+            1152
+          ],
+          [
+            1307,
+            26692
+          ]
+        ],
+        "samples": 55998,
+        "loss": 0.11635300659280293
+      },
+      "lr": 0.001,
+      "epoch_seconds": 425.81,
+      "elapsed_seconds": 1259.36,
+      "eta_minutes": 13.99
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 0.056985407272076696,
+        "accuracy": 0.9798959877296475,
+        "macro_precision": 0.9798964920288046,
+        "macro_recall": 0.9798959948912691,
+        "macro_f1": 0.9798959826632528
+      },
+      "val": {
+        "accuracy": 0.9540697882067216,
+        "macro_precision": 0.9540710138226636,
+        "macro_recall": 0.9540697882067217,
+        "macro_f1": 0.954069757213311,
+        "weighted_f1": 0.9540697572133109,
+        "per_class": {
+          "0": {
+            "precision": 0.9548170142739598,
+            "recall": 0.9532483302975107,
+            "f1": 0.9540320274521018,
+            "support": 27999
+          },
+          "1": {
+            "precision": 0.9533250133713674,
+            "recall": 0.9548912461159327,
+            "f1": 0.9541074869745201,
+            "support": 27999
+          }
+        },
+        "confusion_matrix": [
+          [
+            26690,
+            1309
+          ],
+          [
+            1263,
+            26736
+          ]
+        ],
+        "samples": 55998,
+        "loss": 0.13888303970427035
+      },
+      "lr": 0.001,
+      "epoch_seconds": 426.14,
+      "elapsed_seconds": 1685.57,
+      "eta_minutes": 7.02
+    },
+    {
+      "epoch": 5,
+      "train": {
+        "loss": 0.040515470009637206,
+        "accuracy": 0.9860629113514651,
+        "macro_precision": 0.9860633102968486,
+        "macro_recall": 0.986062917687488,
+        "macro_f1": 0.9860629086227575
+      },
+      "val": {
+        "accuracy": 0.9508732454730526,
+        "macro_precision": 0.9509524214628725,
+        "macro_recall": 0.9508732454730526,
+        "macro_f1": 0.9508710890204146,
+        "weighted_f1": 0.9508710890204146,
+        "per_class": {
+          "0": {
+            "precision": 0.9569277544520052,
+            "recall": 0.9442480088574592,
+            "f1": 0.9505455983605083,
+            "support": 27999
+          },
+          "1": {
+            "precision": 0.9449770884737398,
+            "recall": 0.9574984820886461,
+            "f1": 0.9511965796803208,
+            "support": 27999
+          }
+        },
+        "confusion_matrix": [
+          [
+            26438,
+            1561
+          ],
+          [
+            1190,
+            26809
+          ]
+        ],
+        "samples": 55998,
+        "loss": 0.1656330893704766
+      },
+      "lr": 0.001,
+      "epoch_seconds": 426.25,
+      "elapsed_seconds": 2111.88,
+      "eta_minutes": 0.0
+    }
+  ],
+  "test": null,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.5.4",
+    "pandas": "3.0.1",
+    "cuda": "12.4",
+    "cudnn": 90100,
+    "gpu": "NVIDIA GeForce GTX 1650 with Max-Q Design",
+    "device": "cuda"
+  },
+  "data": {
+    "train": 503979,
+    "val": 55998,
+    "test": 38000
+  }
+}
