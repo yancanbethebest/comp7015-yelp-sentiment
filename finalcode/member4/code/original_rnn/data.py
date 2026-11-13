@@ -16,7 +16,7 @@ Why lazy tokenisation is the default:
     ``list[int]`` would cost about 2.34 GB for the tokens alone; caching them as
     an int32 array (after ``max_len=256`` truncation) still costs about 272 MB.
     With lazy tokenisation only the raw text stays in memory (about 0.4 GB), at
-    the price of a few extra seconds of CPU time per epoch — a clear win for a
+    the price of a few extra seconds of CPU time per epoch, a clear win for a
     20-epoch run.
 """
 
@@ -82,7 +82,7 @@ class Vocabulary:
     ``Counter.most_common`` implementation: ties no longer depend on insertion
     order, so the same training set yields the same vocabulary on any machine.
     The trade-off is that the token id order is incompatible with historical
-    checkpoints — old embeddings cannot be reused by id and must be remapped by
+    checkpoints, so old embeddings cannot be reused by id and must be remapped by
     token (this was flagged when handing over to Member 3).
 
     Args:
@@ -96,7 +96,7 @@ class Vocabulary:
         self.pad_id: int = self.token_to_id[PAD_TOKEN]
         self.unk_id: int = self.token_to_id[UNK_TOKEN]
 
-    # -- basic protocol -----------------------------------------------------
+    # == basic protocol =====================================================
     def __len__(self) -> int:
         """Return the **number of embedding rows** (including pad/unk), not the token count."""
         return len(self.token_to_id)
@@ -108,7 +108,7 @@ class Vocabulary:
         return (f"Vocabulary(size={len(self)}, kept_types={self.meta.get('kept_types')}, "
                 f"oov_token='{UNK_TOKEN}'->{self.unk_id})")
 
-    # -- build and persistence ----------------------------------------------
+    # == build and persistence ==============================================
     @classmethod
     def build(cls, texts: Sequence[str], max_size: int = 30000,
               min_freq: int = 1) -> "Vocabulary":
@@ -158,7 +158,7 @@ class Vocabulary:
         payload = json.loads(Path(path).read_text(encoding="utf-8"))
         return cls(payload["token_to_id"], payload.get("meta"))
 
-    # -- encoding and statistics --------------------------------------------
+    # == encoding and statistics ============================================
     def encode(self, text: str, max_len: Optional[int] = None) -> List[int]:
         """Text -> id sequence.
 
@@ -368,7 +368,7 @@ def load_splits(data_dir: Path, verify: bool = True) -> Tuple[Dict[str, pd.DataF
     """Load all three splits and optionally audit Member 1's delivery end to end.
 
     The audit covers checksums against ``reports/manifest.json``, row counts,
-    label balance, within-split duplicates and cross-split leakage.
+    per-split label counts, within-split duplicates and cross-split leakage.
 
     Args:
         data_dir: Data directory (usually ``processed_data`` in the repository).

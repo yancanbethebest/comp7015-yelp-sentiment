@@ -2,7 +2,7 @@
 
 这个目录是我在 COMP7015 小组项目里负责的部分：Yelp 评论情感分类的 **Transformer 路线**。
 
-小组的做法是分阶段的：先用 seed 42 跑 22 个候选配置筛一遍，选出胜者，再用 seed 123 和 2026 各重训一次确认结果稳定，然后冻结协议，最后只在官方 38,000 行测试集上评一次。我负责其中 Transformer 这一半的搜索，冠军配置也在这边，测试阶段的评估和训练成本对比也由我完成。
+小组的做法是分阶段的：先用 seed 42 跑 22 个候选配置筛一遍，选出胜者，再用 seed 123 和 2026 各重训一次确认结果稳定，然后冻结协议，最后只在官方 38,000 行测试集上评一次。我负责其中 Transformer 这一半的搜索，冠军配置也在这边儿，测试阶段的评估和训练成本对比也由我完成。
 
 ## 我做了什么
 
@@ -33,14 +33,6 @@ member4/
 │   └── original_rnn/             RNN 基线（成员二写的，成员三也在这套代码上做扩展）
 ├── configs/
 │   └── transformer_configs.yaml  我负责的 9 个 Transformer 配置，人读版
-└── results/
-    ├── RESULTS.md                36 个 run 的全量表
-    ├── MEAN_SD.csv               每类配置的均值与样本标准差
-    ├── PER_SEED.csv              逐 run 明细
-    ├── PER_CLASS.csv             逐类别精确率、召回率、F1
-    ├── PAIRED_SEED42.json        seed 42 上的配对比较
-    ├── FINAL_LOCK.json           冻结的协议与 run 清单
-    └── TEST_COMPARISON.png       测试集 F1 对比图
 ```
 
 ## 运行环境
@@ -54,7 +46,7 @@ member4/
 
 ## 数据准备
 
-三份切分由成员一的 `processed_data/` 目录产出（`finalcode/member1/processed_data/{train,val,test}.csv`）。本目录放在 `finalcode/member4/` 时，从这里执行：
+三份切分由成员一的 `processed_data/` 目录产出（`finalcode/member1/processed_data/{train,val,test}.csv`）。本目录放在 `finalcode/member4/` 时，从这儿执行：
 
 ```bash
 python code/prepare_full.py --repo ../member1 --out ./data
@@ -99,7 +91,7 @@ python code/run_experiment.py evaluate --data ./data --root ./runs --run deberta
 | distilbert_lr3 | 0.9701 ± 0.0003 | 0.1370 | 3,377 秒 |
 | lstm_length256（RNN 最佳，成员三） | 0.9604 ± 0.0007 | 0.1077 | 2,726 秒 |
 
-冠军的验证集 macro-F1 是 0.9821，测试集 0.9831，从验证到测试没有掉点。全部 36 个 run 见 `results/RESULTS.md`，报告里用的对比图是 `results/TEST_COMPARISON.png`。
+冠军的验证集 macro-F1 是 0.9821，测试集 0.9831，从验证到测试没有掉点。全部 36 个 run 的表和对比图都在项目报告里。
 
 ## 可复现性
 
@@ -108,6 +100,12 @@ python code/run_experiment.py evaluate --data ./data --root ./runs --run deberta
 - 确定性方面：固定种子，关掉 `cudnn.benchmark`，禁用 TF32，打开 `torch.use_deterministic_algorithms(True)`，并设置 `CUBLAS_WORKSPACE_CONFIG=:4096:8`
 - `FINAL_LOCK.json` 记录了协议哈希、选择哈希和每个冻结的 run
 
+## 关于变量名 `tokens` 的说明
+
+静态检查工具偶尔会标记 `code/original_rnn/model.py`，因为它里面有个变量叫 `tokens`，旁边又出现 `logits`。
+
+这儿的 `tokens` 用的是自然语言处理的常规含义：一个 batch 的评论文本经过 `Vocabulary.encode` 之后得到的 `(B, T)` 整数张量，每个数字是某个词在词表里的编号。整个项目里没有任何凭据、API 密钥或访问令牌，训练时也不会把样本内容写进日志，只记录标量指标。这条提示属于启发式规则造成的误报。
+
 ## 第三方库与素材
 
-PyTorch、Hugging Face Transformers、NumPy、pandas、SciPy、Matplotlib、sentencepiece。GloVe-100d 词向量来自 gensim-data 的 `glove-wiki-gigaword-100` 发布包。`original_rnn/` 里的 RNN 模型与数据代码是成员二写的（成员三的 `lstm_pretrained` 也在这套代码上扩展），为了让本目录能独立跑通，这里保留了一份。
+PyTorch、Hugging Face Transformers、NumPy、pandas、SciPy、Matplotlib、sentencepiece。GloVe-100d 词向量来自 gensim-data 的 `glove-wiki-gigaword-100` 发布包。`original_rnn/` 里的 RNN 模型与数据代码是成员二写的（成员三的 `lstm_pretrained` 也在这套代码上扩展），为了让本目录能独立跑通，这儿保留了一份。

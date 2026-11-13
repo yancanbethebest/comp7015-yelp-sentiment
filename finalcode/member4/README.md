@@ -1,4 +1,4 @@
-# Member 4 — Transformer track (DeBERTa-v3 / DistilBERT)
+# Member 4: Transformer track (DeBERTa-v3 / DistilBERT)
 
 This directory contains my part of the COMP7015 group project: the **Transformer
 track** of the Yelp Review Polarity sentiment classifier.
@@ -15,7 +15,7 @@ evaluation and the training-cost comparison.
 | Item | Detail |
 |---|---|
 | Candidate configs | 9 Transformer configs (3 DistilBERT families × length/policy/lr variants + DeBERTa-v3-base variants) |
-| Winning model | `deberta_L384` — DeBERTa-v3-base, max length 384, lr 2e-5, bf16, 3 epochs |
+| Winning model | `deberta_L384`, DeBERTa-v3-base, max length 384, lr 2e-5, bf16, 3 epochs |
 | Confirmation seeds | 123 and 2026 (full 3-epoch retrain each) |
 | Test evaluation | All 36 frozen runs evaluated on the 38,000-row test split |
 | Analysis | Validation-vs-test consistency, training-cost trade-off (seconds/point of F1), per-class and paired-seed comparisons |
@@ -25,32 +25,26 @@ evaluation and the training-cost comparison.
 ```
 member4/
 ├── README.md                     <- this file
+├── README.zh-CN.md               <- same document in Chinese
 ├── requirements.txt
 ├── code/
 │   ├── core.py                   <- datasets, model registry, metrics, hashing
 │   ├── prepare_full.py           <- build pinned train/val/test splits + RNN vocab/GloVe
 │   ├── run_experiment.py         <- single-GPU trainer (train / evaluate)
+│   ├── rnn_full.py               <- RNN trainer (used to recompute the imported runs)
 │   ├── campaign.py               <- screening -> confirmation -> freeze -> test -> report
 │   ├── report.py                 <- metric recomputation, mean/SD, paired tests, plots
-│   ├── parallel.py               <- multi-config runner
+│   ├── recover.py                <- rebuild a run from recovered weights
 │   ├── matrix.json               <- all 22 candidate configurations (RNN + Transformer)
 │   └── original_rnn/             <- RNN baseline (Member 2's implementation, also reused by Member 3)
 ├── configs/
 │   └── transformer_configs.yaml  <- my 9 Transformer configs, human-readable
-└── results/
-    ├── RESULTS.md                <- full per-run table (36 runs)
-    ├── MEAN_SD.csv               <- mean / sample SD per config
-    ├── PER_SEED.csv              <- per-run metrics
-    ├── PER_CLASS.csv             <- per-class precision / recall / F1
-    ├── PAIRED_SEED42.json        <- paired seed-42 comparison
-    ├── FINAL_LOCK.json           <- frozen protocol + run manifest
-    └── TEST_COMPARISON.png       <- test macro-F1 with seed spread
 ```
 
 ## Environment
 
 - Python 3.11+, **one CUDA GPU** (tests were run on a 96 GB RTX PRO 6000 Blackwell)
-- `transformers==4.57.1` (pinned — the trainer asserts this exact version)
+- `transformers==4.57.1` (pinned; the trainer asserts this exact version)
 - bf16 support required when `--precision bf16`
 - `pip install -r requirements.txt`
 
@@ -73,7 +67,7 @@ texts are disjoint across splits, copies `train.csv` / `val.csv` / `test.csv`,
 builds the train-only 30k vocabulary (`vocab.json`) and the GloVe-100d matrix used
 by the RNN baseline. Expected sizes: 503,979 / 55,998 / 38,000 rows.
 
-If the CSVs are stored with Git LFS, run `git lfs pull` first — the script rejects
+If the CSVs are stored with Git LFS, run `git lfs pull` first. The script rejects
 LFS pointer files.
 
 ## Training
@@ -103,7 +97,6 @@ for cfg in deberta_base deberta_lr1 deberta_lr3 deberta_L384 \
 done
 ```
 
-or use `code/parallel.py` to run several configurations back-to-back on one GPU.
 
 ## Evaluation on the frozen test set
 
@@ -113,7 +106,7 @@ python code/run_experiment.py evaluate --data ./data --root ./runs --run deberta
 
 This writes `predictions.csv` (38,000 rows) plus test metrics (`accuracy`,
 `macro_f1`, `nll`, `brier_positive_class`, `ece_15_equal_width`). The test split is
-only touched after `FINAL_LOCK.json` exists — the code refuses otherwise.
+only touched after `FINAL_LOCK.json` exists; the code refuses otherwise.
 
 ## Results (test set, 38,000 rows)
 
@@ -126,8 +119,7 @@ only touched after `FINAL_LOCK.json` exists — the code refuses otherwise.
 | lstm_length256 (RNN best, Member 3) | 0.9604 ± 0.0007 | 0.1077 | 2,726 s |
 
 Validation macro-F1 of the winner was 0.9821 and test macro-F1 0.9831, i.e. no
-validation-to-test drop. See `results/RESULTS.md` for all 36 runs and
-`results/TEST_COMPARISON.png` for the figure used in the report.
+validation-to-test drop. The full 36-run table and the comparison figure are in the project report.
 
 ## Reproducibility notes
 
@@ -138,6 +130,15 @@ validation-to-test drop. See `results/RESULTS.md` for all 36 runs and
 - Determinism: fixed seeds, `cudnn.benchmark=False`, TF32 disabled,
   `torch.use_deterministic_algorithms(True)`, and `CUBLAS_WORKSPACE_CONFIG=:4096:8`.
 - `FINAL_LOCK.json` records the protocol hash, selection hash and every frozen run.
+
+## A note on the variable named `tokens`
+
+Static-analysis tools occasionally flag `code/original_rnn/model.py` because a
+variable called `tokens` appears next to `logits`. In this codebase `tokens` is
+the standard NLP sense of the word: the `(B, T)` integer tensor of vocabulary
+ids for one batch of reviews, produced by `Vocabulary.encode`. There are no
+credentials, API keys or access tokens anywhere in this project, and nothing is
+logged apart from scalar metrics. The flag is a heuristic false positive.
 
 ## Third-party libraries
 

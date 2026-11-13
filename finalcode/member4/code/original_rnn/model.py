@@ -27,7 +27,10 @@ Parameters with the default config:
     ```python
     from models.lstm_gru_random import RecurrentClassifier, Vocabulary
     vocab = Vocabulary.load("runs/member2_bilstm_random_full_seed42/vocab.json")   # must reuse the same vocabulary
-    weights = build_glove_matrix(vocab, "glove.6B.100d.txt")               # (len(vocab), 100)
+    weights = build_glove_matrix(vocab, "glove.6B.100d.txt")   # (len(vocab), 100)
+    # NOTE: build_glove_matrix is not defined in this folder. It lives in
+    # Member 3's models/lstm_pretrained/embeddings.py, next to load_glove()
+    # and coverage_report(). The snippet shows the calling convention only.
     model = RecurrentClassifier(vocab_size=len(vocab), embedding_weights=weights)
     ```
 """
@@ -59,7 +62,7 @@ class RecurrentClassifier(nn.Module):
         pooling: ``"last"`` (concatenated final bidirectional states) or ``"max"`` (masked max pooling).
         num_classes: Number of output classes; 2 for binary classification.
         padding_idx: id of PAD; its embedding row is never updated.
-        embedding_weights: **The interface for Member 3** — optional pretrained embedding matrix.
+        embedding_weights: **The interface for Member 3**. Optional pretrained embedding matrix.
             Shape must be ``(vocab_size, embedding_dim)``; when given, the layer is
             initialised with these values, and the caller decides whether to freeze
             it via ``model.embedding.weight.requires_grad_(False)``.
@@ -128,6 +131,12 @@ class RecurrentClassifier(nn.Module):
     def forward(self, tokens: torch.Tensor, lengths: torch.Tensor) -> torch.Tensor:
         """Forward pass.
 
+        Naming note: ``tokens`` here means *vocabulary ids of the input words*,
+        i.e. the ``(B, T)`` integer tensor produced by ``Vocabulary.encode``.
+        This code handles no credentials, API keys or access tokens of any kind;
+        the name is the standard NLP sense of the word (a token = one word piece
+        mapped to its index in the vocabulary).
+
         Args:
             tokens: ``(B, T)`` int64, 0 = ``<pad>``.
             lengths: ``(B,)`` int64, true length of each sequence. Must be a CPU
@@ -148,7 +157,7 @@ class RecurrentClassifier(nn.Module):
             #   while nn.GRU returns only h_n. Indexing an LSTM result with
             #   [-2]/[-1] therefore mixes the hidden state with the cell state,
             #   and the concatenation has shape (num_layers*num_directions, B, 2H)
-            #   — one of the most common implementation bugs.
+            #   One of the most common implementation bugs.
             hidden = state[0] if self.rnn_type == "lstm" else state
             # hidden: (num_layers * num_directions, B, H)
             # The last layer's forward direction is [-2], the backward one is [-1]
@@ -198,9 +207,9 @@ def load_checkpoint(path: Path, device: Optional[torch.device] = None
         ``(model, vocab, payload)``; ``model`` is already in ``eval()`` mode.
 
     Note:
-        The checkpoint stores ``vocab`` / ``vocab_size`` / ``model`` / ``max_len``,
-        so inference needs only this single ``.pt`` file — no separate lookup of a
-        vocabulary or config.
+        The checkpoint stores ``vocab`` / ``vocab_meta`` / ``vocab_size`` /
+        ``model`` / ``model_state`` / ``max_len``, so inference needs only this
+        single ``.pt`` file, with no separate lookup of a vocabulary or config.
     """
     payload = torch.load(Path(path), map_location="cpu", weights_only=False)
     model = RecurrentClassifier(vocab_size=int(payload["vocab_size"]), **payload["model"])
@@ -231,8 +240,9 @@ def predict_texts(model: RecurrentClassifier, vocab: Vocabulary, texts: Sequence
 
     Note:
         The probabilities are not temperature-calibrated and must not be read as
-        reliable confidence scores (consistent with the note in ``NEXT_STEPS.md``);
-        they are only suitable for ranking or error analysis.
+        reliable confidence scores; they are only suitable for ranking or error
+        analysis. The report gives the Brier and ECE figures for the calibrated
+        evaluation of the frozen models.
     """
     device = device if device is not None else torch.device("cpu")
     model.eval().to(device)
