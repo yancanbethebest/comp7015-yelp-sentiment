@@ -1,0 +1,76 @@
+# Member 4 (Transformer track) — seed-42 candidate configurations
+# Generated from code/matrix.json (same values used in the campaign).
+seeds: [42, 123, 2026]
+
+transformer_configs:
+  - id: distilbert_base
+    model: distilbert
+    length: 256
+    policy: head
+    lr: 2e-05
+    batch: 16
+    epochs: 3
+
+  - id: distilbert_lr3
+    model: distilbert
+    length: 256
+    policy: head
+    lr: 3e-05
+    batch: 16
+    epochs: 3
+
+  - id: distilbert_headtail
+    model: distilbert
+    length: 256
+    policy: headtail
+    lr: 2e-05
+    batch: 16
+    epochs: 3
+
+  - id: distilbert_L384
+    model: distilbert
+    length: 384
+    policy: head
+    lr: 2e-05
+    batch: 16
+    epochs: 3
+
+  - id: distilbert_L512
+    model: distilbert
+    length: 512
+    policy: head
+    lr: 2e-05
+    batch: 16
+    epochs: 3
+
+  - id: deberta_base
+    model: deberta
+    length: 256
+    policy: head
+    lr: 2e-05
+    batch: 16
+    epochs: 3
+
+  - id: deberta_lr1
+    model: deberta
+    length: 256
+    policy: head
+    lr: 1e-05
+    batch: 16
+    epochs: 3
+
+  - id: deberta_lr3
+    model: deberta
+    length: 256
+    policy: head
+    lr: 3e-05
+    batch: 16
+    epochs: 3
+
+  - id: deberta_L384
+    model: deberta
+    length: 384
+    policy: head
+    lr: 2e-05
+    batch: 16
+    epochs: 3

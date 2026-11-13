@@ -1,0 +1,37 @@
+{
+  "tests": {
+    "rnn": {
+      "baseline": "lstm_random",
+      "candidate": "lstm_length256",
+      "baseline_only_correct": 482,
+      "candidate_only_correct": 1356,
+      "p_raw": 6.571728490756589e-96,
+      "delta_accuracy_ci95": [
+        0.020815789473684232,
+        0.025236842105263113
+      ],
+      "delta_macro_f1_ci95": [
+        0.02082549668924033,
+        0.025241377225830225
+      ],
+      "p_holm": 1.3143456981513179e-95
+    },
+    "transformer": {
+      "baseline": "distilbert_base",
+      "candidate": "deberta_L384",
+      "baseline_only_correct": 231,
+      "candidate_only_correct": 712,
+      "p_raw": 1.2122035506321289e-57,
+      "delta_accuracy_ci95": [
+        0.011078947368421077,
+        0.014236842105263214
+      ],
+      "delta_macro_f1_ci95": [
+        0.011079283781095217,
+        0.014237171412912687
+      ],
+      "p_holm": 1.2122035506321289e-57
+    }
+  },
+  "assumptions": "review IID; Holm adjusts two prespecified tests; not selection bias, business/user clustering or historical test exposure; CIs are marginal"
+}
