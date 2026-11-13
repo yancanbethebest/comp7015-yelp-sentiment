@@ -1,0 +1,51 @@
+# 成员三 · 预训练词向量（GloVe / Word2Vec）默认配置
+run_name: member3_glove_bilstm_finetuned_full_seed42
+seed: 42
+
+data_dir: processed_data
+runs_dir: runs
+
+# 全量/GPU 用 256（与成员二一致）；20k CPU 实验用命令行 --max-len 128
+max_len: 256
+vocab_max_size: 30000
+vocab_min_freq: 1
+
+# embedding 段是成员三新增；model / training 段与成员二保持一致，保证公平对比
+embedding:
+  source: random      # random | glove | word2vec
+  file: null          # glove.6B.100d.txt 或 word2vec 文本文件路径
+  freeze: false       # true = 冻结词向量，false = 继续微调
+
+model:
+  rnn_type: lstm
+  embedding_dim: 100
+  hidden_dim: 128
+  num_layers: 1
+  bidirectional: true
+  dropout: 0.3
+  embedding_dropout: 0.1
+  pooling: last
+
+training:
+  epochs: 50
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.01
+  grad_clip: 1.0
+  early_stopping:
+    enabled: true
+    patience: 3
+    min_delta: 0.0005
+  scheduler:
+    enabled: false
+    factor: 0.5
+    patience: 2
+
+dataloader:
+  num_workers: null
+  pin_memory: true
+
+amp: false
+eval_test_after_selection: false
+limit_train: null
+limit_val: null

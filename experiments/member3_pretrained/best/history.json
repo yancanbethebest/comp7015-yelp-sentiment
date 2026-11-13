@@ -1,0 +1,248 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 0.42567495626211166,
+        "accuracy": 0.7999,
+        "macro_precision": 0.7999929258086984,
+        "macro_recall": 0.7999,
+        "macro_f1": 0.7998845030559166
+      },
+      "val": {
+        "accuracy": 0.88525,
+        "macro_precision": 0.8853009560514378,
+        "macro_recall": 0.88525,
+        "macro_f1": 0.8852462059526842,
+        "weighted_f1": 0.8852462059526842,
+        "per_class": {
+          "0": {
+            "precision": 0.8897319170460294,
+            "recall": 0.8795,
+            "f1": 0.8845863716369122,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.8808699950568463,
+            "recall": 0.891,
+            "f1": 0.8859060402684563,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1759,
+            241
+          ],
+          [
+            218,
+            1782
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.2786792269945145
+      },
+      "lr": 0.002,
+      "epoch_seconds": 302.24,
+      "elapsed_seconds": 302.24,
+      "eta_minutes": 45.34
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 0.20764080435931684,
+        "accuracy": 0.9189,
+        "macro_precision": 0.9189,
+        "macro_recall": 0.9189,
+        "macro_f1": 0.9189
+      },
+      "val": {
+        "accuracy": 0.8975,
+        "macro_precision": 0.8979333494175157,
+        "macro_recall": 0.8975,
+        "macro_f1": 0.8974720867756246,
+        "weighted_f1": 0.8974720867756246,
+        "per_class": {
+          "0": {
+            "precision": 0.8848015488867377,
+            "recall": 0.914,
+            "f1": 0.8991637973438269,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.9110651499482937,
+            "recall": 0.881,
+            "f1": 0.8957803762074223,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1828,
+            172
+          ],
+          [
+            238,
+            1762
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.2563265960216522
+      },
+      "lr": 0.002,
+      "epoch_seconds": 305.37,
+      "elapsed_seconds": 607.74,
+      "eta_minutes": 40.52
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 0.1074307198740542,
+        "accuracy": 0.962,
+        "macro_precision": 0.9620155422028398,
+        "macro_recall": 0.962,
+        "macro_f1": 0.9619996804173123
+      },
+      "val": {
+        "accuracy": 0.889,
+        "macro_precision": 0.8899362369048085,
+        "macro_recall": 0.889,
+        "macro_f1": 0.8889333322326727,
+        "weighted_f1": 0.8889333322326727,
+        "per_class": {
+          "0": {
+            "precision": 0.9090431125131441,
+            "recall": 0.8645,
+            "f1": 0.8862121988723731,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.8708293612964728,
+            "recall": 0.9135,
+            "f1": 0.8916544655929722,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1729,
+            271
+          ],
+          [
+            173,
+            1827
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.30504875552654265
+      },
+      "lr": 0.002,
+      "epoch_seconds": 305.54,
+      "elapsed_seconds": 913.4,
+      "eta_minutes": 35.52
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 0.047605583233200015,
+        "accuracy": 0.98395,
+        "macro_precision": 0.9839513986195421,
+        "macro_recall": 0.98395,
+        "macro_f1": 0.9839499884038666
+      },
+      "val": {
+        "accuracy": 0.871,
+        "macro_precision": 0.8757985719654265,
+        "macro_recall": 0.871,
+        "macro_f1": 0.8705868809707791,
+        "weighted_f1": 0.8705868809707791,
+        "per_class": {
+          "0": {
+            "precision": 0.8333333333333334,
+            "recall": 0.9275,
+            "f1": 0.87789872219593,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.9182638105975197,
+            "recall": 0.8145,
+            "f1": 0.863275039745628,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1855,
+            145
+          ],
+          [
+            371,
+            1629
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.4052304161787033
+      },
+      "lr": 0.002,
+      "epoch_seconds": 311.99,
+      "elapsed_seconds": 1225.48,
+      "eta_minutes": 30.64
+    },
+    {
+      "epoch": 5,
+      "train": {
+        "loss": 0.022749617224326356,
+        "accuracy": 0.9927,
+        "macro_precision": 0.9927009656938928,
+        "macro_recall": 0.9926999999999999,
+        "macro_f1": 0.9926999964229982
+      },
+      "val": {
+        "accuracy": 0.8805,
+        "macro_precision": 0.8814157792860658,
+        "macro_recall": 0.8805000000000001,
+        "macro_f1": 0.8804282270432827,
+        "weighted_f1": 0.8804282270432827,
+        "per_class": {
+          "0": {
+            "precision": 0.8627264061010487,
+            "recall": 0.905,
+            "f1": 0.8833577354807224,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.900105152471083,
+            "recall": 0.856,
+            "f1": 0.877498718605843,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1810,
+            190
+          ],
+          [
+            288,
+            1712
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.5086192975789309
+      },
+      "lr": 0.002,
+      "epoch_seconds": 294.61,
+      "elapsed_seconds": 1520.16,
+      "eta_minutes": 25.34
+    }
+  ],
+  "best_epoch": 2,
+  "best_val_macro_f1": 0.8974720867756246,
+  "epochs_completed": 5,
+  "epochs_requested": 10,
+  "stop_reason": "early_stopping(patience=3)",
+  "total_seconds": 1520.24,
+  "seconds_per_epoch": 304.05,
+  "peak_gpu_memory_mb": null,
+  "amp": false
+}

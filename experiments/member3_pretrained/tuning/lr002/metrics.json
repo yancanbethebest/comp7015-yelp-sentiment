@@ -1,0 +1,332 @@
+{
+  "run_name": "member3_tune_glove_lr002_seed42",
+  "model": {
+    "rnn_type": "lstm",
+    "embedding_dim": 100,
+    "hidden_dim": 128,
+    "num_layers": 1,
+    "bidirectional": true,
+    "dropout": 0.3,
+    "embedding_dropout": 0.1,
+    "pooling": "last"
+  },
+  "training": {
+    "epochs": 6,
+    "batch_size": 64,
+    "lr": 0.002,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "early_stopping": {
+      "enabled": true,
+      "patience": 2,
+      "min_delta": 0.0005
+    },
+    "scheduler": {
+      "enabled": false,
+      "factor": 0.5,
+      "patience": 2
+    }
+  },
+  "max_len": 128,
+  "vocab_size": 30000,
+  "parameters": 3236034,
+  "embedding": {
+    "source": "glove",
+    "file": "D:\\1\\code\\python\\7015\\embeddings\\glove-wiki-gigaword-100.txt",
+    "freeze": false,
+    "coverage": 0.8357
+  },
+  "best_epoch": 3,
+  "epochs_completed": 5,
+  "stop_reason": "early_stopping(patience=2)",
+  "seconds_per_epoch": 213.33,
+  "total_seconds": 1066.66,
+  "peak_gpu_memory_mb": null,
+  "val_best": {
+    "accuracy": 0.89125,
+    "macro_precision": 0.8917436949916132,
+    "macro_recall": 0.8912500000000001,
+    "macro_f1": 0.8912157261547216,
+    "weighted_f1": 0.8912157261547216,
+    "per_class": {
+      "0": {
+        "precision": 0.8778367938194109,
+        "recall": 0.909,
+        "f1": 0.8931466470154753,
+        "support": 2000
+      },
+      "1": {
+        "precision": 0.9056505961638155,
+        "recall": 0.8735,
+        "f1": 0.8892848052939679,
+        "support": 2000
+      }
+    },
+    "confusion_matrix": [
+      [
+        1818,
+        182
+      ],
+      [
+        253,
+        1747
+      ]
+    ],
+    "samples": 4000,
+    "loss": 0.2952612905502319
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "loss": 0.45490698544979097,
+        "accuracy": 0.7773,
+        "macro_precision": 0.7774847049189824,
+        "macro_recall": 0.7773,
+        "macro_f1": 0.777262934324901
+      },
+      "val": {
+        "accuracy": 0.87125,
+        "macro_precision": 0.8733783499392411,
+        "macro_recall": 0.8712500000000001,
+        "macro_f1": 0.8710662613640852,
+        "weighted_f1": 0.8710662613640853,
+        "per_class": {
+          "0": {
+            "precision": 0.8451882845188284,
+            "recall": 0.909,
+            "f1": 0.8759335099975909,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.9015684153596538,
+            "recall": 0.8335,
+            "f1": 0.8661990127305794,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1818,
+            182
+          ],
+          [
+            333,
+            1667
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.31221897196769716
+      },
+      "lr": 0.002,
+      "epoch_seconds": 237.06,
+      "elapsed_seconds": 237.06,
+      "eta_minutes": 19.76
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "loss": 0.2404165271759033,
+        "accuracy": 0.9023,
+        "macro_precision": 0.9023135338272779,
+        "macro_recall": 0.9023,
+        "macro_f1": 0.9022991783360897
+      },
+      "val": {
+        "accuracy": 0.88825,
+        "macro_precision": 0.88861150585332,
+        "macro_recall": 0.88825,
+        "macro_f1": 0.888224005095185,
+        "weighted_f1": 0.8882240050951851,
+        "per_class": {
+          "0": {
+            "precision": 0.9004641567818463,
+            "recall": 0.873,
+            "f1": 0.8865194211728865,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.8767588549247938,
+            "recall": 0.9035,
+            "f1": 0.8899285890174834,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1746,
+            254
+          ],
+          [
+            193,
+            1807
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.2651809500455856
+      },
+      "lr": 0.002,
+      "epoch_seconds": 300.82,
+      "elapsed_seconds": 538.05,
+      "eta_minutes": 17.94
+    },
+    {
+      "epoch": 3,
+      "train": {
+        "loss": 0.13443095672726632,
+        "accuracy": 0.9495,
+        "macro_precision": 0.9495064908737283,
+        "macro_recall": 0.9495,
+        "macro_f1": 0.9494998176943419
+      },
+      "val": {
+        "accuracy": 0.89125,
+        "macro_precision": 0.8917436949916132,
+        "macro_recall": 0.8912500000000001,
+        "macro_f1": 0.8912157261547216,
+        "weighted_f1": 0.8912157261547216,
+        "per_class": {
+          "0": {
+            "precision": 0.8778367938194109,
+            "recall": 0.909,
+            "f1": 0.8931466470154753,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.9056505961638155,
+            "recall": 0.8735,
+            "f1": 0.8892848052939679,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1818,
+            182
+          ],
+          [
+            253,
+            1747
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.2952612905502319
+      },
+      "lr": 0.002,
+      "epoch_seconds": 247.69,
+      "elapsed_seconds": 785.91,
+      "eta_minutes": 13.1
+    },
+    {
+      "epoch": 4,
+      "train": {
+        "loss": 0.069891221036762,
+        "accuracy": 0.9772,
+        "macro_precision": 0.9772092387708626,
+        "macro_recall": 0.9772000000000001,
+        "macro_f1": 0.9771998896474658
+      },
+      "val": {
+        "accuracy": 0.883,
+        "macro_precision": 0.8833223741166321,
+        "macro_recall": 0.883,
+        "macro_f1": 0.8829753955769201,
+        "weighted_f1": 0.8829753955769202,
+        "per_class": {
+          "0": {
+            "precision": 0.8722060252672498,
+            "recall": 0.8975,
+            "f1": 0.8846722523410546,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.8944387229660145,
+            "recall": 0.8685,
+            "f1": 0.8812785388127855,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1795,
+            205
+          ],
+          [
+            263,
+            1737
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.34853820288181303
+      },
+      "lr": 0.002,
+      "epoch_seconds": 145.58,
+      "elapsed_seconds": 931.72,
+      "eta_minutes": 7.76
+    },
+    {
+      "epoch": 5,
+      "train": {
+        "loss": 0.03310028889849782,
+        "accuracy": 0.989,
+        "macro_precision": 0.989001956007824,
+        "macro_recall": 0.989,
+        "macro_f1": 0.988999988999989
+      },
+      "val": {
+        "accuracy": 0.87525,
+        "macro_precision": 0.8770713488829418,
+        "macro_recall": 0.8752500000000001,
+        "macro_f1": 0.875099174446843,
+        "weighted_f1": 0.8750991744468432,
+        "per_class": {
+          "0": {
+            "precision": 0.8508648901355774,
+            "recall": 0.91,
+            "f1": 0.8794394781348153,
+            "support": 2000
+          },
+          "1": {
+            "precision": 0.9032778076303063,
+            "recall": 0.8405,
+            "f1": 0.8707588707588708,
+            "support": 2000
+          }
+        },
+        "confusion_matrix": [
+          [
+            1820,
+            180
+          ],
+          [
+            319,
+            1681
+          ]
+        ],
+        "samples": 4000,
+        "loss": 0.4590754494667053
+      },
+      "lr": 0.002,
+      "epoch_seconds": 134.81,
+      "elapsed_seconds": 1066.6,
+      "eta_minutes": 3.56
+    }
+  ],
+  "test": null,
+  "environment": {
+    "python": "3.12.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "cuda": null,
+    "cudnn": null,
+    "gpu": "cpu",
+    "device": "cpu"
+  },
+  "data": {
+    "train": 20000,
+    "val": 4000,
+    "test": 38000
+  }
+}
